@@ -2,6 +2,7 @@ package controllers;
 
 import DAO.Assignment;
 import DAO.DAOEmployer;
+import DAO.DAOStudent;
 import views.MentorView;
 import DAO.Model;
 
@@ -13,13 +14,15 @@ public class MentorController extends Controller {
     Model newModel;
     Model myModel;
     MentorView mentorView;
-    DAOEmployer daoEmployer;
+    DAOStudent daoStudent;
+    DAOMassModel daoMassModel;
 
     public MentorController(Model model, MentorView mentorView) {
         this.mentorView = mentorView;
         this.myModel = model;
         this.setloggedIn(true);
-        this.daoEmployer = new DAOEmployer();
+        this.daoStudent = new DAOStudent();
+        this.daoMassModel = new DAOMassModel();
     }
 
 
@@ -37,7 +40,7 @@ public class MentorController extends Controller {
                 if(inputInt > 0 && inputInt < 9) {                               // magic number, to improve!
                     goodInput = true;
                 } else {
-                    System.out.println("Only numbers from 1 to 6!");
+                    System.out.println("Only numbers from 1 to 8!");
                 }
             }
             goodInput = false;
@@ -79,7 +82,7 @@ public class MentorController extends Controller {
     }
 
     private void printStudents() {
-        mentorView.printStudents(myModel.getAllStudents());
+        mentorView.printStudents(daoMassModel.getAllStudents());
         mentorView.takeInput("Press anything to continue");
     }
 
@@ -91,40 +94,40 @@ public class MentorController extends Controller {
         String tempLogin = mentorView.takeInput("Login");
         Map<String, Assignment> assignments = new HashMap<String, Assignment>();
         newModel = new Model(tempName, tempSurname, accountType, tempPassword, tempLogin, assignments);
-        daoEmployer.add(newModel);
+        daoStudent.add(newModel);
     }
 
     private void removeStudent() {
-        mentorView.printStudents(myModel.getAllStudents());
+        mentorView.printStudents(daoMassModel.getAllStudents());
         String tempName = mentorView.takeInput("Name ");
         String tempSurname = mentorView.takeInput("Surname ");
-        daoEmployer.delete(tempName, tempSurname);
+        daoStudent.delete(tempName, tempSurname);
     }
 
     private void editStudent() {
-        mentorView.printStudents(myModel.getAllStudents());
+        mentorView.printStudents(daoMassModel.getAllStudents());
         String tempName = mentorView.takeInput("Name ");
         String tempSurname = mentorView.takeInput("Surname ");
-        daoEmployer.delete(tempName, tempSurname);                             // USUWANIE PO IMIENIU I NAZWISKU?
+        daoStudent.delete(tempName, tempSurname);                             // USUWANIE PO IMIENIU I NAZWISKU?
         addStudent();
     }
 
     private void getAssignments() {
-        mentorView.printAssignments(myModel.getAllAssignments());
+        mentorView.printAssignments(daoMassModel.getAllAssignments());
     }
 
     private void setNewAssignment() {
         String tempAssignmentName = mentorView.takeInput("Please, enter the the assignment name ");
-        myModel.putNewAssignment(tempAssignmentName);
+        myModel.setNewAssignment(tempAssignmentName);
     }
 
     private void evaluateAssignment() {
-        mentorView.printStudents(myModel.getAllStudents());
+        mentorView.printStudents(daoMassModel.getAllStudents());
         String tempName = mentorView.takeInput("Name ");
         String tempSurname = mentorView.takeInput("Surname ");
         newModel = daoEmployer.get(tempName, tempSurname);                // METODA GET? NIE WYOBRAŻAM SOBIE INNEGO EDYTOWANIA POJEDYNCZEGO POLA
-        daoEmployer.delete(tempName, tempSurname);
-        mentorView.printStudentAssignments(newModel.getAssignments());
+        daoStudent.delete(tempName, tempSurname);
+        mentorView.printStudentAssignments(daoMassModel.getAssignments());
         String tempAssignmentName = mentorView.takeInput("Which assignment would you like to grade? ");
 
         if(newModel.getAssignments().containsKey(tempAssignmentName)) {
