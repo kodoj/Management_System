@@ -9,12 +9,11 @@ public class EmployerController extends Controller {
 
     EmployerView employerView;
     DAOMassModel daoMassModel;
-    Model model;
 
-    public MentorController(Model model, EmployerView employerView) {
-        this.model = model;
+    public EmployerController(Model model, EmployerView employerView) {
+        setMyModel(model);
+        setloggedIn(true);
         this.employerView = employerView;
-        this.setloggedIn(true);
         this.daoMassModel = new DAOMassModel();
     }
 
@@ -29,7 +28,7 @@ public class EmployerController extends Controller {
 
             while(goodInput == false) {
                 inputInt = employerView.takeIntInput("What would you like to do? ");
-                if(inputInt > 0 && inputInt < 9) {                               // magic number, to improve!
+                if(inputInt > 0 && inputInt < 3) {                               // magic number, to improve!
                     goodInput = true;
                 } else {
                     System.out.println("Only numbers from 1 to 2!");

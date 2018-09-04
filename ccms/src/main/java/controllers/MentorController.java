@@ -1,10 +1,7 @@
 package controllers;
 
-import DAO.Assignment;
-import DAO.DAOEmployer;
-import DAO.DAOStudent;
+import DAO.*;
 import views.MentorView;
-import DAO.Model;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,14 +9,13 @@ import java.util.Map;
 public class MentorController extends Controller {
 
     Model newModel;
-    Model myModel;
     MentorView mentorView;
     DAOStudent daoStudent;
     DAOMassModel daoMassModel;
 
     public MentorController(Model model, MentorView mentorView) {
         this.mentorView = mentorView;
-        this.myModel = model;
+        setMyModel(model);
         this.setloggedIn(true);
         this.daoStudent = new DAOStudent();
         this.daoMassModel = new DAOMassModel();
@@ -28,7 +24,6 @@ public class MentorController extends Controller {
 
     public void run(boolean getLoggedIn()) {
 
-        String input;
         int inputInt = 0;
         boolean goodInput = false;
 
