@@ -13,6 +13,12 @@ public abstract class View {
         return input;
     }
 
-    abstract int printMenu();
+    public int takeIntInput(String string) {
+        System.out.println(string);
+        int input = sc.nextInt();
+        return input;
+    }
+
+    abstract void printMenu();
 
 }
