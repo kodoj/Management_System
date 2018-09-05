@@ -1,7 +1,10 @@
 package views;
 
-import java.util.Scanner;
 import java.util.HashMap;
+import java.util.Scanner;
+
+import DAO.DAOLists;
+import containers.Assignment;
 import controllers.Controller;
 
 public class View {
@@ -46,7 +49,7 @@ public class View {
     }
 
     public void printHashMap(String option){
-        Hashmap<String, Assignment> assignments = controller.getMyModel().getAssignments();
+        HashMap<String, Assignment> assignments = controller.getMyModel().getAssignments();
         for (String name: assignments.keySet()){
 
             String key = name;
