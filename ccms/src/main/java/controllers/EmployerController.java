@@ -27,7 +27,7 @@ public class EmployerController extends Controller {
         List<String> menuOptions = {"List all students", "Logout"};
 
         while(getLoggedIn()) {
-            view.printList(menuOptions);
+            View.printList(menuOptions);
 
             while(goodInput == false) {
                 inputInt = view.takeIntInput("What would you like to do? ");
@@ -40,7 +40,7 @@ public class EmployerController extends Controller {
             goodInput = false;
 
             if(inputInt == 1) {
-                view.printList(daoLists.getAllStudents());
+                View.printList(daoLists.getAllStudents());
                 continue;
             }
             else if(inputInt == 2) {

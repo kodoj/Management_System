@@ -33,7 +33,7 @@ public class MentorController extends Controller {
         List<String> menuOptions = {"List all students","Add student","Remove student","Edit student", "Get Assignments", "Add new Assignment", "Evaluate Assignments","Logout"};
 
         while(getLoggedIn()) {
-            view.printList(menuOptions);
+            View.printList(menuOptions);
 
             while(goodInput == false) {
                 inputInt = view.takeIntInput("What would you like to do? ");
@@ -46,7 +46,7 @@ public class MentorController extends Controller {
             goodInput = false;
 
             if(inputInt == 1) {
-                view.printList(daoLists.getAllStudents());
+                View.printList(daoLists.getAllStudents());
                 continue;
             }
             else if(inputInt == 2) {
@@ -62,7 +62,7 @@ public class MentorController extends Controller {
                 continue;
             }
             else if(inputInt == 5) {
-                view.printList(daoLists.getAllAssignments());
+                View.printList(daoLists.getAllAssignments());
                 continue;
             }
             else if(inputInt == 6) {
@@ -94,14 +94,14 @@ public class MentorController extends Controller {
     }
 
     private void removeStudent() {
-        view.printList(daoLists.getAllStudents());
+        View.printList(daoLists.getAllStudents());
         String tempName = view.takeStringInput("Name ");
         String tempSurname = view.takeStringInput("Surname ");
         daoStudent.delete(tempName, tempSurname);
     }
 
     private void editStudent() {
-        view.printList(daoLists.getAllStudents());
+        View.printList(daoLists.getAllStudents());
         String tempName = view.takeStringInput("Name ");
         String tempSurname = view.takeStringInput("Surname ");
         daoStudent.delete(tempName, tempSurname);                             // USUWANIE PO IMIENIU I NAZWISKU?

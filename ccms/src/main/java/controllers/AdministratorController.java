@@ -33,7 +33,7 @@ public class AdministratorController extends Controller {
 
 
         while(getLoggedIn()) {
-            view.printList();
+            View.printList();
 
             while(goodInput == false) {
                 inputInt = view.takeIntInput("What would you like to do? ");
@@ -46,11 +46,11 @@ public class AdministratorController extends Controller {
             goodInput = false;
 
             if(inputInt == 1) {
-                view.printList(daoLists.getAllStudents());
+                View.printList(daoLists.getAllStudents());
                 continue;
             }
             else if(inputInt == 2) {
-                view.printList(daoLists.getAllMentors());
+                View.printList(daoLists.getAllMentors());
                 continue;
             }
             else if(inputInt == 3) {
@@ -84,14 +84,14 @@ public class AdministratorController extends Controller {
     }
 
     private void removeMentor() {
-        view.printList(daoLists.getAllMentors());
+        View.printList(daoLists.getAllMentors());
         String tempName = administratorView.takeInput("Name ");
         String tempSurname = administratorView.takeInput("Surname ");
         daoEmployer.delete(tempName, tempSurname);
     }
 
     private void editMentor() {
-        view.printList(daoLists.getAllMentors());
+        View.printList(daoLists.getAllMentors());
         String tempName = administratorView.takeInput("Name ");
         String tempSurname = administratorView.takeInput("Surname ");
         daoEmployer.delete(tempName, tempSurname);                             // USUWANIE PO IMIENIU I NAZWISKU?
