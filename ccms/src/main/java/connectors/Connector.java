@@ -8,8 +8,11 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import java.util.HashMap;
+import java.util.Iterator;
+
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
+import java.io.IOException;
 
 public class Connector {
 
@@ -17,37 +20,37 @@ public class Connector {
 
     public void addAssignmentToXML(String assignmentName){
 
-        try {
+		Document doc;
 
+        try {
             File xmlFile = new File("/java/XMLs/assignments.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(fXmlFile);
+			doc = dBuilder.parse(xmlFile);
+			doc.getDocumentElement().normalize();
+        } catch (IOException e) {
+            System.out.println("Can't find the file");
         } catch (Exception e) {
-            e.printStackTrace();
-        }
-        doc.getDocumentElement().normalize();      
+			e.printStackTrace();
+		}  
 
         Element root = doc.getDocumentElement(); // employees
         Element assignmentTag = (Element) root.getElementsByTagName("assignments").item(0); //employee
-        Element newAssignment = doc.createElement("assignment").setAttribute("name", assignmentName);
-
+		Element newAssignment = doc.createElement("assignment");
+        newAssignment.setAttribute("name", assignmentName);
+        
         assignmentTag.appendChild(newAssignment);
 
-        try {
-            String outputURL = "/java/XMLs/assignments.xml";
-            
-            DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new FileOutputStream(outputURL));
-            
-            TransformerFactory transFactory = TransformerFactory.newInstance();
-            Transformer transformer = transFactory.newTransformer();
-            
-            transformer.transform(source, result);
-            
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        String outputURL = "/java/XMLs/assignments.xml";            
+        DOMSource source = new DOMSource(doc);
+
+	
+		StreamResult result = new StreamResult(new FileOutputStream(outputURL));
+		TransformerFactory transFactory = TransformerFactory.newInstance();
+		Transformer transformer = transFactory.newTransformer();
+		
+		transformer.transform(source, result);            
+   
     }
 
     public void addPersonToXML(Model model){
@@ -60,24 +63,21 @@ public class Connector {
         String login = model.get(login);
         String password = model.get(password);
 
-        if(accountType.equals("students")){
-            HashMap<String, Assignment> assignments = model.get(assignments);
-        }
 
-
-        File xmlFile = new File("/java/XMLs/" + personType +".xml");
+        File xmlFile = new File("/java/XMLs/" + accountType +".xml");
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-        Document doc = dBuilder.parse(fXmlFile);
+        Document doc = dBuilder.parse(xmlFile);
         doc.getDocumentElement().normalize();
 
-        String tag = personType.substring(0, str.length() - 1);
+        String tag = accountType.substring(0, accountType.length() - 1);
 
         Element root = doc.getDocumentElement(); // employees
 
         Element personTag = (Element) root.getElementsByTagName(accountType).item(0); //employee
 
-        Element newPerson = doc.createElement(tag).setAttribute("login", login);
+		Element newPerson = doc.createElement(tag);
+		newPerson.setAttribute("login", login);
 
         Element userName = doc.createElement("name");
         userName.setTextContent(capitalizedName);
@@ -88,14 +88,32 @@ public class Connector {
         Element userPassword = doc.createElement("password");
         userPassword.setTextContent(password);
 
+
+
         newPerson.appendChild(userName);
         newPerson.appendChild(userSurname);
         newPerson.appendChild(userPassword);
         
+        if(accountType.equals("students")){
+            HashMap<String, Assignment> assignments = model.get(assignments);
+            Iterator<E> itr = assignments.keySet().iterator();
+            while(itr.hasNext()){
+                Element userAssignment = doc.createElement("assignment");
+                Node assignmentName = doc.createElement("name");
+                assignmentName.appendChild(doc.createTextNode(key));
+                userAssignment.appendChild(assignmentName);
+                Node grade = userAssignment.createElement("grade");
+                grade.appendChild(doc.createTextNode(assignments.get(key)));
+                userAssignment.appendChild(grade);
+                newPerson.appendChild(userAssignment);
+            }
+            
+        }
+
         personTag.appendChild(newPerson);
         
         try{
-            String outputURL = "/java/XMLs/" + personType +".xml";
+            String outputURL = "/java/XMLs/" + accountType +".xml";
             
             DOMSource source = new DOMSource(doc);
             StreamResult result = new StreamResult(new FileOutputStream(outputURL));
@@ -112,49 +130,50 @@ public class Connector {
     
     public Element loadPerson(String login){
 
-			File xmlFile = new File("/java/XMLs/employees.xml");
-			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-
-            doc.getDocumentElement().normalize();
-
-            String[] filesSources = {"/java/XMLs/students.xml", "/java/XMLs/employees.xml", "/java/XMLs/mentors.xml"};
+        String[] filesSources = {"students.xml", "employees.xml", "mentors.xml"};
             String[] tags = {"student", "employee", "mentor"};
 
-            Strig fileSource;
+            String fileSource;
             String tag;
+			Element person;
 
             for(int i=0; i<filesSources.length; i++){
                 fileSource = filesSources[i];
                 tag = tags[i];
-                Element person = checkFileForUser(fileSource, tag);
+                person = checkFileForUser(fileSource, tag, login);
             }
-
-
-            checkFileForUser(fileSource, tag);    
-
             return person;
-
     }
 
     public Element loadAssigments(){
+        Document doc;
         try {
 			File xmlFile = new File("/java/XMLs/assignments.xml");
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();  
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();  
+			doc = dBuilder.parse(xmlFile);
         } catch(Exception e) {
             System.out.println(e);
         } 
-			Document doc = dBuilder.parse(xmlFile);
-			Element assignments = doc.getDocumentElement().normalize();
-            return assisgnments;
+			Element assignments = doc.getDocumentElement();
+            return assignments;
     }
 
-    public Element checkFileForUser(String fileSource, String tag){
+    public Element checkFileForUser(String fileSource, String tag, String login){
 
-        File xmlFile = new File(fileSource);
-        Document doc = dBuilder.parse(xmlFile);
-        Node nList = doc.getElementsByTagName(tag);
+		Document doc;
+
+        try{
+			File xmlFile = new File(fileSource);
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			doc = dBuilder.parse(xmlFile);
+            doc.getDocumentElement().normalize();
+		} catch (Exception e){
+			e.printStackTrace();
+        }
+        
+        NodeList nList = doc.getElementsByTagName(tag);
 
         for (int temp = 0; temp < nList.getLength(); temp++) {
 
