@@ -1,16 +1,20 @@
 package controllers;
 
+import DAO.Assignment;
+import DAO.DAOLists;
 import DAO.Model;
 import views.StudentView;
 
 public class StudentController extends Controller {
 
     StudentView studentView;
+    DAOLists daoLists;
 
     public StudentController(Model model, StudentView studentView) {
         setMyModel(model);
         setloggedIn(true);
         this.studentView = studentView;
+        this.daoLists = new DAOLists();
     }
 
     public void run(boolean getLoggedIn()) {
@@ -44,7 +48,7 @@ public class StudentController extends Controller {
                 takeNewAssignment();
                 continue;
             }
-            else if(inputInt == 8) {
+            else if(inputInt == 4) {
                 setloggedIn(false);
                 break;
             }
@@ -53,6 +57,22 @@ public class StudentController extends Controller {
     }
 
     private void submitAssignment() {
-        
+        studentView.printStudentAssignments(getMyModel().getAssignments());
+        String assignmentID = studentView.takeInput("Which assignment would you like to submit? ");
+        String url = studentView.takeInput("please, paste your url to this assignment ");
+        getMyModel().getAssignments().get(assignmentID).setUrl(url);
+        getMyModel().getAssignments().get(assignmentID).setIsFinished(true);
+    }
+
+    private void viewGrades() {
+        studentView.printMyGrades(getMyModel().getAssignments());
+    }
+
+    private void takeNewAssignment() {
+        studentView.printAllAssignments(daoLists.getAllAssignments());
+        String assignmentID = studentView.takeInput("Which assignment would you like to take? ");
+        if(daoLists.getAllAssignments().contains(assignmentID) && !getMyModel().getAssignments().containsKey(assignmentID)) {
+            getMyModel().getAssignments().put(assignmentID, new Assignment(assignmentID));
+        }
     }
 }

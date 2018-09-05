@@ -2,13 +2,14 @@ package controllers;
 
 import DAO.DAOEmployer;
 import DAO.Model;
-import views.view;
-import DAO.DAOMassModel;
+import views.View;
+import views.views;
+import DAO.DAOLists;
 
 public class AdministratorController extends Controller {
 
     View view;
-    DAOMassModel daoMassModel;
+    DAOLists daoLists;
     DAOEmployer daoEmployer;
     Model newModel;
 
@@ -16,7 +17,7 @@ public class AdministratorController extends Controller {
         setMyModel(model);
         setloggedIn(true);
         this.view = view;
-        this.daoMassModel = new DAOMassModel();
+        this.daoLists = new DAOLists();
         this.daoEmployer = new DAOEmployer();
 
     }
@@ -82,16 +83,16 @@ public class AdministratorController extends Controller {
     }
 
     private void removeMentor() {
-        view.printList(daoMassModel.getAllMentors());
-        String tempName = view.takeStringInput("Name ");
-        String tempSurname = view.takeStringInput("Surname ");
+        view.printDAOList("mentors");
+        String tempName = administratorView.takeInput("Name ");
+        String tempSurname = administratorView.takeInput("Surname ");
         daoEmployer.delete(tempName, tempSurname);
     }
 
     private void editMentor() {
-        view.printList(daoMassModel.getAllMentors());
-        String tempName = view.takeStringInput("Name ");
-        String tempSurname = view.takeStringInput("Surname ");
+        view.printDAOList("mentors");
+        String tempName = administratorView.takeInput("Name ");
+        String tempSurname = administratorView.takeInput("Surname ");
         daoEmployer.delete(tempName, tempSurname);                             // USUWANIE PO IMIENIU I NAZWISKU?
         addMentor();
     }

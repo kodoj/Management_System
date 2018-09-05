@@ -11,14 +11,14 @@ public class MentorController extends Controller {
     Model newModel;
     MentorView mentorView;
     DAOStudent daoStudent;
-    DAOMassModel daoMassModel;
+    DAOLists daoLists;
 
     public MentorController(Model model, MentorView mentorView) {
         this.mentorView = mentorView;
         setMyModel(model);
         this.setloggedIn(true);
         this.daoStudent = new DAOStudent();
-        this.daoMassModel = new DAOMassModel();
+        this.daoLists = new DAOLists();
     }
 
 
@@ -42,7 +42,7 @@ public class MentorController extends Controller {
             goodInput = false;
 
             if(inputInt == 1) {
-                mentorView.printMassModelList("students");
+                mentorView.printDAOList("students");
                 continue;
             }
             else if(inputInt == 2) {
@@ -58,7 +58,7 @@ public class MentorController extends Controller {
                 continue;
             }
             else if(inputInt == 5) {
-                mentorView.printMassModelList("assignments");
+                mentorView.printDAOList("assignments");
                 continue;
             }
             else if(inputInt == 6) {
@@ -90,16 +90,16 @@ public class MentorController extends Controller {
     }
 
     private void removeStudent() {
-        mentorView.printList(daoMassModel.getAllStudents());
-        String tempName = mentorView.takeStringInput("Name ");
-        String tempSurname = mentorView.takeStringInput("Surname ");
+        mentorView.printList(daoLists.getAllStudents());
+        String tempName = mentorView.takeInput("Name ");
+        String tempSurname = mentorView.takeInput("Surname ");
         daoStudent.delete(tempName, tempSurname);
     }
 
     private void editStudent() {
-        mentorView.printStudents(daoMassModel.getAllStudents());
-        String tempName = mentorView.takeStringInput("Name ");
-        String tempSurname = mentorView.takeStringInput("Surname ");
+        mentorView.printDAOList("students");
+        String tempName = mentorView.takeInput("Name ");
+        String tempSurname = mentorView.takeInput("Surname ");
         daoStudent.delete(tempName, tempSurname);                             // USUWANIE PO IMIENIU I NAZWISKU?
         addStudent();
     }
@@ -110,12 +110,12 @@ public class MentorController extends Controller {
     }
 
     private void evaluateAssignment() {
-        mentorView.printStudents(daoMassModel.getAllStudents());
+        mentorView.printStudents(daoLists.getAllStudents());
         String tempName = mentorView.takeInput("Name ");
         String tempSurname = mentorView.takeInput("Surname ");
-        newModel = daoEmployer.get(tempName, tempSurname);                // METODA GET? NIE WYOBRAŻAM SOBIE INNEGO EDYTOWANIA POJEDYNCZEGO POLA
+        newModel = daoStudent.get(tempName, tempSurname);                // METODA GET? NIE WYOBRAŻAM SOBIE INNEGO EDYTOWANIA POJEDYNCZEGO POLA
         daoStudent.delete(tempName, tempSurname);
-        mentorView.printStudentAssignments(daoMassModel.getAssignments());
+        mentorView.printStudentAssignments(getMyModel().getAssignments());
         String tempAssignmentName = mentorView.takeInput("Which assignment would you like to grade? ");
 
         if(newModel.getAssignments().containsKey(tempAssignmentName)) {

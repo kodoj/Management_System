@@ -28,13 +28,13 @@ public abstract class View {
         System.out.println(message);
     }
 
-    public void printMassModelList(String option) {
+    public void printDAOList(String option) {
         if(option == "students"){
-            printList(daoMassModel.getAllStudents());
+            printList(daoLists.getAllStudents());
         } else if (option == "mentors"){
-            printList(daoMassModel.getAllMentors());
+            printList(daoLists.getAllMentors());
         } else if (option = "assignments") {
-            printList(daoMassModel.getAllAssignments());
+            printList(daoLists.getAllAssignments());
         }
         
         takeStringInput("Press anything to continue");
