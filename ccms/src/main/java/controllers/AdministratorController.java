@@ -85,16 +85,14 @@ public class AdministratorController extends Controller {
 
     private void removeMentor() {
         View.printList(daoLists.getAllMentors());
-        String tempName = administratorView.takeInput("Name ");
-        String tempSurname = administratorView.takeInput("Surname ");
-        daoEmployer.delete(tempName, tempSurname);
+        String tempLogin = view.takeStringInput("Login ");
+        daoEmployer.delete(tempLogin);
     }
 
     private void editMentor() {
         View.printList(daoLists.getAllMentors());
-        String tempName = administratorView.takeInput("Name ");
-        String tempSurname = administratorView.takeInput("Surname ");
-        daoEmployer.delete(tempName, tempSurname);                             // USUWANIE PO IMIENIU I NAZWISKU?
+        String tempLogin = view.takeStringInput("Login ");
+        daoEmployer.delete(tempLogin);
         addMentor();
     }
 }
