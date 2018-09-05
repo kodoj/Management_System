@@ -9,14 +9,32 @@ public class Model {
     private String surname;
     private String accountType;
     private String password;
+    private String login;
     private HashMap<String, Assignment> assignments;
 
-        Model(String name, String surname, String accountType, String password, HashMap<String, Assignment> assignments){
+        public Model(String name, String surname, String accountType, String password, String login, HashMap<String, Assignment> assignments){
             this.name = name;
             this.surname = surname;
             this.accountType = accountType;
             this.password = password;
+            this.login = login;
             this.assignments = assignments;
+        }
+
+
+    public Model(String name, String surname, String accountType, String password, String login){
+        this.name = name;
+        this.surname = surname;
+        this.accountType = accountType;
+        this.password = password;
+        this.login = login;
+    }
+
+
+        public Model(String name, String surname, String login) {
+            this.name = name;
+            this.surname = surname;
+            this.login = login;
         }
 
 
@@ -35,14 +53,15 @@ public class Model {
         }
 
 
+        public void setLogin(String login) { this.login = login; }
+
+
         public void addAssignment(String id, Assignment assignment){
             assignments.put(id, assignment);
         }
 
 
-        public String getName(){
-            return this.name;
-        }
+        public String getName(){ return this.name; }
 
 
         public String getSurname(){
@@ -55,9 +74,10 @@ public class Model {
         }
 
 
-        public String getPassword(){
-            return this.password;
-        }
+        public String getPassword(){ return this.password; }
+
+
+        public String getLogin() { return this.login; }
 
 
         public Assignment getAssignment(String id){
