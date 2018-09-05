@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89a7b021-17fd-41e8-bcba-5e58587234cb" name="Default Changelist" comment="" />
-      <change afterPath="$PROJECT_DIR$/ccms/src/main/java/DAO/Assignment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ccms/src/main/java/DAO/DAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ccms/src/main/java/DAO/DAOEmployer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ccms/src/main/java/DAO/DAOStudent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ccms/src/main/java/DAO/Model.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ccms/src/main/java/XMLs/Assignments.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ccms/src/main/java/XMLs/Employers.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ccms/src/main/java/XMLs/Students.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ccms/src/main/java/connectors/Connector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ccms/src/main/java/main/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ccms/src/main/java/users/Administrator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ccms/src/main/java/users/Mentor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ccms/src/main/java/users/Student.java" beforeDir="false" />
+    <list default="true" id="89a7b021-17fd-41e8-bcba-5e58587234cb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ccms/src/main/java/containers/Assignment.java" beforeDir="false" afterPath="$PROJECT_DIR$/ccms/src/main/java/containers/Assignment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ccms/src/main/java/containers/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/ccms/src/main/java/containers/Model.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/ccms/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -60,14 +51,32 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="1949429065">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="913" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="913" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ccms/src/main/java/views/View.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
             </state>
           </provider>
         </entry>
@@ -81,20 +90,41 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ccms/src/main/java/DAO/Model.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ccms/src/main/java/containers/Model.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+            <state relative-caret-position="270">
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ccms/src/main/java/DAO/Assignment.java">
+        <entry file="file://$PROJECT_DIR$/ccms/src/main/java/containers/Assignment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+            <state relative-caret-position="330">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+              <folding>
+                <element signature="e#150#151#0" expanded="true" />
+                <element signature="e#186#187#0" expanded="true" />
+                <element signature="e#267#268#0" expanded="true" />
+                <element signature="e#300#301#0" expanded="true" />
+                <element signature="e#368#369#0" expanded="true" />
+                <element signature="e#403#404#0" expanded="true" />
+                <element signature="e#483#484#0" expanded="true" />
+                <element signature="e#534#535#0" expanded="true" />
+                <element signature="e#584#585#0" expanded="true" />
+                <element signature="e#622#623#0" expanded="true" />
+                <element signature="e#672#673#0" expanded="true" />
+                <element signature="e#711#712#0" expanded="true" />
+                <element signature="e#764#765#0" expanded="true" />
+                <element signature="e#805#806#0" expanded="true" />
+                <element signature="e#863#864#0" expanded="true" />
+                <element signature="e#892#893#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -118,7 +148,7 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ccms/src/main/java/XMLs/Assignments.xml">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
@@ -147,6 +177,10 @@
         <option value="$PROJECT_DIR$/ccms/src/main/java/views/StudentView.java" />
         <option value="$PROJECT_DIR$/ccms/src/main/java/DAO/DAOEmployer.java" />
         <option value="$PROJECT_DIR$/ccms/src/main/java/DAO/DAOStudent.java" />
+        <option value="$PROJECT_DIR$/ccms/src/main/java/DAO/Model.java" />
+        <option value="$PROJECT_DIR$/ccms/src/main/java/DAO/Assignment.java" />
+        <option value="$PROJECT_DIR$/ccms/src/main/java/containers/Assignment.java" />
+        <option value="$PROJECT_DIR$/ccms/src/main/java/containers/Model.java" />
       </list>
     </option>
   </component>
@@ -171,33 +205,35 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="5TWWeek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ccms-rafal-becla" type="b2602c69:ProjectViewProjectNode" />
               <item name="ccms" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="5TWWeek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ccms-rafal-becla" type="b2602c69:ProjectViewProjectNode" />
               <item name="ccms" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="5TWWeek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ccms-rafal-becla" type="b2602c69:ProjectViewProjectNode" />
               <item name="ccms" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="5TWWeek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ccms-rafal-becla" type="b2602c69:ProjectViewProjectNode" />
               <item name="ccms" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="5TWWeek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ccms-rafal-becla" type="b2602c69:ProjectViewProjectNode" />
               <item name="ccms" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
@@ -205,7 +241,15 @@
               <item name="connectors" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="5TWWeek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ccms-rafal-becla" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ccms" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ccms-rafal-becla" type="b2602c69:ProjectViewProjectNode" />
               <item name="ccms" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
@@ -213,7 +257,7 @@
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="5TWWeek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ccms-rafal-becla" type="b2602c69:ProjectViewProjectNode" />
               <item name="ccms" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
@@ -221,7 +265,7 @@
               <item name="DAO" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="5TWWeek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ccms-rafal-becla" type="b2602c69:ProjectViewProjectNode" />
               <item name="ccms" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
@@ -229,7 +273,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="5TWWeek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ccms-rafal-becla" type="b2602c69:ProjectViewProjectNode" />
               <item name="ccms" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
@@ -237,7 +281,7 @@
               <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="5TWWeek" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ccms-rafal-becla" type="b2602c69:ProjectViewProjectNode" />
               <item name="ccms" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
@@ -289,16 +333,16 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536137904398" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/ccms" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Java" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -312,6 +356,9 @@
       </list>
     </option>
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="89a7b021-17fd-41e8-bcba-5e58587234cb" name="Default Changelist" comment="" />
@@ -323,10 +370,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1855" height="1029" extended-state="6" />
-    <editor active="true" />
+    <frame x="47" y="-4" width="1319" height="772" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26091763" />
+      <window_info id="Capture Tool" />
+      <window_info id="Image Layers" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26551452" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -338,10 +386,12 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32890365" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info active="true" anchor="bottom" id="Inspection Results" order="10" visible="true" weight="0.32963374" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Theme Preview" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -402,27 +452,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/users/Student.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/users/Mentor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/users/Administrator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/users/Student.java" />
+    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/users/Mentor.java" />
+    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/users/Administrator.java" />
     <entry file="file://$PROJECT_DIR$/ccms/src/main/java/controllers/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -461,20 +493,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/views/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/views/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ccms/src/main/java/DAO/DAOStudent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -496,6 +514,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/views/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ccms/src/main/java/main/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -503,19 +528,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/DAO/Model.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/XMLs/Assignments.xml">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/DAO/Assignment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/XMLs/Students.xml">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/ccms/src/main/java/connectors/Connector.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -524,14 +541,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/XMLs/Students.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/ccms/src/main/java/XMLs/Employers.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/XMLs/Assignments.xml">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/containers/Assignment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="e#150#151#0" expanded="true" />
+            <element signature="e#186#187#0" expanded="true" />
+            <element signature="e#267#268#0" expanded="true" />
+            <element signature="e#300#301#0" expanded="true" />
+            <element signature="e#368#369#0" expanded="true" />
+            <element signature="e#403#404#0" expanded="true" />
+            <element signature="e#483#484#0" expanded="true" />
+            <element signature="e#534#535#0" expanded="true" />
+            <element signature="e#584#585#0" expanded="true" />
+            <element signature="e#622#623#0" expanded="true" />
+            <element signature="e#672#673#0" expanded="true" />
+            <element signature="e#711#712#0" expanded="true" />
+            <element signature="e#764#765#0" expanded="true" />
+            <element signature="e#805#806#0" expanded="true" />
+            <element signature="e#863#864#0" expanded="true" />
+            <element signature="e#892#893#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/containers/Model.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
   <component name="masterDetails">
