@@ -28,4 +28,16 @@ public abstract class View {
         System.out.println(message);
     }
 
+    public void printMassModelList(String option) {
+        if(option == "students"){
+            printList(daoMassModel.getAllStudents());
+        } else if (option == "mentors"){
+            printList(daoMassModel.getAllMentors());
+        } else if (option = "assignments") {
+            printList(daoMassModel.getAllAssignments());
+        }
+        
+        takeStringInput("Press anything to continue");
+    }
+
 }

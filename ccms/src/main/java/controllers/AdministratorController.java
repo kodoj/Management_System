@@ -44,11 +44,11 @@ public class AdministratorController extends Controller {
             goodInput = false;
 
             if(inputInt == 1) {
-                printStudents();
+                view.printMassModelList("students");
                 continue;
             }
             else if(inputInt == 2) {
-                printMentors();
+                view.printMassModelList("mentors");
                 continue;
             }
             else if(inputInt == 3) {
@@ -69,17 +69,6 @@ public class AdministratorController extends Controller {
             }
 
         }
-    }
-
-    private void printStudents() {
-        view.printList(daoMassModel.getAllStudents());
-        view.takeStringInput("Press anything to continue");
-    }
-
-
-    private void printMentors() {
-        view.printList(daoMassModel.getAllMentors());
-        view.takeStringInput("Press anything to continue");
     }
 
     private void addMentor() {

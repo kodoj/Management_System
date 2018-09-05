@@ -42,7 +42,7 @@ public class MentorController extends Controller {
             goodInput = false;
 
             if(inputInt == 1) {
-                printStudents();
+                mentorView.printMassModelList("students");
                 continue;
             }
             else if(inputInt == 2) {
@@ -58,7 +58,7 @@ public class MentorController extends Controller {
                 continue;
             }
             else if(inputInt == 5) {
-                printAssignments();
+                mentorView.printMassModelList("assignments");
                 continue;
             }
             else if(inputInt == 6) {
@@ -75,11 +75,6 @@ public class MentorController extends Controller {
             }
 
         }
-    }
-
-    private void printStudents() {
-        mentorView.printList(daoMassModel.getAllStudents());
-        mentorView.takeStringInput("Press anything to continue");
     }
 
     private void addStudent() {
@@ -107,10 +102,6 @@ public class MentorController extends Controller {
         String tempSurname = mentorView.takeStringInput("Surname ");
         daoStudent.delete(tempName, tempSurname);                             // USUWANIE PO IMIENIU I NAZWISKU?
         addStudent();
-    }
-
-    private void printAssignments() {
-        mentorView.printList(daoMassModel.getAllAssignments());
     }
 
     private void setNewAssignment() {

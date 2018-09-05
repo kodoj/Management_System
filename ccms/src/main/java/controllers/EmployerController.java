@@ -28,7 +28,7 @@ public class EmployerController extends Controller {
             view.printList(menuOptions);
 
             while(goodInput == false) {
-                inputInt = employerView.takeIntInput("What would you like to do? ");
+                inputInt = view.takeIntInput("What would you like to do? ");
                 if(inputInt > 0 && inputInt < 3) {                               // magic number, to improve!
                     goodInput = true;
                 } else {
@@ -38,7 +38,7 @@ public class EmployerController extends Controller {
             goodInput = false;
 
             if(inputInt == 1) {
-                printStudents();
+                view.printMassModelList("students");
                 continue;
             }
             else if(inputInt == 2) {
@@ -47,10 +47,5 @@ public class EmployerController extends Controller {
             }
 
         }
-    }
-
-    private void printStudents() {
-        view.printList(daoMassModel.getAllStudents());
-        view.takeStringInput("Press anything to continue");
     }
 }
