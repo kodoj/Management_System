@@ -23,32 +23,31 @@ public class Connector {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(fXmlFile);
-            doc.getDocumentElement().normalize();      
-
-            Element root = doc.getDocumentElement(); // employees
-            Element assignmentTag = (Element) root.getElementsByTagName("assignments").item(0); //employee
-            Element newAssignment = doc.createElement("assignment").setAttribute("name", assignmentName);
-
-            assignmentTag.appendChild(newAssignment);
-
-            try {
-                String outputURL = "/java/XMLs/assignments.xml";
-                
-                DOMSource source = new DOMSource(doc);
-                StreamResult result = new StreamResult(new FileOutputStream(outputURL));
-                
-                TransformerFactory transFactory = TransformerFactory.newInstance();
-                Transformer transformer = transFactory.newTransformer();
-                
-                transformer.transform(source, result);
-                
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
+        doc.getDocumentElement().normalize();      
+
+        Element root = doc.getDocumentElement(); // employees
+        Element assignmentTag = (Element) root.getElementsByTagName("assignments").item(0); //employee
+        Element newAssignment = doc.createElement("assignment").setAttribute("name", assignmentName);
+
+        assignmentTag.appendChild(newAssignment);
+
+        try {
+            String outputURL = "/java/XMLs/assignments.xml";
+            
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(new FileOutputStream(outputURL));
+            
+            TransformerFactory transFactory = TransformerFactory.newInstance();
+            Transformer transformer = transFactory.newTransformer();
+            
+            transformer.transform(source, result);
+            
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
     }
 
     public void addPersonToXML(Model model){
@@ -118,10 +117,13 @@ public class Connector {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(xmlFile);
-			doc.getDocumentElement().normalize();
+		} catch(Exception e) {
+			System.out.println(e);
+		}
+            doc.getDocumentElement().normalize();
 			System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
 			NodeList nList = doc.getElementsByTagName("employee");
-			
+		
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 
 				Node nNode = nList.item(temp);
@@ -174,21 +176,18 @@ public class Connector {
 
             return null;
 
-		} catch(Exception e) {
-			System.out.println(e);
-		}
     }
 
     public Element loadAssigments(){
         try {
 			File xmlFile = new File("/java/XMLs/assignments.xml");
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			Document doc = dBuilder.parse(xmlFile);
-			Element assignments = doc.getDocumentElement().normalize();
-            return assisgnments;
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();  
         } catch(Exception e) {
             System.out.println(e);
         } 
+			Document doc = dBuilder.parse(xmlFile);
+			Element assignments = doc.getDocumentElement().normalize();
+            return assisgnments;
     }
 }
