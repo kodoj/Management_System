@@ -7,8 +7,15 @@ public class Assignment {
     private Boolean isFinished;
 
 
-        Assignment(String id){
+        public Assignment(String id){
             this.id = id;
+        }
+
+        public Assignment(String id, String url, Integer grade, boolean isFinished) {
+            this.id = id;
+            this.url = url;
+            this.grade = grade;
+            this.isFinished = isFinished;
         }
 
 

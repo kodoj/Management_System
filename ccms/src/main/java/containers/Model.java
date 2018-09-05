@@ -1,7 +1,7 @@
 package containers;
 
 import java.util.HashMap;
-import java.util.List;
+import java.util.Map;
 
 
 public class Model {
@@ -12,14 +12,14 @@ public class Model {
     private String login;
     private HashMap<String, Assignment> assignments;
 
-        public Model(String name, String surname, String accountType, String password, String login, HashMap<String, Assignment> assignments){
-            this.name = name;
-            this.surname = surname;
-            this.accountType = accountType;
-            this.password = password;
-            this.login = login;
-            this.assignments = assignments;
-        }
+    public Model(String name, String surname, String accountType, String password, String login, Map<String, Assignment> assignments){
+        this.name = name;
+        this.surname = surname;
+        this.accountType = accountType;
+        this.password = password;
+        this.login = login;
+        this.assignments = assignments;
+    }
 
 
     public Model(String name, String surname, String accountType, String password, String login){
