@@ -6,6 +6,8 @@ import views.View;
 import views.views;
 import DAO.DAOLists;
 
+import java.util.List;
+
 public class AdministratorController extends Controller {
 
     View view;
@@ -13,7 +15,7 @@ public class AdministratorController extends Controller {
     DAOEmployer daoEmployer;
     Model newModel;
 
-    public MentorController(Model model, View view) {
+    public AdministratorController(Model model, View view) {
         setMyModel(model);
         setloggedIn(true);
         this.view = view;

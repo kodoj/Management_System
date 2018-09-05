@@ -2,7 +2,9 @@ package controllers;
 
 import DAO.DAOLists;
 import containers.Model;
-import views.EmployerView;
+import views.View;
+
+import java.util.List;
 
 public class EmployerController extends Controller {
 
@@ -10,7 +12,7 @@ public class EmployerController extends Controller {
     View view;
     DAOLists daoLists;
 
-    public EmployerController(Model model, EmployerView employerView) {
+    public EmployerController(Model model, View view) {
         setMyModel(model);
         setloggedIn(true);
         this.view = view;

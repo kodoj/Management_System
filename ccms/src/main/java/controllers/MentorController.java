@@ -5,9 +5,9 @@ import DAO.DAOStudent;
 import views.View;
 import containers.Assignment;
 import containers.Model;
-import views.MentorView;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MentorController extends Controller {
@@ -18,7 +18,7 @@ public class MentorController extends Controller {
     DAOLists daoLists;
 
     public MentorController(Model model, View view) {
-        this.View = view;
+        this.view = view;
         setMyModel(model);
         this.setloggedIn(true);
         this.daoStudent = new DAOStudent();
