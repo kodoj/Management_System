@@ -30,6 +30,10 @@ public class View {
             showMessage(i + ". " + listElems.get(i).toString());
         }
     }
+    public void printArray(String[] list){
+        for(int i=0; i<list.length; i++)
+            System.out.println(list[i]);
+    }
 
     public void showMessage(String message){
         System.out.println(message);
