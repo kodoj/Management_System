@@ -2,19 +2,18 @@ package controllers;
 
 import DAO.DAOLists;
 import containers.Assignment;
+import views.View;
 import containers.Model;
-import views.StudentView;
 
 public class StudentController extends Controller {
 
-
-    StudentView studentView;
+    View view;
     DAOLists daoLists;
 
-    public StudentController(Model model, StudentView studentView) {
+    public StudentController(Model model, View view) {
         setMyModel(model);
         setloggedIn(true);
-        this.studentView = studentView;
+        this.View = view;
         this.daoLists = new DAOLists();
     }
 
@@ -22,16 +21,17 @@ public class StudentController extends Controller {
 
         int inputInt = 0;
         boolean goodInput = false;
+        List<String> menuOptions = {"Submit assignment", "View grades", "Take new assignment", "Logout"};
 
         while(getLoggedIn()) {
-            studentView.printMenu();
+            view.printList();
 
             while(goodInput == false) {
-                inputInt = studentView.takeIntInput("What would you like to do? ");
+                inputInt = view.takeIntInput("What would you like to do? ");
                 if(inputInt > 0 && inputInt < 5) {                               // magic number, to improve!
                     goodInput = true;
                 } else {
-                    System.out.println("Only numbers from 1 to 4!");
+                    view.showMessage("Only numbers from 1 to 4!");
                 }
             }
             goodInput = false;
@@ -57,20 +57,20 @@ public class StudentController extends Controller {
     }
 
     private void submitAssignment() {
-        studentView.printStudentAssignments(getMyModel().getAssignments());
-        String assignmentID = studentView.takeInput("Which assignment would you like to submit? ");
-        String url = studentView.takeInput("please, paste your url to this assignment ");
+        view.printHashMap("assignments");
+        String assignmentID = view.takeStringInput("Which assignment would you like to submit? ");
+        String url = view.takeStringInput("please, paste your url to this assignment ");
         getMyModel().getAssignments().get(assignmentID).setUrl(url);
         getMyModel().getAssignments().get(assignmentID).setIsFinished(true);
     }
 
     private void viewGrades() {
-        studentView.printMyGrades(getMyModel().getAssignments());
+        view.printHashMap("grades");
     }
 
     private void takeNewAssignment() {
-        studentView.printAllAssignments(daoLists.getAllAssignments());
-        String assignmentID = studentView.takeInput("Which assignment would you like to take? ");
+        view.printDAOList("assignments");
+        String assignmentID = view.takeStringInput("Which assignment would you like to take? ");
         if(daoLists.getAllAssignments().contains(assignmentID) && !getMyModel().getAssignments().containsKey(assignmentID)) {
             getMyModel().getAssignments().put(assignmentID, new Assignment(assignmentID));
         }
