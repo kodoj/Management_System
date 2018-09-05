@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<students>
+	<student login="xxxpenetratorxxx">
+		<name>Rafał</name>
+		<surname>Becla</surname>
+		<password>admin123</password>
+	</student>
+	<student login="karoltrzaskawtibie">
+		<name>Karol</name>
+		<surname>Trzaska</surname>
+		<password>lubiewdupe</password>
+	</student>
+	<student login="koduj">
+		<name>Krzysztof</name>
+		<surname>Odoj</surname>
+		<password>admin123</password>
+	</student>
+	<student login="mateuszekduzybrzuszek">
+		<name>Mateusz</name>
+		<surname>Mazurczak</surname>
+		<password>admin123</password>
+	</student>
+</students>

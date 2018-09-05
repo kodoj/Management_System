@@ -1,20 +1,24 @@
 <?xml version="1.0"?>
 <employees>
-	<employee>
-		<name>Michał</name>
+	<employee login="marekkrzywyumysł">
+		<name>Marek</name>
 		<surname>Kowalski</surname>
+		<password>admin123</password>
 	</employee>
-	<employee>
+	<employee login="adamosoprano">
 		<name>Adam</name>
 		<surname>Terlikowski</surname>
+		<password>admin123</password>
 	</employee>
-	<employee>
+	<employee login="executeorder44">
 		<name>Jonasz</name>
 		<surname>Mekke</surname>
+		<password>admin123</password>
 	</employee>
-	<employee>
+	<employee login="apple">
 		<name>Izaak</name>
 		<surname>Newton</surname>
+		<password>admin123</password>
 	</employee>
 	
 </employees>
