@@ -2,9 +2,9 @@ package DAO;
 
 import containers.Model;
 
-public interface DAO {
-    public void getData();
-    public void setData();
-    public void deleteData();
+public interface DAOSingleObject {
+    public Model get(String firstName, String lastName, String accountType);
+    public void add(Model model);
+    public void delete(Model model);
     public Model createModel();
 }
