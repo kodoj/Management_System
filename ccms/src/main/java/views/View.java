@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import controllers.Controller;
 
-public abstract class View {
+public class View {
 
     Controller controller;
     public Scanner sc = new Scanner(System.in);
