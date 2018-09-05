@@ -1,7 +1,7 @@
 package views;
 
-import DAO.Assignment;
-import DAO.Model;
+import containers.Assignment;
+import containers.Model;
 
 import java.util.HashMap;
 import java.util.List;

@@ -1,6 +1,9 @@
 package controllers;
 
-import DAO.*;
+import DAO.DAOLists;
+import DAO.DAOStudent;
+import containers.Assignment;
+import containers.Model;
 import views.MentorView;
 
 import java.util.HashMap;
@@ -113,7 +116,7 @@ public class MentorController extends Controller {
 
     private void setNewAssignment() {
         String tempAssignmentName = mentorView.takeInput("Please, enter the the assignment name ");
-        myModel.setNewAssignment(tempAssignmentName);
+        daoLists.setNewAssignment(tempAssignmentName);
     }
 
     private void evaluateAssignment() {

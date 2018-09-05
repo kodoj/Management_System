@@ -1,7 +1,7 @@
 package controllers;
 
 import DAO.DAOLists;
-import DAO.Model;
+import containers.Model;
 import views.EmployerView;
 
 public class EmployerController extends Controller {

@@ -1,6 +1,7 @@
 package controllers;
 
-import DAO.Model;
+
+import containers.Model;
 
 public abstract class Controller {
 

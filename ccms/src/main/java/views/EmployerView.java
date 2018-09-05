@@ -1,6 +1,7 @@
 package views;
 
-import DAO.Model;
+
+import containers.Model;
 
 import java.util.List;
 

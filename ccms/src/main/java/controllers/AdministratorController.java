@@ -1,7 +1,7 @@
 package controllers;
 
 import DAO.DAOEmployer;
-import DAO.Model;
+import containers.Model;
 import views.AdministratorView;
 import DAO.DAOLists;
 

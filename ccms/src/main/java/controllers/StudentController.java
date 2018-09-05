@@ -1,8 +1,8 @@
 package controllers;
 
-import DAO.Assignment;
 import DAO.DAOLists;
-import DAO.Model;
+import containers.Assignment;
+import containers.Model;
 import views.StudentView;
 
 public class StudentController extends Controller {
