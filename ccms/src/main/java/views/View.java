@@ -45,7 +45,7 @@ public class View {
     }
 
     public void printHashMap(String option){
-        Hashmap<String,Assignment> assignments = controller.getMyModel().getAssignments();
+        Hashmap<String, Assignment> assignments = controller.getMyModel().getAssignments();
         for (String name: assignments.keySet()){
 
             String key = name;
