@@ -1,6 +1,5 @@
 package controllers;
 
-
 import containers.Model;
 
 public abstract class Controller {
@@ -25,4 +24,5 @@ public abstract class Controller {
         this.loggedIn = loggedIn;
     }
 
+    public abstract void run(boolean getLoggedIn);
 }
