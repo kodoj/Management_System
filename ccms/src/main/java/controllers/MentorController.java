@@ -84,9 +84,9 @@ public class MentorController extends Controller {
     private void addStudent() {
         String tempName = view.takeStringInput("Name ");
         String tempSurname = view.takeStringInput("Surname ");
-        String accountType = "student";
-        String tempPassword = view.takeStringInput("Password");
-        String tempLogin = view.takeStringInput("Login");
+        String accountType = "students";
+        String tempPassword = view.takeStringInput("Password ");
+        String tempLogin = view.takeStringInput("Login ");
         Map<String, Assignment> assignments = new HashMap<String, Assignment>();
 
         newModel = new Model(tempName, tempSurname, accountType, tempPassword, tempLogin, assignments);
@@ -95,16 +95,14 @@ public class MentorController extends Controller {
 
     private void removeStudent() {
         view.printList(daoLists.getAllStudents());
-        String tempName = view.takeStringInput("Name ");
-        String tempSurname = view.takeStringInput("Surname ");
-        daoStudent.delete(tempName, tempSurname);
+        String tempLogin = view.takeStringInput("Login ");
+        daoStudent.delete(tempLogin);
     }
 
     private void editStudent() {
         view.printList(daoLists.getAllStudents());
-        String tempName = view.takeStringInput("Name ");
-        String tempSurname = view.takeStringInput("Surname ");
-        daoStudent.delete(tempName, tempSurname);                             // USUWANIE PO IMIENIU I NAZWISKU?
+        String tempLogin = view.takeStringInput("Login ");
+        daoStudent.delete(tempLogin);
         addStudent();
     }
 
@@ -115,17 +113,17 @@ public class MentorController extends Controller {
 
     private void evaluateAssignment() {
         view.printList("students");
-        String tempName = view.takeInput("Name ");
-        String tempSurname = view.takeInput("Surname ");
-        newModel = daoStudent.get(tempName, tempSurname);                // METODA GET? NIE WYOBRAŻAM SOBIE INNEGO EDYTOWANIA POJEDYNCZEGO POLA
-        daoStudent.delete(tempName, tempSurname);
-        view.showAssignments(getMyModel().getAssignments());
+        String tempLogin = view.takeStringInput("Login ");
+        newModel = daoStudent.get(tempLogin);
+        view.showAssignments(newModel.getAssignments());
         String tempAssignmentName = view.takeStringInput("Which assignment would you like to grade? ");
 
         if(newModel.getAssignments().containsKey(tempAssignmentName)) {
             int grade = view.takeIntInput("What grade for this assignment? ");
             newModel.getAssignments().get(tempAssignmentName).setGrade(grade);
         }
+        daoStudent.delete(tempLogin);
+        daoStudent.add(newModel);
     }
 
 }
