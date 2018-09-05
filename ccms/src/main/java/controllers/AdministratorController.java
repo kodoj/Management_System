@@ -45,11 +45,11 @@ public class AdministratorController extends Controller {
             goodInput = false;
 
             if(inputInt == 1) {
-                view.printMassModelList("students");
+                view.printDAOList("students");
                 continue;
             }
             else if(inputInt == 2) {
-                view.printMassModelList("mentors");
+                view.printDAOList("mentors");
                 continue;
             }
             else if(inputInt == 3) {

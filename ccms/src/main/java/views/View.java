@@ -2,8 +2,11 @@ package views;
 
 import java.util.Scanner;
 
+import controllers.Controller;
+
 public abstract class View {
 
+    Controller controller;
     public Scanner sc = new Scanner(System.in);
 
     public String takeStringInput(String string) {
@@ -29,6 +32,7 @@ public abstract class View {
     }
 
     public void printDAOList(String option) {
+
         if(option == "students"){
             printList(daoLists.getAllStudents());
         } else if (option == "mentors"){
@@ -40,4 +44,20 @@ public abstract class View {
         takeStringInput("Press anything to continue");
     }
 
+    public void printHashMap(String option){
+        Hashmap<String,Assignment> assignments = controller.getMyModel().getAssignments();
+        for (String name: assignments.keySet()){
+
+            String key = name;
+            
+            if(option == "assignments") {
+                String value = assignments.get(name).toString();
+            } else if (option == "grades") {
+                Integer value = assignments.get(name).getGrade();
+            }
+            
+            showMessage(key + " " + value);
+        }
+
+    }
 }
