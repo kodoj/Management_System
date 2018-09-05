@@ -2,20 +2,20 @@ package controllers;
 
 import DAO.DAOEmployer;
 import DAO.Model;
-import views.AdministratorView;
+import views.view;
 import DAO.DAOMassModel;
 
 public class AdministratorController extends Controller {
 
-    AdministratorView administratorView;
+    View view;
     DAOMassModel daoMassModel;
     DAOEmployer daoEmployer;
     Model newModel;
 
-    public MentorController(Model model, AdministratorView administratorView) {
+    public MentorController(Model model, View view) {
         setMyModel(model);
         setloggedIn(true);
-        this.administratorView = administratorView;
+        this.view = view;
         this.daoMassModel = new DAOMassModel();
         this.daoEmployer = new DAOEmployer();
 
@@ -27,16 +27,18 @@ public class AdministratorController extends Controller {
         String input;
         int inputInt = 0;
         boolean goodInput = false;
+        List<String> menuOptions = {"List all students","List all mentors","Add mentor", "Remove mentor", "Edit mentor", "Logout"};
+
 
         while(getLoggedIn()) {
-            administratorView.printMenu();
+            view.printList();
 
             while(goodInput == false) {
-                inputInt = administratorView.takeIntInput("What would you like to do? ");
+                inputInt = view.takeIntInput("What would you like to do? ");
                 if(inputInt > 0 && inputInt < 7) {                               // magic number, to improve!
                     goodInput = true;
                 } else {
-                    System.out.println("Only numbers from 1 to 6!");
+                    view.showMessage("Only numbers from 1 to 6!");
                 }
             }
             goodInput = false;
@@ -70,37 +72,37 @@ public class AdministratorController extends Controller {
     }
 
     private void printStudents() {
-        administratorView.printAllModels(daoMassModel.getAllStudents());
-        administratorView.takeInput("Press anything to continue");
+        view.printList(daoMassModel.getAllStudents());
+        view.takeStringInput("Press anything to continue");
     }
 
 
     private void printMentors() {
-        administratorView.printAllModels(daoMassModel.getAllMentors());
-        administratorView.takeInput("Press anything to continue");
+        view.printList(daoMassModel.getAllMentors());
+        view.takeStringInput("Press anything to continue");
     }
 
     private void addMentor() {
-        String tempName = administratorView.takeInput("Name ");
-        String tempSurname = administratorView.takeInput("Surname ");
+        String tempName = view.takeStringInput("Name ");
+        String tempSurname = view.takeStringInput("Surname ");
         String accountType = "mentor";
-        String tempPassword = administratorView.takeInput("Password");
-        String tempLogin = administratorView.takeInput("Login");
+        String tempPassword = view.takeStringInput("Password");
+        String tempLogin = view.takeStringInput("Login");
         newModel = new Model(tempName, tempSurname, accountType, tempPassword, tempLogin);
         daoEmployer.add(newModel);
     }
 
     private void removeMentor() {
-        administratorView.printAllModels(daoMassModel.getAllMentors());
-        String tempName = administratorView.takeInput("Name ");
-        String tempSurname = administratorView.takeInput("Surname ");
+        view.printList(daoMassModel.getAllMentors());
+        String tempName = view.takeStringInput("Name ");
+        String tempSurname = view.takeStringInput("Surname ");
         daoEmployer.delete(tempName, tempSurname);
     }
 
     private void editMentor() {
-        administratorView.printAllModels(daoMassModel.getAllMentors());
-        String tempName = administratorView.takeInput("Name ");
-        String tempSurname = administratorView.takeInput("Surname ");
+        view.printList(daoMassModel.getAllMentors());
+        String tempName = view.takeStringInput("Name ");
+        String tempSurname = view.takeStringInput("Surname ");
         daoEmployer.delete(tempName, tempSurname);                             // USUWANIE PO IMIENIU I NAZWISKU?
         addMentor();
     }
