@@ -46,11 +46,11 @@ public class AdministratorController extends Controller {
             goodInput = false;
 
             if(inputInt == 1) {
-                view.printDAOList("students");
+                view.printList(daoLists.getAllStudents());
                 continue;
             }
             else if(inputInt == 2) {
-                view.printDAOList("mentors");
+                view.printList(daoLists.getAllMentors());
                 continue;
             }
             else if(inputInt == 3) {
@@ -84,14 +84,14 @@ public class AdministratorController extends Controller {
     }
 
     private void removeMentor() {
-        view.printDAOList("mentors");
+        view.printList(daoLists.getAllMentors());
         String tempName = administratorView.takeInput("Name ");
         String tempSurname = administratorView.takeInput("Surname ");
         daoEmployer.delete(tempName, tempSurname);
     }
 
     private void editMentor() {
-        view.printDAOList("mentors");
+        view.printList(daoLists.getAllMentors());
         String tempName = administratorView.takeInput("Name ");
         String tempSurname = administratorView.takeInput("Surname ");
         daoEmployer.delete(tempName, tempSurname);                             // USUWANIE PO IMIENIU I NAZWISKU?

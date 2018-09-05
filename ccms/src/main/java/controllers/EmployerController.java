@@ -40,7 +40,7 @@ public class EmployerController extends Controller {
             goodInput = false;
 
             if(inputInt == 1) {
-                view.printDAOList("students");
+                view.printList(daoLists.getAllStudents());
                 continue;
             }
             else if(inputInt == 2) {
