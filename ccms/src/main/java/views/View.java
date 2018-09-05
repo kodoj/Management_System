@@ -1,11 +1,12 @@
 package views;
 
 import java.util.Scanner;
-
+import java.util.HashMap;
 import controllers.Controller;
 
 public class View {
 
+    DAOLists daoLists;
     Controller controller;
     public Scanner sc = new Scanner(System.in);
 
