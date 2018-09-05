@@ -1,22 +1,21 @@
 package controllers;
 
 import DAO.DAOEmployer;
-import containers.Model;
-import views.View;
-import views.views;
+import views.AdministratorView;
 import DAO.DAOLists;
+import containers.Model;
 
 public class AdministratorController extends Controller {
 
-    View view;
-    DAOLists daoLists;
-    DAOEmployer daoEmployer;
-    Model newModel;
+    private AdministratorView administratorView;
+    private DAOLists daoLists;
+    private DAOEmployer daoEmployer;
+    private Model newModel;
 
-    public MentorController(Model model, View view) {
+    public AdministratorController(Model model, AdministratorView administratorView) {
         setMyModel(model);
         setloggedIn(true);
-        this.view = view;
+        this.administratorView = administratorView;
         this.daoLists = new DAOLists();
         this.daoEmployer = new DAOEmployer();
 
@@ -28,28 +27,26 @@ public class AdministratorController extends Controller {
         String input;
         int inputInt = 0;
         boolean goodInput = false;
-        List<String> menuOptions = {"List all students","List all mentors","Add mentor", "Remove mentor", "Edit mentor", "Logout"};
-
 
         while(getLoggedIn()) {
-            view.printList();
+            administratorView.printMenu();
 
             while(goodInput == false) {
-                inputInt = view.takeIntInput("What would you like to do? ");
+                inputInt = administratorView.takeIntInput("What would you like to do? ");
                 if(inputInt > 0 && inputInt < 7) {                               // magic number, to improve!
                     goodInput = true;
                 } else {
-                    view.showMessage("Only numbers from 1 to 6!");
+                    System.out.println("Only numbers from 1 to 6!");
                 }
             }
             goodInput = false;
 
             if(inputInt == 1) {
-                view.printDAOList("students");
+                printStudents();
                 continue;
             }
             else if(inputInt == 2) {
-                view.printDAOList("mentors");
+                printMentors();
                 continue;
             }
             else if(inputInt == 3) {
@@ -72,25 +69,36 @@ public class AdministratorController extends Controller {
         }
     }
 
+    private void printStudents() {
+        administratorView.printAllModels(daoLists.getAllStudents());
+        administratorView.takeInput("Press anything to continue");
+    }
+
+
+    private void printMentors() {
+        administratorView.printAllModels(daoLists.getAllMentors());
+        administratorView.takeInput("Press anything to continue");
+    }
+
     private void addMentor() {
-        String tempName = view.takeStringInput("Name ");
-        String tempSurname = view.takeStringInput("Surname ");
+        String tempName = administratorView.takeInput("Name ");
+        String tempSurname = administratorView.takeInput("Surname ");
         String accountType = "mentor";
-        String tempPassword = view.takeStringInput("Password");
-        String tempLogin = view.takeStringInput("Login");
+        String tempPassword = administratorView.takeInput("Password");
+        String tempLogin = administratorView.takeInput("Login");
         newModel = new Model(tempName, tempSurname, accountType, tempPassword, tempLogin);
         daoEmployer.add(newModel);
     }
 
     private void removeMentor() {
-        view.printDAOList("mentors");
+        administratorView.printAllModels(daoLists.getAllMentors());
         String tempName = administratorView.takeInput("Name ");
         String tempSurname = administratorView.takeInput("Surname ");
         daoEmployer.delete(tempName, tempSurname);
     }
 
     private void editMentor() {
-        view.printDAOList("mentors");
+        administratorView.printAllModels(daoLists.getAllMentors());
         String tempName = administratorView.takeInput("Name ");
         String tempSurname = administratorView.takeInput("Surname ");
         daoEmployer.delete(tempName, tempSurname);                             // USUWANIE PO IMIENIU I NAZWISKU?
