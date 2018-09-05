@@ -1,6 +1,6 @@
 package controllers;
 
-import DAO.DAOMassModel;
+import DAO.DAOLists;
 import DAO.Model;
 import views.EmployerView;
 
@@ -8,13 +8,13 @@ public class EmployerController extends Controller {
 
 
     EmployerView employerView;
-    DAOMassModel daoMassModel;
+    DAOLists daoLists;
 
     public EmployerController(Model model, EmployerView employerView) {
         setMyModel(model);
         setloggedIn(true);
         this.employerView = employerView;
-        this.daoMassModel = new DAOMassModel();
+        this.daoLists = new DAOLists();
     }
 
 
@@ -49,7 +49,7 @@ public class EmployerController extends Controller {
     }
 
     private void printStudents() {
-        employerView.printStudents(daoMassModel.getAllStudents());
+        employerView.printStudents(daoLists.getAllStudents());
         employerView.takeInput("Press anything to continue");
     }
 }

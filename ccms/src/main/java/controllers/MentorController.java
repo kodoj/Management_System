@@ -11,14 +11,14 @@ public class MentorController extends Controller {
     Model newModel;
     MentorView mentorView;
     DAOStudent daoStudent;
-    DAOMassModel daoMassModel;
+    DAOLists daoLists;
 
     public MentorController(Model model, MentorView mentorView) {
         this.mentorView = mentorView;
         setMyModel(model);
         this.setloggedIn(true);
         this.daoStudent = new DAOStudent();
-        this.daoMassModel = new DAOMassModel();
+        this.daoLists = new DAOLists();
     }
 
 
@@ -77,7 +77,7 @@ public class MentorController extends Controller {
     }
 
     private void printStudents() {
-        mentorView.printStudents(daoMassModel.getAllStudents());
+        mentorView.printStudents(daoLists.getAllStudents());
         mentorView.takeInput("Press anything to continue");
     }
 
@@ -93,14 +93,14 @@ public class MentorController extends Controller {
     }
 
     private void removeStudent() {
-        mentorView.printStudents(daoMassModel.getAllStudents());
+        mentorView.printStudents(daoLists.getAllStudents());
         String tempName = mentorView.takeInput("Name ");
         String tempSurname = mentorView.takeInput("Surname ");
         daoStudent.delete(tempName, tempSurname);
     }
 
     private void editStudent() {
-        mentorView.printStudents(daoMassModel.getAllStudents());
+        mentorView.printStudents(daoLists.getAllStudents());
         String tempName = mentorView.takeInput("Name ");
         String tempSurname = mentorView.takeInput("Surname ");
         daoStudent.delete(tempName, tempSurname);                             // USUWANIE PO IMIENIU I NAZWISKU?
@@ -108,7 +108,7 @@ public class MentorController extends Controller {
     }
 
     private void getAssignments() {
-        mentorView.printAssignments(daoMassModel.getAllAssignments());
+        mentorView.printAssignments(daoLists.getAllAssignments());
     }
 
     private void setNewAssignment() {
@@ -117,12 +117,12 @@ public class MentorController extends Controller {
     }
 
     private void evaluateAssignment() {
-        mentorView.printStudents(daoMassModel.getAllStudents());
+        mentorView.printStudents(daoLists.getAllStudents());
         String tempName = mentorView.takeInput("Name ");
         String tempSurname = mentorView.takeInput("Surname ");
-        newModel = daoEmployer.get(tempName, tempSurname);                // METODA GET? NIE WYOBRAŻAM SOBIE INNEGO EDYTOWANIA POJEDYNCZEGO POLA
+        newModel = daoStudent.get(tempName, tempSurname);                // METODA GET? NIE WYOBRAŻAM SOBIE INNEGO EDYTOWANIA POJEDYNCZEGO POLA
         daoStudent.delete(tempName, tempSurname);
-        mentorView.printStudentAssignments(daoMassModel.getAssignments());
+        mentorView.printStudentAssignments(getMyModel().getAssignments());
         String tempAssignmentName = mentorView.takeInput("Which assignment would you like to grade? ");
 
         if(newModel.getAssignments().containsKey(tempAssignmentName)) {

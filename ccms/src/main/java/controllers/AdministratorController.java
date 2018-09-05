@@ -3,12 +3,12 @@ package controllers;
 import DAO.DAOEmployer;
 import DAO.Model;
 import views.AdministratorView;
-import DAO.DAOMassModel;
+import DAO.DAOLists;
 
 public class AdministratorController extends Controller {
 
     AdministratorView administratorView;
-    DAOMassModel daoMassModel;
+    DAOLists daoLists;
     DAOEmployer daoEmployer;
     Model newModel;
 
@@ -16,7 +16,7 @@ public class AdministratorController extends Controller {
         setMyModel(model);
         setloggedIn(true);
         this.administratorView = administratorView;
-        this.daoMassModel = new DAOMassModel();
+        this.daoLists = new DAOLists();
         this.daoEmployer = new DAOEmployer();
 
     }
@@ -70,13 +70,13 @@ public class AdministratorController extends Controller {
     }
 
     private void printStudents() {
-        administratorView.printAllModels(daoMassModel.getAllStudents());
+        administratorView.printAllModels(daoLists.getAllStudents());
         administratorView.takeInput("Press anything to continue");
     }
 
 
     private void printMentors() {
-        administratorView.printAllModels(daoMassModel.getAllMentors());
+        administratorView.printAllModels(daoLists.getAllMentors());
         administratorView.takeInput("Press anything to continue");
     }
 
@@ -91,14 +91,14 @@ public class AdministratorController extends Controller {
     }
 
     private void removeMentor() {
-        administratorView.printAllModels(daoMassModel.getAllMentors());
+        administratorView.printAllModels(daoLists.getAllMentors());
         String tempName = administratorView.takeInput("Name ");
         String tempSurname = administratorView.takeInput("Surname ");
         daoEmployer.delete(tempName, tempSurname);
     }
 
     private void editMentor() {
-        administratorView.printAllModels(daoMassModel.getAllMentors());
+        administratorView.printAllModels(daoLists.getAllMentors());
         String tempName = administratorView.takeInput("Name ");
         String tempSurname = administratorView.takeInput("Surname ");
         daoEmployer.delete(tempName, tempSurname);                             // USUWANIE PO IMIENIU I NAZWISKU?
