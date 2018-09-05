@@ -22,8 +22,8 @@ public class View {
     }
 
     public void printList(List<T> listElems){
-        for(i=0; i<listElems.size(); i++){
-            printMessage(i + ". " + listElems.get(i).toString());
+        for(int i=0; i<listElems.size(); i++){
+            showMessage(i + ". " + listElems.get(i).toString());
         }
     }
 
