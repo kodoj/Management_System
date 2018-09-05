@@ -112,69 +112,28 @@ public class Connector {
     
     public Element loadPerson(String login){
 
-        try {
 			File xmlFile = new File("/java/XMLs/employees.xml");
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			Document doc = dBuilder.parse(xmlFile);
-		} catch(Exception e) {
-			System.out.println(e);
-		}
+
             doc.getDocumentElement().normalize();
-			System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
-			NodeList nList = doc.getElementsByTagName("employee");
-		
-			for (int temp = 0; temp < nList.getLength(); temp++) {
 
-				Node nNode = nList.item(temp);
-												
-				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+            String[] filesSources = {"/java/XMLs/students.xml", "/java/XMLs/employees.xml", "/java/XMLs/mentors.xml"};
+            String[] tags = {"student", "employee", "mentor"};
 
-					Element eElement = (Element) nNode;
+            Strig fileSource;
+            String tag;
 
-					if(eElement.getAttribute("login").equals(login)){
-                        return eElement;
-                    }
-				}
+            for(int i=0; i<filesSources.length; i++){
+                fileSource = filesSources[i];
+                tag = tags[i];
+                Element person = checkFileForUser(fileSource, tag);
             }
 
-            xmlFile = new File("/java/XMLs/students.xml");
-            doc = dBuilder.parse(xmlFile);
-            nList = doc.getElementsByTagName("student");
 
-            for (int temp = 0; temp < nList.getLength(); temp++) {
+            checkFileForUser(fileSource, tag);    
 
-				Node nNode = nList.item(temp);
-												
-				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-
-					Element eElement = (Element) nNode;
-
-					if(eElement.getAttribute("login").equals(login)){
-                        return eElement;
-                    }
-				}
-            }
-
-            xmlFile = new File("/java/XMLs/mentors.xml");
-            doc = dBuilder.parse(xmlFile);
-            nList = doc.getElementsByTagName("mentor");
-
-            for (int temp = 0; temp < nList.getLength(); temp++) {
-
-				Node nNode = nList.item(temp);
-												
-				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-
-					Element eElement = (Element) nNode;
-
-					if(eElement.getAttribute("login").equals(login)){
-                        return eElement;
-                    }
-				}
-            }
-
-            return null;
+            return person;
 
     }
 
@@ -189,5 +148,27 @@ public class Connector {
 			Document doc = dBuilder.parse(xmlFile);
 			Element assignments = doc.getDocumentElement().normalize();
             return assisgnments;
+    }
+
+    public Element checkFileForUser(String fileSource, String tag){
+
+        File xmlFile = new File(fileSource);
+        Document doc = dBuilder.parse(xmlFile);
+        Node nList = doc.getElementsByTagName(tag);
+
+        for (int temp = 0; temp < nList.getLength(); temp++) {
+
+            Node nNode = nList.item(temp);
+                                            
+            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+                Element eElement = (Element) nNode;
+
+                if(eElement.getAttribute("login").equals(login)){
+                    return eElement;
+                }
+            }
+        }
+
     }
 }
