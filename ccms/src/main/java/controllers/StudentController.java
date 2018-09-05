@@ -57,7 +57,7 @@ public class StudentController extends Controller {
     }
 
     private void submitAssignment() {
-        view.printHashMap("assignments");
+        view.showAssignments(getMyModel().getAssignments());
         String assignmentID = view.takeStringInput("Which assignment would you like to submit? ");
         String url = view.takeStringInput("please, paste your url to this assignment ");
         getMyModel().getAssignments().get(assignmentID).setUrl(url);
@@ -65,11 +65,11 @@ public class StudentController extends Controller {
     }
 
     private void viewGrades() {
-        view.printHashMap("grades");
+        view.showGrades(getMyModel().getAssignments());
     }
 
     private void takeNewAssignment() {
-        view.printDAOList("assignments");
+        view.printDAOList(daoLists.getAllAssignments());
         String assignmentID = view.takeStringInput("Which assignment would you like to take? ");
         if(daoLists.getAllAssignments().contains(assignmentID) && !getMyModel().getAssignments().containsKey(assignmentID)) {
             getMyModel().getAssignments().put(assignmentID, new Assignment(assignmentID));

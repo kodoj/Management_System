@@ -35,30 +35,24 @@ public class View {
         System.out.println(message);
     }
 
-    public void printDAOList(String option) {
-
-        if(option == "students"){
-            printList(daoLists.getAllStudents());
-        } else if (option == "mentors"){
-            printList(daoLists.getAllMentors());
-        } else if (option = "assignments") {
-            printList(daoLists.getAllAssignments());
-        }
-        
-        takeStringInput("Press anything to continue");
-    }
-
-    public void printHashMap(String option){
-        HashMap<String, Assignment> assignments = controller.getMyModel().getAssignments();
+    public void showAssignments(HashMap<String, Assignment> assignments){
         for (String name: assignments.keySet()){
 
             String key = name;
             
-            if(option == "assignments") {
-                String value = assignments.get(name).toString();
-            } else if (option == "grades") {
-                Integer value = assignments.get(name).getGrade();
-            }
+            String value = assignments.get(name).toString();
+            
+            showMessage(key + " " + value);
+        }
+
+    }
+
+    public void showGrades(HashMap<String, Assignment> assignments){
+        for (String name: assignments.keySet()){
+
+            String key = name;
+            
+            Integer value = assignments.get(name).getGrade();
             
             showMessage(key + " " + value);
         }
