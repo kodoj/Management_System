@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89a7b021-17fd-41e8-bcba-5e58587234cb" name="Default Changelist" comment="">
+    <list default="true" id="89a7b021-17fd-41e8-bcba-5e58587234cb" name="Default Changelist" comment="assignment done, container for informations about assignments">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ccms/src/main/java/containers/Assignment.java" beforeDir="false" afterPath="$PROJECT_DIR$/ccms/src/main/java/containers/Assignment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ccms/src/main/java/containers/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/ccms/src/main/java/containers/Model.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/ccms/target/" />
@@ -60,12 +59,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="913" />
+          <entry key="java" value="1516" />
+          <entry key="txt" value="89" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="913" />
+          <entry key="JAVA" value="1516" />
+          <entry key="PLAIN_TEXT" value="89" />
         </counts>
       </usages-collector>
     </session>
@@ -93,10 +94,28 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ccms/src/main/java/containers/Model.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="405">
+              <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#626#627#0" expanded="true" />
+                <element signature="e#660#661#0" expanded="true" />
+                <element signature="e#723#724#0" expanded="true" />
+                <element signature="e#760#761#0" expanded="true" />
+                <element signature="e#834#835#0" expanded="true" />
+                <element signature="e#887#888#0" expanded="true" />
+                <element signature="e#946#947#0" expanded="true" />
+                <element signature="e#980#981#0" expanded="true" />
+                <element signature="e#1036#1037#0" expanded="true" />
+                <element signature="e#1065#1066#0" expanded="true" />
+                <element signature="e#1130#1131#0" expanded="true" />
+                <element signature="e#1163#1164#0" expanded="true" />
+                <element signature="e#1231#1232#0" expanded="true" />
+                <element signature="e#1260#1261#0" expanded="true" />
+                <element signature="e#1333#1334#0" expanded="true" />
+                <element signature="e#1376#1377#0" expanded="true" />
+                <element signature="e#1438#1439#0" expanded="true" />
+                <element signature="e#1485#1486#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -336,7 +355,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536137904398" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536138700066" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/ccms" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -367,10 +386,19 @@
       <option name="presentableId" value="Default" />
       <updated>1535962354409</updated>
     </task>
+    <task id="LOCAL-00001" summary="assignment done, container for informations about assignments">
+      <created>1536137955834</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1536137955835</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="47" y="-4" width="1319" height="772" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Capture Tool" />
       <window_info id="Image Layers" />
@@ -407,6 +435,8 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/ccms-rafal-becla" />
     </ignored-roots>
+    <MESSAGE value="assignment done, container for informations about assignments" />
+    <option name="LAST_COMMIT_MESSAGE" value="assignment done, container for informations about assignments" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/ccms/src/main/java/controllers/AdministratorController.java">
@@ -571,10 +601,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ccms/src/main/java/containers/Model.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="405">
+          <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#626#627#0" expanded="true" />
+            <element signature="e#660#661#0" expanded="true" />
+            <element signature="e#723#724#0" expanded="true" />
+            <element signature="e#760#761#0" expanded="true" />
+            <element signature="e#834#835#0" expanded="true" />
+            <element signature="e#887#888#0" expanded="true" />
+            <element signature="e#946#947#0" expanded="true" />
+            <element signature="e#980#981#0" expanded="true" />
+            <element signature="e#1036#1037#0" expanded="true" />
+            <element signature="e#1065#1066#0" expanded="true" />
+            <element signature="e#1130#1131#0" expanded="true" />
+            <element signature="e#1163#1164#0" expanded="true" />
+            <element signature="e#1231#1232#0" expanded="true" />
+            <element signature="e#1260#1261#0" expanded="true" />
+            <element signature="e#1333#1334#0" expanded="true" />
+            <element signature="e#1376#1377#0" expanded="true" />
+            <element signature="e#1438#1439#0" expanded="true" />
+            <element signature="e#1485#1486#0" expanded="true" />
           </folding>
         </state>
       </provider>
