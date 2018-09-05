@@ -6,7 +6,6 @@ public abstract class View {
 
     public Scanner sc = new Scanner(System.in);
 
-
     public String takeStringInput(String string) {
         showMessage(string);
         String input = sc.nextLine();

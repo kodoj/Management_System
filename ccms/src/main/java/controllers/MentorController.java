@@ -26,16 +26,17 @@ public class MentorController extends Controller {
 
         int inputInt = 0;
         boolean goodInput = false;
+        List<String> menuOptions = {"List all students","Add student","Remove student","Edit student", "Get Assignments", "Add new Assignment", "Evaluate Assignments","Logout"};
 
         while(getLoggedIn()) {
-            mentorView.printMenu();
+            mentorView.printList(menuOptions);
 
             while(goodInput == false) {
                 inputInt = mentorView.takeIntInput("What would you like to do? ");
                 if(inputInt > 0 && inputInt < 9) {                               // magic number, to improve!
                     goodInput = true;
                 } else {
-                    System.out.println("Only numbers from 1 to 8!");
+                    mentorView.showMessage("Only numbers from 1 to 8!");
                 }
             }
             goodInput = false;
@@ -57,7 +58,7 @@ public class MentorController extends Controller {
                 continue;
             }
             else if(inputInt == 5) {
-                getAssignments();
+                printAssignments();
                 continue;
             }
             else if(inputInt == 6) {
@@ -77,38 +78,39 @@ public class MentorController extends Controller {
     }
 
     private void printStudents() {
-        mentorView.printStudents(daoMassModel.getAllStudents());
-        mentorView.takeInput("Press anything to continue");
+        mentorView.printList(daoMassModel.getAllStudents());
+        mentorView.takeStringInput("Press anything to continue");
     }
 
     private void addStudent() {
-        String tempName = mentorView.takeInput("Name ");
-        String tempSurname = mentorView.takeInput("Surname ");
+        String tempName = mentorView.takeStringInput("Name ");
+        String tempSurname = mentorView.takeStringInput("Surname ");
         String accountType = "student";
-        String tempPassword = mentorView.takeInput("Password");
-        String tempLogin = mentorView.takeInput("Login");
+        String tempPassword = mentorView.takeStringInput("Password");
+        String tempLogin = mentorView.takeStringInput("Login");
         Map<String, Assignment> assignments = new HashMap<String, Assignment>();
+
         newModel = new Model(tempName, tempSurname, accountType, tempPassword, tempLogin, assignments);
         daoStudent.add(newModel);
     }
 
     private void removeStudent() {
-        mentorView.printStudents(daoMassModel.getAllStudents());
-        String tempName = mentorView.takeInput("Name ");
-        String tempSurname = mentorView.takeInput("Surname ");
+        mentorView.printList(daoMassModel.getAllStudents());
+        String tempName = mentorView.takeStringInput("Name ");
+        String tempSurname = mentorView.takeStringInput("Surname ");
         daoStudent.delete(tempName, tempSurname);
     }
 
     private void editStudent() {
         mentorView.printStudents(daoMassModel.getAllStudents());
-        String tempName = mentorView.takeInput("Name ");
-        String tempSurname = mentorView.takeInput("Surname ");
+        String tempName = mentorView.takeStringInput("Name ");
+        String tempSurname = mentorView.takeStringInput("Surname ");
         daoStudent.delete(tempName, tempSurname);                             // USUWANIE PO IMIENIU I NAZWISKU?
         addStudent();
     }
 
-    private void getAssignments() {
-        mentorView.printAssignments(daoMassModel.getAllAssignments());
+    private void printAssignments() {
+        mentorView.printList(daoMassModel.getAllAssignments());
     }
 
     private void setNewAssignment() {

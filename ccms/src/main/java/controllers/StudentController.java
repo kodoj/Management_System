@@ -5,7 +5,6 @@ import views.StudentView;
 
 public class StudentController extends Controller {
 
-
     StudentView studentView;
 
     public StudentController(Model model, StudentView studentView) {

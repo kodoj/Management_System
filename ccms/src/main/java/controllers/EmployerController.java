@@ -7,13 +7,13 @@ import views.EmployerView;
 public class EmployerController extends Controller {
 
 
-    EmployerView employerView;
+    View view;
     DAOMassModel daoMassModel;
 
     public EmployerController(Model model, EmployerView employerView) {
         setMyModel(model);
         setloggedIn(true);
-        this.employerView = employerView;
+        this.view = view;
         this.daoMassModel = new DAOMassModel();
     }
 
@@ -22,16 +22,17 @@ public class EmployerController extends Controller {
 
         int inputInt = 0;
         boolean goodInput = false;
+        List<String> menuOptions = {"List all students", "Logout"};
 
         while(getLoggedIn()) {
-            employerView.printMenu();
+            view.printList(menuOptions);
 
             while(goodInput == false) {
                 inputInt = employerView.takeIntInput("What would you like to do? ");
                 if(inputInt > 0 && inputInt < 3) {                               // magic number, to improve!
                     goodInput = true;
                 } else {
-                    System.out.println("Only numbers from 1 to 2!");
+                    view.showMessage("Only numbers from 1 to 2!");
                 }
             }
             goodInput = false;
@@ -49,7 +50,7 @@ public class EmployerController extends Controller {
     }
 
     private void printStudents() {
-        employerView.printStudents(daoMassModel.getAllStudents());
-        employerView.takeInput("Press anything to continue");
+        view.printList(daoMassModel.getAllStudents());
+        view.takeStringInput("Press anything to continue");
     }
 }
