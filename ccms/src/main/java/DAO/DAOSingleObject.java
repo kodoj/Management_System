@@ -7,5 +7,4 @@ public interface DAOSingleObject {
     public Model get(String login);
     public void add(Model model);
     public void delete(String login);
-    public Model createModel();
 }

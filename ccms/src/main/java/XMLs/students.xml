@@ -7,10 +7,13 @@
 		<assignments>
 			<assignment>
 				<name>hangman</name>
-				<grade>5</grade>			
+				<ulr>www.hangman.pl</ulr>
+				<grade>5</grade>
+				<isFinished>true</isFinished>
 			</assignment>
 			<assignment>
 				<name>enigma</name>
+				<url>www.enigma.pl</url>
 				<grade>4</grade>
 			</assignment>		
 		</assignments>
@@ -22,7 +25,9 @@
 		<assignments>
 			<assignment>
 				<name>hangman</name>
-				<grade>0</grade>			
+				<ulr>www.hangman.pl</ulr>
+				<grade>0</grade>
+				<isFinished>true</isFinished>
 			</assignment>		
 		</assignments>
 	</student>
@@ -31,17 +36,13 @@
 		<surname>Odoj</surname>
 		<password>admin123</password>
 		<assignments>
-			<assignment>
-			</assignment>		
 		</assignments>
 	</student>
-	<student login="mateuszekduzybrzuszek">
+	<student login="mateuszekdurzybrzuszek">
 		<name>Mateusz</name>
 		<surname>Mazurczak</surname>
 		<password>admin123</password>
 		<assignments>
-			<assignment>
-			</assignment>		
 		</assignments>
 	</student>
 </students>
