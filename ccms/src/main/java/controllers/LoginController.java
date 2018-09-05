@@ -2,6 +2,7 @@ package controllers;
 
 import DAO.DAO;
 import views.View;
+import containers.Model;
 
 public class LoginController {
     private String name;
@@ -10,7 +11,7 @@ public class LoginController {
     private View view;
     private DAO daoLoginController;
 
-    LoginController(View view){
+    public LoginController(View view){
         this.view = view;
     }
 

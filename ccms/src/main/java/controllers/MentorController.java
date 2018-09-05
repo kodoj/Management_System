@@ -46,7 +46,7 @@ public class MentorController extends Controller {
             goodInput = false;
 
             if(inputInt == 1) {
-                view.printDAOList("students");
+                view.printList(daoLists.getAllStudents());
                 continue;
             }
             else if(inputInt == 2) {
@@ -62,7 +62,7 @@ public class MentorController extends Controller {
                 continue;
             }
             else if(inputInt == 5) {
-                view.printDAOList("assignments");
+                view.printList(daoLists.getAllAssignments());
                 continue;
             }
             else if(inputInt == 6) {
@@ -94,14 +94,14 @@ public class MentorController extends Controller {
     }
 
     private void removeStudent() {
-        view.printDAOList("students");
+        view.printList(daoLists.getAllStudents());
         String tempName = view.takeStringInput("Name ");
         String tempSurname = view.takeStringInput("Surname ");
         daoStudent.delete(tempName, tempSurname);
     }
 
     private void editStudent() {
-        view.printDAOList("students");
+        view.printList(daoLists.getAllStudents());
         String tempName = view.takeStringInput("Name ");
         String tempSurname = view.takeStringInput("Surname ");
         daoStudent.delete(tempName, tempSurname);                             // USUWANIE PO IMIENIU I NAZWISKU?
@@ -119,7 +119,7 @@ public class MentorController extends Controller {
         String tempSurname = view.takeInput("Surname ");
         newModel = daoStudent.get(tempName, tempSurname);                // METODA GET? NIE WYOBRAŻAM SOBIE INNEGO EDYTOWANIA POJEDYNCZEGO POLA
         daoStudent.delete(tempName, tempSurname);
-        view.printHashMap("assignments");
+        view.showAssignments(getMyModel().getAssignments());
         String tempAssignmentName = view.takeStringInput("Which assignment would you like to grade? ");
 
         if(newModel.getAssignments().containsKey(tempAssignmentName)) {
