@@ -8,6 +8,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import java.util.HashMap;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Node;
 
 public class Connector {
 
@@ -15,7 +17,7 @@ public class Connector {
 
     public void addAssignmentToXML(String assignmentName){
 
-        try{
+        try {
 
             File xmlFile = new File("/java/XMLs/assignments.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -29,7 +31,7 @@ public class Connector {
 
             assignmentTag.appendChild(newAssignment);
 
-            try{
+            try {
                 String outputURL = "/java/XMLs/assignments.xml";
                 
                 DOMSource source = new DOMSource(doc);
@@ -111,9 +113,82 @@ public class Connector {
     
     public Element loadPerson(String login){
 
+        try {
+			File xmlFile = new File("/java/XMLs/employees.xml");
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(xmlFile);
+			doc.getDocumentElement().normalize();
+			System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+			NodeList nList = doc.getElementsByTagName("employee");
+			
+			for (int temp = 0; temp < nList.getLength(); temp++) {
+
+				Node nNode = nList.item(temp);
+												
+				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+					Element eElement = (Element) nNode;
+
+					if(eElement.getAttribute("login").equals(login)){
+                        return eElement;
+                    }
+				}
+            }
+
+            xmlFile = new File("/java/XMLs/students.xml");
+            doc = dBuilder.parse(xmlFile);
+            nList = doc.getElementsByTagName("student");
+
+            for (int temp = 0; temp < nList.getLength(); temp++) {
+
+				Node nNode = nList.item(temp);
+												
+				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+					Element eElement = (Element) nNode;
+
+					if(eElement.getAttribute("login").equals(login)){
+                        return eElement;
+                    }
+				}
+            }
+
+            xmlFile = new File("/java/XMLs/mentors.xml");
+            doc = dBuilder.parse(xmlFile);
+            nList = doc.getElementsByTagName("mentor");
+
+            for (int temp = 0; temp < nList.getLength(); temp++) {
+
+				Node nNode = nList.item(temp);
+												
+				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+					Element eElement = (Element) nNode;
+
+					if(eElement.getAttribute("login").equals(login)){
+                        return eElement;
+                    }
+				}
+            }
+
+            return null;
+
+		} catch(Exception e) {
+			System.out.println(e);
+		}
     }
 
     public Element loadAssigments(){
-
+        try {
+			File xmlFile = new File("/java/XMLs/assignments.xml");
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(xmlFile);
+			Element assignments = doc.getDocumentElement().normalize();
+            return assisgnments;
+        } catch(Exception e) {
+            System.out.println(e);
+        } 
     }
 }

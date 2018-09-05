@@ -4,20 +4,44 @@
 		<name>Rafał</name>
 		<surname>Becla</surname>
 		<password>admin123</password>
+		<assignments>
+			<assignment>
+				<name>hangman</name>
+				<grade>5</grade>			
+			</assignment>
+			<assignment>
+				<name>enigma</name>
+				<grade>4</grade>
+			</assignment>		
+		</assignments>
 	</student>
 	<student login="karoltrzaskawtibie">
 		<name>Karol</name>
 		<surname>Trzaska</surname>
 		<password>lubiewdupe</password>
+		<assignments>
+			<assignment>
+				<name>hangman</name>
+				<grade>0</grade>			
+			</assignment>		
+		</assignments>
 	</student>
 	<student login="koduj">
 		<name>Krzysztof</name>
 		<surname>Odoj</surname>
 		<password>admin123</password>
+		<assignments>
+			<assignment>
+			</assignment>		
+		</assignments>
 	</student>
 	<student login="mateuszekduzybrzuszek">
 		<name>Mateusz</name>
 		<surname>Mazurczak</surname>
 		<password>admin123</password>
+		<assignments>
+			<assignment>
+			</assignment>		
+		</assignments>
 	</student>
 </students>
