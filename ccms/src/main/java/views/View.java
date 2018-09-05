@@ -1,6 +1,7 @@
 package views;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 import DAO.DAOLists;
@@ -25,10 +26,14 @@ public class View {
         return input;
     }
 
-    public void printList(List<T> listElems){
+    public static <T> void printList(List<T> listElems){
         for(int i=0; i<listElems.size(); i++){
-            showMessage(i + ". " + listElems.get(i).toString());
+            System.out.println((i + ". " + listElems.get(i).toString()));
         }
+    }
+    public void printArray(String[] list){
+        for(int i=0; i<list.length; i++)
+            System.out.println(list[i]);
     }
 
     public void showMessage(String message){

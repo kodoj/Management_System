@@ -24,7 +24,7 @@ public class StudentController extends Controller {
         List<String> menuOptions = {"Submit assignment", "View grades", "Take new assignment", "Logout"};
 
         while(getLoggedIn()) {
-            view.printList();
+            View.printList();
 
             while(goodInput == false) {
                 inputInt = view.takeIntInput("What would you like to do? ");
