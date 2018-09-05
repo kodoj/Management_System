@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<assignments>
+	<assignment id="hangman"/>
+	<assignment id="enigma"/>
+	<assignment id="battleships"/>
+	<assignment id="klondike solitaire"/>	
+	<assignment id="battle of cards"/>
+	<assignment id="online shop"/>
+</assignments>
+

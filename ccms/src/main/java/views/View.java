@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import controllers.Controller;
 
-public abstract class View {
+public class View {
 
     Controller controller;
     public Scanner sc = new Scanner(System.in);
@@ -22,8 +22,8 @@ public abstract class View {
     }
 
     public void printList(List<T> listElems){
-        for(i=0; i<listElems.size(); i++){
-            printMessage(i + ". " + listElems.get(i).toString());
+        for(int i=0; i<listElems.size(); i++){
+            showMessage(i + ". " + listElems.get(i).toString());
         }
     }
 
@@ -45,7 +45,7 @@ public abstract class View {
     }
 
     public void printHashMap(String option){
-        Hashmap<String,Assignment> assignments = controller.getMyModel().getAssignments();
+        Hashmap<String, Assignment> assignments = controller.getMyModel().getAssignments();
         for (String name: assignments.keySet()){
 
             String key = name;
