@@ -22,6 +22,9 @@ public class DAOLists implements DAOMultipleObjects {
     private String tempLogin;
     private String tempName;
     private String tempSurname;
+    private Element elementLogin;
+    private Element elementName;
+    private Element elementSurname;
 
     public DAOLists() {
         this.connector = new Connector();
@@ -45,13 +48,18 @@ public class DAOLists implements DAOMultipleObjects {
     }
 
     public List<Model> getAllUsers(String userType) {
-        element = connector.loadListOfUsers(userType + "s");
+        element = connector.loadListOfPersons(userType + "s");
         nodeList = element.getElementsByTagName(userType);
 
         for(int i = 0; i < nodeList.getLength(); i++) {
-            tempLogin = element.getElementsByTagName("accounttype").item(i).getTextContent();
-            tempName = element.getElementsByTagName("name").item(i).getTextContent();
-            tempSurname = element.getElementsByTagName("surname").item(i).getTextContent();
+            elementLogin = (Element) element.getElementsByTagName("login").item(0);
+            tempLogin = elementLogin.getTextContent();
+
+            elementName = (Element) element.getElementsByTagName("name").item(0);
+            tempName = elementName.getTextContent();
+
+            elementSurname = (Element) element.getElementsByTagName("surname").item(0);
+            tempSurname = elementSurname.getTextContent();
             models.add(new Model(tempName, tempSurname, tempLogin));
         }
         return models;

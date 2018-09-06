@@ -86,6 +86,6 @@ public class StudentController extends Controller {
             getMyModel().getAssignments().put(assignmentID, new Assignment(assignmentID));
         }
         daoStudent.delete(getMyModel().getLogin());
-        daoStudent.add(getMyModel().getLogin());
+        daoStudent.add(getMyModel());
     }
 }
