@@ -11,8 +11,13 @@
                 <grade>0</grade>
                 <isFinished>true</isFinished>
             </assignment>
+            <assignment>
+                <name>ccms</name>
+                <url/>
+                <grade>0</grade>
+                <isFinished>false</isFinished>
+            </assignment>
         </assignments>
         <accounttype>student</accounttype>
     </student>
-
 </students>

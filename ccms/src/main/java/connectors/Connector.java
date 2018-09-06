@@ -28,7 +28,7 @@ public class Connector {
         try {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            doc = dBuilder.parse("/java/XMLs/assignments.xml");
+            doc = dBuilder.parse("src/main/java/XMLs/assignments.xml");
             doc.getDocumentElement().normalize();
         } catch (FileNotFoundException e) {
             System.out.println("Can't find the file");
@@ -43,7 +43,7 @@ public class Connector {
 
         root.appendChild(newAssignment);
 
-        String outputURL = "/java/XMLs/assignments.xml";
+        String outputURL = "src/main/java/XMLs/assignments.xml";
         DOMSource source = new DOMSource(doc);
 
         try {
@@ -62,6 +62,7 @@ public class Connector {
     public void addPersonToXML(Model model) {
 
         String accountType = model.getAccountType().toLowerCase();
+        System.out.println(accountType);
         String name = model.getName().toLowerCase();
         String capitalizedName = name.substring(0, 1).toUpperCase() + name.substring(1);
         String surname = model.getSurname().toLowerCase();
@@ -72,18 +73,16 @@ public class Connector {
         try {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            doc = dBuilder.parse("/java/XMLs/" + accountType + "s.xml");
+            doc = dBuilder.parse("src/main/java/XMLs/" + accountType + "s.xml");
             doc.getDocumentElement().normalize();
         } catch (Exception e) {
             System.out.println("Missing file");
+            return;
         }
-        String tag = accountType.substring(0, accountType.length() - 1);
 
-        Element root = doc.getDocumentElement(); // employees
+        Element personTag = (Element) doc.getElementsByTagName(accountType + "s").item(0); //employee
 
-        Element personTag = (Element) root.getElementsByTagName(accountType).item(0); //employee
-
-        Element newPerson = doc.createElement(tag);
+        Element newPerson = doc.createElement(accountType);
         newPerson.setAttribute("login", login);
 
         Element userName = doc.createElement("name");
@@ -100,7 +99,7 @@ public class Connector {
         newPerson.appendChild(userSurname);
         newPerson.appendChild(userPassword);
 
-        if (accountType.equals("students")) {
+        if (accountType.equals("student")) {
             Map<String, Assignment> assignments = model.getAssignments();
             Iterator<String> itr = assignments.keySet().iterator();
             while (itr.hasNext()) {
@@ -120,7 +119,7 @@ public class Connector {
         personTag.appendChild(newPerson);
 
         try {
-            String outputURL = "/java/XMLs/" + accountType + ".xml";
+            String outputURL = "src/main/java/XMLs/" + accountType + "s.xml";
 
             DOMSource source = new DOMSource(doc);
             StreamResult result = new StreamResult(new FileOutputStream(outputURL));
@@ -164,10 +163,10 @@ public class Connector {
     public Element loadAssigments() {
         Document doc = null;
         try {
-            File xmlFile = new File("/java/XMLs/assignments.xml");
+            File xmlFile = new File("src/main/java/XMLs/assignments.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            doc = dBuilder.parse("/java/XMLs/assignments.xml");
+            doc = dBuilder.parse("src/main/java/XMLs/assignments.xml");
         } catch (FileNotFoundException e) {
             System.out.println("File was not found!");
         } catch (Exception e) {
@@ -217,7 +216,7 @@ public class Connector {
         try {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            doc = dBuilder.parse("/java/XMLs/" + accountType + ".xml");
+            doc = dBuilder.parse("src/main/java/XMLs/" + accountType + "s.xml");
         } catch (FileNotFoundException e) {
             System.out.println("File was not found!");
         } catch (Exception e) {
