@@ -40,7 +40,7 @@ public class DAOStudent implements DAOSingleObject {
             nodeList = element.getElementsByTagName("assignments").item(i).getChildNodes();
             assignments.put(nodeList.item(assignmentIDIndex).getTextContent(), new Assignment(nodeList.item(assignmentIDIndex).getTextContent(),
                     nodeList.item(assignmentURLIndex).getTextContent(), Integer.valueOf(nodeList.item(assignmentGradeIndex).getTextContent()),
-                    Boolean.parseBoolean(nodeList.item(assignmentIsFinished).getTextContent()));
+                    Boolean.parseBoolean(nodeList.item(assignmentIsFinished).getTextContent())));
         }
         return new Model(tempName, tempSurname, accessLevel, tempPassword, tempLogin, assignments);
     }
