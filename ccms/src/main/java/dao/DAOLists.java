@@ -19,8 +19,8 @@ public class DAOLists implements DAOMultipleObjects {
 
     public DAOLists() {
         this.connector = new Connector();
-        this.models =  new List<Model>();
-        this.assignments = new List<Assignment>();
+        this.models =  new ArrayList<Model>;
+        this.assignments = new ArrayList<Assignment>;
     }
 
     public List<Model> getAllStudents() {
