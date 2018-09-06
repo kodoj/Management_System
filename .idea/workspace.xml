@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89a7b021-17fd-41e8-bcba-5e58587234cb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ccms/src/main/java/DAO/DAOEmployer.java" beforeDir="false" afterPath="$PROJECT_DIR$/ccms/src/main/java/DAO/DAOEmployer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ccms/src/main/java/DAO/DAOLists.java" beforeDir="false" afterPath="$PROJECT_DIR$/ccms/src/main/java/DAO/DAOLists.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ccms/src/main/java/DAO/DAOSingleObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/ccms/src/main/java/DAO/DAOSingleObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ccms/src/main/java/DAO/DAOStudent.java" beforeDir="false" afterPath="$PROJECT_DIR$/ccms/src/main/java/DAO/DAOStudent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ccms/src/main/java/XMLs/students.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ccms/src/main/java/XMLs/students.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ccms/src/main/java/connectors/Connector.java" beforeDir="false" afterPath="$PROJECT_DIR$/ccms/src/main/java/connectors/Connector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ccms/src/main/java/containers/Assignment.java" beforeDir="false" afterPath="$PROJECT_DIR$/ccms/src/main/java/containers/Assignment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ccms/src/main/java/containers/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/ccms/src/main/java/containers/Model.java" afterDir="false" />
-    </list>
+    <list default="true" id="89a7b021-17fd-41e8-bcba-5e58587234cb" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/ccms/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,92 +9,15 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-506334797">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="4" />
-          <entry key="project.open.time.1" value="2" />
-          <entry key="project.open.time.11" value="1" />
-          <entry key="project.open.time.3" value="1" />
-          <entry key="project.open.time.30" value="1" />
-          <entry key="project.opened" value="5" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="gitignore" value="1" />
-          <entry key="java" value="78" />
-          <entry key="orig" value="1" />
-          <entry key="txt" value="1" />
-          <entry key="xml" value="10" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="JAVA" value="78" />
-          <entry key="PLAIN_TEXT" value="3" />
-          <entry key="XML" value="10" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="java" value="3253" />
-          <entry key="xml" value="68" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JAVA" value="3253" />
-          <entry key="XML" value="68" />
-        </counts>
-      </usages-collector>
-    </session>
-    <session id="1949429065">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.open.time.1" value="1" />
-          <entry key="project.opened" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="java" value="1516" />
-          <entry key="txt" value="218" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JAVA" value="1516" />
-          <entry key="PLAIN_TEXT" value="218" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="java" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="JAVA" value="1" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ccms/src/main/java/DAO/DAOStudent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+            <state relative-caret-position="330">
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#509#529#0" expanded="true" />
-                <element signature="e#293#294#0" expanded="true" />
-                <element signature="e#312#313#0" expanded="true" />
-                <element signature="e#1962#1963#0" expanded="true" />
-                <element signature="e#2004#2005#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -114,11 +27,9 @@
         <entry file="file://$PROJECT_DIR$/ccms/src/main/java/DAO/DAOLists.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="585">
-              <caret line="39" column="9" lean-forward="true" selection-start-line="35" selection-start-column="8" selection-end-line="39" selection-end-column="9" />
+              <caret line="41" column="5" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#230#231#0" expanded="true" />
-                <element signature="e#257#258#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -128,7 +39,7 @@
         <entry file="file://$PROJECT_DIR$/ccms/src/main/java/containers/Assignment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
             </state>
           </provider>
         </entry>
@@ -141,8 +52,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ccms/src/main/java/connectors/Connector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-936">
-              <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
+            <state relative-caret-position="1065">
+              <caret line="83" selection-start-line="83" selection-end-line="83" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -402,7 +313,7 @@
     <frame x="64" y="-11" width="1857" height="1037" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2642344" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26755112" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -420,6 +331,7 @@
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32890365" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info active="true" anchor="bottom" id="Inspection Results" order="10" visible="true" weight="0.32963374" />
+      <window_info anchor="right" id="Maven" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -429,9 +341,6 @@
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Theme Preview" order="7" />
     </layout>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
@@ -470,15 +379,9 @@
     <entry file="file://$PROJECT_DIR$/ccms/pom.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/XMLs/Employers.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/XMLs/Students.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/XMLs/Assignments.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/XMLs/Employers.xml" />
+    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/XMLs/Students.xml" />
+    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/XMLs/Assignments.xml" />
     <entry file="file://$PROJECT_DIR$/ccms/src/main/java/main/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -486,46 +389,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/views/MentorView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="57" lean-forward="true" selection-start-line="26" selection-start-column="57" selection-end-line="26" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/views/StudentView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="40" selection-start-line="37" selection-start-column="36" selection-end-line="37" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/views/EmployerView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="38" lean-forward="true" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/views/AdministratorView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/views/MentorView.java" />
+    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/views/StudentView.java" />
+    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/views/EmployerView.java" />
+    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/views/AdministratorView.java" />
     <entry file="file://$PROJECT_DIR$/ccms/src/main/java/controllers/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -533,13 +400,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/views/AdministratorView_BASE_7527.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/views/AdministratorView_BASE_7527.java" />
     <entry file="file://$PROJECT_DIR$/ccms/src/main/java/controllers/EmployerController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="379">
@@ -550,11 +411,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/controllers/AdministratorController.java.orig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-896" />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/controllers/AdministratorController.java.orig" />
     <entry file="file://$PROJECT_DIR$/ccms/src/main/java/views/View.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-51">
@@ -572,13 +429,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/DAO/DAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" selection-end-line="9" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/DAO/DAO.java" />
     <entry file="file://$PROJECT_DIR$/ccms/src/main/java/DAO/DAOMultipleObjects.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -657,37 +508,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/containers/Assignment.java">
+    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/DAO/DAOStudent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/connectors/Connector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-936">
-          <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
+        <state relative-caret-position="330">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/containers/Assignment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ccms/src/main/java/XMLs/employees.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/DAO/DAOStudent.java">
+    <entry file="file://$PROJECT_DIR$/ccms/src/main/java/connectors/Connector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+        <state relative-caret-position="1065">
+          <caret line="83" selection-start-line="83" selection-end-line="83" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#509#529#0" expanded="true" />
-            <element signature="e#293#294#0" expanded="true" />
-            <element signature="e#312#313#0" expanded="true" />
-            <element signature="e#1962#1963#0" expanded="true" />
-            <element signature="e#2004#2005#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -698,11 +544,9 @@
     <entry file="file://$PROJECT_DIR$/ccms/src/main/java/DAO/DAOLists.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
-          <caret line="39" column="9" lean-forward="true" selection-start-line="35" selection-start-column="8" selection-end-line="39" selection-end-column="9" />
+          <caret line="41" column="5" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#230#231#0" expanded="true" />
-            <element signature="e#257#258#0" expanded="true" />
           </folding>
         </state>
       </provider>
