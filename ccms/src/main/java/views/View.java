@@ -1,5 +1,9 @@
 package views;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.Buffer;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,17 +17,33 @@ public class View {
 
     DAOLists daoLists;
     Controller controller;
-    public Scanner sc = new Scanner(System.in);
+    private BufferedReader bufferedReader;
+
+    public View(){
+        bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+    }
 
     public String takeStringInput(String string) {
         showMessage(string);
-        String input = sc.nextLine();
+        String input = "";
+        try{
+            input = bufferedReader.readLine();
+        }catch(IOException e){
+            System.out.println("Wrong input");
+        }
+
         return input;
     }
 
-    public int takeIntInput(String string) {
+    public Integer takeIntInput(String string) {
         showMessage(string);
-        int input = sc.nextInt();
+        Integer input = null;
+        try{
+            input = Integer.parseInt(bufferedReader.readLine());
+        }catch(IOException e){
+            System.out.println("Wrong input");
+        }
+
         return input;
     }
 
