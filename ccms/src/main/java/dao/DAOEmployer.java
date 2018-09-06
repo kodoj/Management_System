@@ -21,7 +21,7 @@ public class DAOEmployer implements DAOSingleObject {
     public Model get(String login) {
         element = connector.loadPerson(login);
         tempLogin = element.getAttribute("login");
-        accessLevel = element.getTagName();
+        accessLevel = element.getElementsByTagName("accounttype").item(0).getTextContent();
         tempName = element.getElementsByTagName("name").item(0).getTextContent();
         tempSurname = element.getElementsByTagName("surname").item(0).getTextContent();
         tempPassword = element.getElementsByTagName("password").item(0).getTextContent();

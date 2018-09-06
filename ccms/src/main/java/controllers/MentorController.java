@@ -7,6 +7,7 @@ import views.View;
 import containers.Assignment;
 import containers.Model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +34,15 @@ public class MentorController extends Controller {
 
         int inputInt = 0;
         boolean goodInput = false;
-        List<String> menuOptions = {"List all students","Add student","Remove student","Edit student", "Get Assignments", "Add new Assignment", "Evaluate Assignments","Logout"};
+        List<String> menuOptions = new ArrayList<String>();
+        menuOptions.add("List all students");
+        menuOptions.add("Add student");
+        menuOptions.add("Remove student");
+        menuOptions.add("Edit student");
+        menuOptions.add("Get Assignments");
+        menuOptions.add("Add new Assignment");
+        menuOptions.add("Evaluate Assignments");
+        menuOptions.add("Logout");
 
         while(getLoggedIn()) {
             View.printList(menuOptions);
