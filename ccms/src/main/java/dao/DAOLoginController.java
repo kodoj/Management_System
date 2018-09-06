@@ -1,7 +1,6 @@
-package DAO;
+package dao;
 
 import connectors.Connector;
-import containers.Model;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
