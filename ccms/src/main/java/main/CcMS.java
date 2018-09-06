@@ -24,11 +24,15 @@ public class CcMS {
     public void run() {
         setIsRun();
         while(isRun) {
-            getModel();
-            initializeNewUser();
-            runNewUser();
-            resetUser();
-            setIsRun();
+            try {
+                getModel();
+                initializeNewUser();
+                runNewUser();
+                resetUser();
+                setIsRun();
+            } catch (Exception e){
+                System.out.println("invalid input");
+            }
         }
     }
     private void setIsRun(){

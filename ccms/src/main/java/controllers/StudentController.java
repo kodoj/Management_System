@@ -36,7 +36,7 @@ public class StudentController extends Controller {
         while(getLoggedIn()) {
             View.printList(menuOptions);
 
-            while(goodInput == false) {
+            while(!goodInput) {
                 inputInt = view.takeIntInput("What would you like to do? ");
                 if(inputInt > 0 && inputInt < 5) {                               // magic number, to improve!
                     goodInput = true;
@@ -48,20 +48,18 @@ public class StudentController extends Controller {
 
             if(inputInt == 1) {
                 submitAssignment();
-                continue;
             }
             else if(inputInt == 2) {
                 viewGrades();
-                continue;
             }
             else if(inputInt == 3) {
                 takeNewAssignment();
-                continue;
             }
             else if(inputInt == 4) {
                 setloggedIn(false);
                 break;
             }
+            inputInt = 0;
 
         }
     }

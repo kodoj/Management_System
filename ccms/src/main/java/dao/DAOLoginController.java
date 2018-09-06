@@ -31,16 +31,14 @@ public class DAOLoginController {
 
 
     public Model createModel(){
-        if(checkIfExist()){
-            elementPerson = connector.loadPerson(login);
-            String accountType = elementPerson.getElementsByTagName("accounttype").item(0).getTextContent();
-            if(accountType.equals("student")){
-                DAOStudent daoStudent = new DAOStudent();
-                return daoStudent.get(login);
-            }else if(accountType.equals("mentor") || accountType.equals("employee")){
-                DAOEmployer daoEmployer = new DAOEmployer();
-                return daoEmployer.get(login);
-            }
+        elementPerson = connector.loadPerson(login);
+        String accountType = elementPerson.getElementsByTagName("accounttype").item(0).getTextContent();
+        if(accountType.equals("student")){
+            DAOStudent daoStudent = new DAOStudent();
+            return daoStudent.get(login);
+        }else if(accountType.equals("mentor") || accountType.equals("employee")){
+            DAOEmployer daoEmployer = new DAOEmployer();
+            return daoEmployer.get(login);
         }
         return null;
     }
@@ -48,7 +46,13 @@ public class DAOLoginController {
 
     public Boolean checkIfExist(){
         Element element = connector.loadPerson(login);
-        return element != null && (element.getElementsByTagName("password").equals(password));
+        if (element == null) {
+            return false;
+        }
+        Element expected = (Element) element.getElementsByTagName("password").item(0);
+        String xmlpassword = expected.getTextContent();
+        boolean result = xmlpassword.equals(password);
+        return result;
     }
 
 
