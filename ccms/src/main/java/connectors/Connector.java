@@ -6,6 +6,7 @@ import javax.xml.transform.Transformer;
 import java.io.File;
 import java.lang.Exception;
 
+import containers.Assignment;
 import containers.Model;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
