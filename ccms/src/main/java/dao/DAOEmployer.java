@@ -1,13 +1,8 @@
-package DAO;
+package dao;
 
 import connectors.Connector;
-import containers.Assignment;
 import containers.Model;
 import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class DAOEmployer implements DAOSingleObject {
 
@@ -26,7 +21,7 @@ public class DAOEmployer implements DAOSingleObject {
     public Model get(String login) {
         element = connector.loadPerson(login);
         tempLogin = element.getAttribute("login");
-        accessLevel =
+        accessLevel = element.getTagName();
         tempName = element.getElementsByTagName("name").item(0).getTextContent();
         tempSurname = element.getElementsByTagName("surname").item(0).getTextContent();
         tempPassword = element.getElementsByTagName("password").item(0).getTextContent();

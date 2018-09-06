@@ -1,7 +1,8 @@
 package controllers;
 
-import DAO.DAOLists;
-import DAO.DAOStudent;
+import dao.DAOAssignment;
+import dao.DAOLists;
+import dao.DAOStudent;
 import views.View;
 import containers.Assignment;
 import containers.Model;
@@ -16,6 +17,7 @@ public class MentorController extends Controller {
     View view;
     DAOStudent daoStudent;
     DAOLists daoLists;
+    DAOAssignment daoAssignment;
 
     public MentorController(Model model, View view) {
         this.view = view;
@@ -23,10 +25,11 @@ public class MentorController extends Controller {
         this.setloggedIn(true);
         this.daoStudent = new DAOStudent();
         this.daoLists = new DAOLists();
+        this.daoAssignment = new DAOAssignment();
     }
 
 
-    public void run(boolean getLoggedIn()) {
+    public void run() {
 
         int inputInt = 0;
         boolean goodInput = false;
@@ -108,11 +111,11 @@ public class MentorController extends Controller {
 
     private void setNewAssignment() {
         String tempAssignmentName = view.takeStringInput("Please, enter the the assignment name ");
-        daoLists.setNewAssignment(tempAssignmentName);
+        daoAssignment.addAssignment(tempAssignmentName);
     }
 
     private void evaluateAssignment() {
-        view.printList("students");
+        view.printList(daoLists.getAllStudents());
         String tempLogin = view.takeStringInput("Login ");
         newModel = daoStudent.get(tempLogin);
         view.showAssignments(newModel.getAssignments());

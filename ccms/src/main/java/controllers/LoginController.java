@@ -1,15 +1,14 @@
 package controllers;
 
-import DAO.DAO;
+import dao.DAOLoginController;
 import views.View;
 import containers.Model;
 
 public class LoginController {
-    private String name;
-    private String surname;
+    private String login;
     private String password;
     private View view;
-    private DAO daoLoginController;
+    private DAOLoginController daoLoginController;
 
     public LoginController(View view){
         this.view = view;
@@ -26,10 +25,11 @@ public class LoginController {
 
 
     private Boolean validatePassword(){
-        name = view.takeStringInput("Name: ");
-        surname = view.takeStringInput("Surname: ");
+        login = view.takeStringInput("Login:");
         password = view.takeStringInput("Password: ");
-        daoLoginController = new DAOLoginController(name, surname, password);
+        daoLoginController = new DAOLoginController();
+        daoLoginController.setLogin(login);
+        daoLoginController.setPassword(password);
         return daoLoginController.checkIfExist();
     }
 }
