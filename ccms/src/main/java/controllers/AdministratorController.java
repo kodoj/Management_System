@@ -27,7 +27,6 @@ public class AdministratorController extends Controller {
 
     public void run() {
 
-        String input;
         int inputInt = 0;
         boolean goodInput = false;
         List<String> menuOptions = new ArrayList<String>();
@@ -44,7 +43,7 @@ public class AdministratorController extends Controller {
 
             while(goodInput == false) {
                 inputInt = view.takeIntInput("What would you like to do? ");
-                if(inputInt > 0 && inputInt < 7) {                               // magic number, to improve!
+                if(inputInt > 0 && inputInt < 7) {
                     goodInput = true;
                 } else {
                     view.showMessage("Only numbers from 1 to 6!");

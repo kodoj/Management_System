@@ -147,8 +147,8 @@ public class Connector {
 
     public Element loadPerson(String login) {
 
-        String[] filesSources = {"students.xml", "employees.xml", "mentors.xml"};
-        String[] tags = {"student", "employee", "mentor"};
+        String[] filesSources = {"students.xml", "employees.xml", "mentors.xml", "administrators.xml"};
+        String[] tags = {"student", "employee", "mentor", "administrator"};
 
         String fileSource;
         String tag;
