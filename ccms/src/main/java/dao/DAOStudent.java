@@ -5,6 +5,7 @@ import containers.Assignment;
 import containers.Model;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +15,7 @@ public class DAOStudent implements DAOSingleObject {
     private Connector connector;
     private String tempName;
     private String tempSurname;
-    private String accessLevel = "students";
+    private String accessLevel;
     private String tempPassword;
     private String tempLogin;
     private NodeList nodeList;
@@ -33,6 +34,7 @@ public class DAOStudent implements DAOSingleObject {
     public Model get(String login) {
         element = connector.loadPerson(login);
         tempLogin = element.getAttribute("login");
+        accessLevel = element.
         tempName = element.getElementsByTagName("name").item(0).getTextContent();
         tempSurname = element.getElementsByTagName("surname").item(0).getTextContent();
         tempPassword = element.getElementsByTagName("password").item(0).getTextContent();
