@@ -3,6 +3,7 @@ package dao;
 import connectors.Connector;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
+import containers.Model;
 
 
 
@@ -13,15 +14,8 @@ public class DAOLoginController {
     private Element elementPerson;
     private NodeList nodePersonList;
 
-    public static void main(String[] args) {
-        DAOLoginController daoLoginController = new DAOLoginController();
-
-    }
-    DAOLoginController(){
+    public DAOLoginController(){
         this.connector = new Connector();
-        setLogin("xxxpenetratorxxx");
-        setPassword("admin123");
-        getPersonModel();
     }
 
     public void setLogin(String login){
@@ -34,16 +28,20 @@ public class DAOLoginController {
     }
 
 
-    public void getPersonModel(){
+    public Model createModel(){
         if(connector.loadPerson(login)!= null){
             elementPerson = connector.loadPerson(login);
             String documentElement = elementPerson.getLocalName();
             System.out.println(documentElement);
           //  nodePersonList = elementPerson.getElementsByTagName()
         }
-     //   return null;
+        return null;
     }
 
+
+    public Boolean checkIfExist(){
+        return connector.loadPerson(login)!= null;
+    }
 
 
 }
