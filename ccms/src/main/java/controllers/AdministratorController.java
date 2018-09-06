@@ -40,7 +40,7 @@ public class AdministratorController extends Controller {
 
 
         while(getLoggedIn()) {
-            View.printList();
+            View.printList(menuOptions);
 
             while(goodInput == false) {
                 inputInt = view.takeIntInput("What would you like to do? ");
