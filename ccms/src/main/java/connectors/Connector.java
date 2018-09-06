@@ -94,10 +94,13 @@ public class Connector {
         Element userPassword = doc.createElement("password");
         userPassword.setTextContent(password);
 
+        Element userTypeElement = doc.createElement("accounttype");
+        userTypeElement.setTextContent(accountType);
 
         newPerson.appendChild(userName);
         newPerson.appendChild(userSurname);
         newPerson.appendChild(userPassword);
+        newPerson.appendChild(userTypeElement);
 
         if (accountType.equals("student")) {
             Map<String, Assignment> assignments = model.getAssignments();
@@ -172,7 +175,6 @@ public class Connector {
     public Element loadAssigments() {
         Document doc = null;
         try {
-            File xmlFile = new File("src/main/java/XMLs/assignments.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             doc = dBuilder.parse("src/main/java/XMLs/assignments.xml");
@@ -220,7 +222,7 @@ public class Connector {
         return null;
     }
 
-    public Element loadListOfPersons(String accountType) {
+    public NodeList loadListOfPersons(String accountType) {
         Document doc = null;
         try {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -231,7 +233,7 @@ public class Connector {
         } catch (Exception e) {
             System.out.println("Can't find the file");
         }
-        Element listOfUsers = doc.getDocumentElement();
+        NodeList listOfUsers = doc.getElementsByTagName(accountType+"s");
 
         return listOfUsers;
     }
@@ -240,16 +242,16 @@ public class Connector {
         Element element = loadPerson(login);
 
         Element elementAcces = (Element) element.getElementsByTagName("accounttype").item(0);
-        String accessLevel = elementAcces.getTextContent();
+        String accountType = elementAcces.getTextContent();
 
-        String outputURL = "/java/XMLs/"+ accessLevel + "s.xml";
+        String outputURL = "src/main/java/XMLs/"+ accountType + "s.xml";
 
         Document doc = null;
 
         try {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            doc = dBuilder.parse(outputURL);
+            doc = dBuilder.parse("src/main/java/XMLs/"+ accountType + "s.xml");
             doc.getDocumentElement().normalize();
         } catch (FileNotFoundException e) {
             System.out.println("Can't find the file");
@@ -257,16 +259,33 @@ public class Connector {
             System.out.println("There was a trouble with loading ur file");
         }
 
-
-        NamedNodeMap nodes = doc.getAttributes();
+        NodeList nodes = doc.getElementsByTagName(accountType+"s");
 
         for (int i = 0; i < nodes.getLength(); i++) {
-
-            if (nodes.item(i).getNodeValue().equals(login)) {
+            Element newElement = (Element) nodes.item(i);
+            Element loginElement = (Element) newElement.getElementsByTagName(accountType).item(0);
+            if (loginElement.getAttribute("login").equals(login)) {
                 while (nodes.item(i).hasChildNodes()) {
                     nodes.item(i).removeChild(nodes.item(i).getFirstChild());
                 }
             }
+        }
+
+        try {
+            String saveURL = "src/main/java/XMLs/" + accountType + "s.xml";
+
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(new FileOutputStream(saveURL));
+
+            TransformerFactory transFactory = TransformerFactory.newInstance();
+            Transformer transformer = transFactory.newTransformer();
+
+            transformer.transform(source, result);
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File was not found!");
+        } catch (Exception e) {
+            System.out.println("Can't find the file");
         }
     }
 }

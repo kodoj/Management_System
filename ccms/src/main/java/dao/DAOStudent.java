@@ -85,6 +85,6 @@ public class DAOStudent implements DAOSingleObject {
 
 
     public void delete(String login) {
-
+        connector.deletePerson(login);
     }
 }

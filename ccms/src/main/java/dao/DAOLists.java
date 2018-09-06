@@ -48,8 +48,7 @@ public class DAOLists implements DAOMultipleObjects {
     }
 
     public List<Model> getAllUsers(String userType) {
-        element = connector.loadListOfPersons(userType + "s");
-        nodeList = element.getElementsByTagName(userType);
+        nodeList = connector.loadListOfPersons(userType);
 
         for(int i = 0; i < nodeList.getLength(); i++) {
             elementLogin = (Element) element.getElementsByTagName("login").item(0);
