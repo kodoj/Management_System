@@ -18,49 +18,43 @@ import javax.xml.transform.Transformer;
 import java.io.StringWriter;
 import javax.xml.transform.OutputKeys;
 
-
 class Main {
     public static void main(String[] args) {
         System.out.println("Dziala");
         
-        Element newElement = deleteUser("xxxpenetratorxxx");    
-        Element ele  = (Element) newElement.getElementsByTagName("mentor").item(0);
-        System.out.println(ele.getAttribute("login"));
+        deleteUser("xxxpenetratorxxx");    
+        System.out.println("Ididit");
     }
 
-    public void deleteUser(String login){
+    public static void deleteUser(String login){
 
-        String[] filesSources = {"students.xml", "employees.xml", "mentors.xml"};
-        String[] tags = {"student", "employee", "mentor"};
-
-        String fileSource;
-        String tag;
-        Element person = null;
-
-        for(int i=0; i<filesSources.length; i++){
-            fileSource = filesSources[i];
-            tag = tags[i];
-            person = checkFileForUser(fileSource, tag, login);
-        }
+        Element person = loadPerson(login);
+        Element personType = (Element) person.getElementsByTagName("accounttype").item(0);
+        String accounttype = personType.getTextContent();
 
         if(person != null) {
-            Node parent = person.getParentNode();
-            parent.removeChild(element);
+            Node parent = person.getParentType();
+            parent.removeChild(person);
             parent.normalize();
         }
 
-        String outputURL = ""+ person.getLocalName() + "s" +".xml";            
-        File xmlFile = new File(outputURL);
-        Document doc = dBuilder.parse(xmlFile);
+        String outputURL = accounttype + "s" +".xml";
+        Document doc = null;
+        try {            
+            File xmlFile = new File(outputURL);
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            doc = dBuilder.parse(xmlFile);
+            DOMSource source = new DOMSource(doc);
 
-        DOMSource source = new DOMSource(doc);
-
-	
-		StreamResult result = new StreamResult(new FileOutputStream(outputURL));
-		TransformerFactory transFactory = TransformerFactory.newInstance();
-		Transformer transformer = transFactory.newTransformer();
-		
-		transformer.transform(source, result);            
+            StreamResult result = new StreamResult(new FileOutputStream(outputURL));
+            TransformerFactory transFactory = TransformerFactory.newInstance();
+            Transformer transformer = transFactory.newTransformer();
+            
+            transformer.transform(source, result);            
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static Element loadListOfUsers(String accountType){
