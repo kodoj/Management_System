@@ -148,8 +148,15 @@ public class Connector {
         for(int i=0; i<filesSources.length; i++){
             fileSource = filesSources[i];
             tag = tags[i];
-            person = checkFileForUser(fileSource, tag, login);
+            person = checkFileForUser(fileSource, tag, login);            
+            if(person == null){
+                System.out.println("person loaded with null");
+            } else {
+                System.out.println("person loaded good!");
+                return person;
+            }
         }
+        
         return person;
     }
 
@@ -160,9 +167,11 @@ public class Connector {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();  
 			doc = dBuilder.parse(xmlFile);
-        } catch(Exception e) {
-            System.out.println(e);
-        } 
+        } catch (IOException e) {
+            System.out.println("Can't find the file");
+        } catch (FileNotFoundException e) {
+			System.out.println("File was not found!");
+		}   
 			Element assignments = doc.getDocumentElement();
             return assignments;
     }
