@@ -2,6 +2,7 @@ package views;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import dao.DAOLists;
@@ -28,9 +29,16 @@ public class View {
 
     public static <T> void printList(List<T> listElems){
         for(int i=0; i<listElems.size(); i++){
-            System.out.println((i + ". " + listElems.get(i).toString()));
+            T element = listElems.get(i);
+            if(element instanceof  String)
+                System.out.println((i + ". " + element));
+            else
+                System.out.println((i + ". " + element.toString()));
         }
     }
+
+
+
     public void printArray(String[] list){
         for(int i=0; i<list.length; i++)
             System.out.println(list[i]);
@@ -40,7 +48,7 @@ public class View {
         System.out.println(message);
     }
 
-    public void showAssignments(HashMap<String, Assignment> assignments){
+    public void showAssignments(Map<String, Assignment> assignments){
         for (String name: assignments.keySet()){
 
             String key = name;
@@ -52,7 +60,7 @@ public class View {
 
     }
 
-    public void showGrades(HashMap<String, Assignment> assignments){
+    public void showGrades(Map<String, Assignment> assignments){
         for (String name: assignments.keySet()){
 
             String key = name;

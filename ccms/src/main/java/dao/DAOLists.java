@@ -17,6 +17,14 @@ public class DAOLists implements DAOMultipleObjects {
     private Element element;
     private NodeList nodeList;
     private Assignment assignment;
+    private String userType;
+
+    private String tempLogin;
+    private String tempName;
+    private String tempSurname;
+    private Element elementLogin;
+    private Element elementName;
+    private Element elementSurname;
 
     public DAOLists() {
         this.connector = new Connector();
@@ -25,11 +33,37 @@ public class DAOLists implements DAOMultipleObjects {
     }
 
     public List<Model> getAllStudents() {
+        userType = "student";
+        return getAllUsers(userType);
+    }
 
+    public List<Model> getAllMentors() {
+        userType = "mentor";
+        return getAllUsers(userType);
     }
 
     public List<Model> getAllEmployers() {
-        return null;
+        userType = "employer";
+        return getAllUsers(userType);
+    }
+
+    public List<Model> getAllUsers(String userType) {
+        element = connector.loadListOfPersons(userType + "s");
+        nodeList = element.getElementsByTagName(userType);
+
+        for(int i = 0; i < nodeList.getLength(); i++) {
+            elementLogin = (Element) element.getElementsByTagName("login").item(0);
+            tempLogin = elementLogin.getTextContent();
+
+            elementName = (Element) element.getElementsByTagName("name").item(0);
+            tempName = elementName.getTextContent();
+
+            elementSurname = (Element) element.getElementsByTagName("surname").item(0);
+            tempSurname = elementSurname.getTextContent();
+            models.add(new Model(tempName, tempSurname, tempLogin));
+        }
+        return models;
+
     }
 
     public List<Assignment> getAllAssignments() {
@@ -39,6 +73,6 @@ public class DAOLists implements DAOMultipleObjects {
             assignment = new Assignment(nodeList.item(i).getAttributes().getNamedItem("assignment").getNodeValue());
             assignments.add(assignment);
         }
-
+        return null;
     }
 }

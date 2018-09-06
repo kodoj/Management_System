@@ -4,21 +4,25 @@
 		<name>Marek</name>
 		<surname>Kowalski</surname>
 		<password>admin123</password>
+		<accounttype>employee</accounttype>
 	</employee>
 	<employee login="adamosoprano">
 		<name>Adam</name>
 		<surname>Terlikowski</surname>
 		<password>admin123</password>
+		<accounttype>employee</accounttype>
 	</employee>
 	<employee login="executeorder44">
 		<name>Jonasz</name>
 		<surname>Mekke</surname>
 		<password>admin123</password>
+		<accounttype>employee</accounttype>
 	</employee>
 	<employee login="apple">
 		<name>Izaak</name>
 		<surname>Newton</surname>
 		<password>admin123</password>
+		<accounttype>employee</accounttype>
 	</employee>
 	
 </employees>

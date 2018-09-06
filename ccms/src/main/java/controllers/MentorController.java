@@ -1,11 +1,13 @@
 package controllers;
 
+import dao.DAOAssignment;
 import dao.DAOLists;
 import dao.DAOStudent;
 import views.View;
 import containers.Assignment;
 import containers.Model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +18,7 @@ public class MentorController extends Controller {
     View view;
     DAOStudent daoStudent;
     DAOLists daoLists;
+    DAOAssignment daoAssignment;
 
     public MentorController(Model model, View view) {
         this.view = view;
@@ -23,6 +26,7 @@ public class MentorController extends Controller {
         this.setloggedIn(true);
         this.daoStudent = new DAOStudent();
         this.daoLists = new DAOLists();
+        this.daoAssignment = new DAOAssignment();
     }
 
 
@@ -30,7 +34,15 @@ public class MentorController extends Controller {
 
         int inputInt = 0;
         boolean goodInput = false;
-        List<String> menuOptions = {"List all students","Add student","Remove student","Edit student", "Get Assignments", "Add new Assignment", "Evaluate Assignments","Logout"};
+        List<String> menuOptions = new ArrayList<String>();
+        menuOptions.add("List all students");
+        menuOptions.add("Add student");
+        menuOptions.add("Remove student");
+        menuOptions.add("Edit student");
+        menuOptions.add("Get Assignments");
+        menuOptions.add("Add new Assignment");
+        menuOptions.add("Evaluate Assignments");
+        menuOptions.add("Logout");
 
         while(getLoggedIn()) {
             View.printList(menuOptions);
@@ -108,11 +120,11 @@ public class MentorController extends Controller {
 
     private void setNewAssignment() {
         String tempAssignmentName = view.takeStringInput("Please, enter the the assignment name ");
-        daoLists.setNewAssignment(tempAssignmentName);
+        daoAssignment.addAssignment(tempAssignmentName);
     }
 
     private void evaluateAssignment() {
-        view.printList("students");
+        view.printList(daoLists.getAllStudents());
         String tempLogin = view.takeStringInput("Login ");
         newModel = daoStudent.get(tempLogin);
         view.showAssignments(newModel.getAssignments());

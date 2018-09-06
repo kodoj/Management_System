@@ -34,7 +34,7 @@ public class StudentController extends Controller {
         menuOptions.add("Logout");
 
         while(getLoggedIn()) {
-            View.printList();
+            View.printList(menuOptions);
 
             while(goodInput == false) {
                 inputInt = view.takeIntInput("What would you like to do? ");
@@ -86,6 +86,6 @@ public class StudentController extends Controller {
             getMyModel().getAssignments().put(assignmentID, new Assignment(assignmentID));
         }
         daoStudent.delete(getMyModel().getLogin());
-        daoStudent.add(getMyModel().getLogin());
+        daoStudent.add(getMyModel());
     }
 }

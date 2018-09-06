@@ -4,16 +4,19 @@
 		<name>Agnieszka</name>
 		<surname>Koszany</surname>
 		<password>admin123</password>
+		<accounttype>mentor</accounttype>
 	</mentor>
 	<mentor login="domi">
 		<name>Dominik</name>
 		<surname>Starzyński</surname>
 		<password>admin123</password>
+		<accounttype>mentor</accounttype>
 	</mentor>
 	<mentor login="mati">
 		<name>Mateusz</name>
 		<surname>Ostafil</surname>
 		<password>admin123</password>
+		<accounttype>mentor</accounttype>
 	</mentor>
 	
 </mentors>

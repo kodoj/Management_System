@@ -20,11 +20,20 @@ public class DAOStudent implements DAOSingleObject {
     private String tempLogin;
     private NodeList nodeList;
     private Map<String, Assignment> assignments = new HashMap<String, Assignment>();
+    private String tempAssignmentID;
+    private String tempAssignmentURL;
+    private int tempAssignmentGrade;
+    private boolean tempAssignmentsIsFinished;
+    private Element elementLogin;
+    private Element elementAcces;
+    private Element elementName;
+    private Element elementSurname;
+    private Element elementPassword;
+    private Element elementAssignmentID;
+    private Element elementAssignmentURL;
+    private Element elementAssignmentGrade;
+    private Element elementAssignmentIsFinished;
 
-    private int assignmentIDIndex = 0;
-    private int assignmentURLIndex = 1;
-    private int assignmentGradeIndex = 2;
-    private int assignmentIsFinished = 3;
 
     public DAOStudent() {
         this.connector = new Connector();
@@ -33,16 +42,39 @@ public class DAOStudent implements DAOSingleObject {
 
     public Model get(String login) {
         element = connector.loadPerson(login);
-        tempLogin = element.getAttribute("login");
-        accessLevel = element.
-        tempName = element.getElementsByTagName("name").item(0).getTextContent();
-        tempSurname = element.getElementsByTagName("surname").item(0).getTextContent();
-        tempPassword = element.getElementsByTagName("password").item(0).getTextContent();
-        for(int i = 0; i < element.getElementsByTagName("assignments").getLength(); i++) {
-            nodeList = element.getElementsByTagName("assignments").item(i).getChildNodes();
-            assignments.put(nodeList.item(assignmentIDIndex).getTextContent(), new Assignment(nodeList.item(assignmentIDIndex).getTextContent(),
-                    nodeList.item(assignmentURLIndex).getTextContent(), Integer.valueOf(nodeList.item(assignmentGradeIndex).getTextContent()),
-                    Boolean.parseBoolean(nodeList.item(assignmentIsFinished).getTextContent())));
+
+        elementLogin = (Element) element.getElementsByTagName("login").item(0);
+        tempLogin = elementLogin.getTextContent();
+
+        elementAcces = (Element) element.getElementsByTagName("accounttype").item(0);
+        accessLevel = elementAcces.getTextContent();
+
+        elementName = (Element) element.getElementsByTagName("name").item(0);
+        tempName = elementName.getTextContent();
+
+        elementSurname = (Element) element.getElementsByTagName("surname").item(0);
+        tempSurname = elementSurname.getTextContent();
+
+        elementPassword = (Element) element.getElementsByTagName("password").item(0);
+        tempPassword = elementPassword.getTextContent();
+
+        nodeList = element.getElementsByTagName("assignment");
+        for(int i = 0; i < nodeList.getLength(); i++) {
+            Element newElement = (Element) nodeList.item(i);
+
+            elementAssignmentID = (Element) newElement.getElementsByTagName("name").item(0);
+            tempAssignmentID = elementAssignmentID.getTextContent();
+
+            elementAssignmentURL = (Element) newElement.getElementsByTagName("url").item(0);
+            tempAssignmentURL = elementAssignmentURL.getTextContent();
+
+            elementAssignmentGrade = (Element) newElement.getElementsByTagName("grade").item(0);
+            tempAssignmentGrade = Integer.valueOf(elementAssignmentGrade.getTextContent());
+
+            elementAssignmentIsFinished = (Element) newElement.getElementsByTagName("isFinished").item(0);
+            tempAssignmentsIsFinished = Boolean.valueOf(elementAssignmentIsFinished.getTextContent());
+
+            assignments.put(tempAssignmentID, new Assignment(tempAssignmentID, tempAssignmentURL, tempAssignmentGrade, tempAssignmentsIsFinished));
         }
         return new Model(tempName, tempSurname, accessLevel, tempPassword, tempLogin, assignments);
     }

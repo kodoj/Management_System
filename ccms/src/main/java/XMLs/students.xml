@@ -1,5 +1,4 @@
-<?xml version="1.0"?>
-<students>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><students>
 	<student login="xxxpenetratorxxx">
 		<name>Rafał</name>
 		<surname>Becla</surname>
@@ -15,8 +14,10 @@
 				<name>enigma</name>
 				<url>www.enigma.pl</url>
 				<grade>4</grade>
+				<isFinished>true</isFinished>
 			</assignment>		
 		</assignments>
+		<accounttype>student</accounttype>
 	</student>
 	<student login="karoltrzaskawtibie">
 		<name>Karol</name>
@@ -30,6 +31,7 @@
 				<isFinished>true</isFinished>
 			</assignment>		
 		</assignments>
+		<accounttype>student</accounttype>
 	</student>
 	<student login="koduj">
 		<name>Krzysztof</name>
@@ -37,6 +39,7 @@
 		<password>admin123</password>
 		<assignments>
 		</assignments>
+		<accounttype>student</accounttype>
 	</student>
 	<student login="mateuszekdurzybrzuszek">
 		<name>Mateusz</name>
@@ -44,5 +47,6 @@
 		<password>admin123</password>
 		<assignments>
 		</assignments>
+		<accounttype>student</accounttype>
 	</student>
 </students>

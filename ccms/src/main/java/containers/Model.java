@@ -85,6 +85,9 @@ public class Model {
         }
 
 
+        public Map<String, Assignment> getAssignments() { return assignments; }
+
+
 
 
 }
