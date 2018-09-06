@@ -32,7 +32,8 @@ public class DAOLoginController {
 
     public Model createModel(){
         elementPerson = connector.loadPerson(login);
-        String accountType = elementPerson.getElementsByTagName("accounttype").item(0).getTextContent();
+        Element accountTypeElement = (Element) elementPerson.getElementsByTagName("accounttype").item(0);
+        String accountType = accountTypeElement.getTextContent();
         if(accountType.equals("student")){
             DAOStudent daoStudent = new DAOStudent();
             return daoStudent.get(login);
