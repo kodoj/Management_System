@@ -25,7 +25,7 @@ public class DAOLists implements DAOMultipleObjects {
     }
 
     public List<Model> getAllStudents() {
-
+        return null;
     }
 
     public List<Model> getAllEmployers() {
@@ -39,6 +39,8 @@ public class DAOLists implements DAOMultipleObjects {
             assignment = new Assignment(nodeList.item(i).getAttributes().getNamedItem("assignment").getNodeValue());
             assignments.add(assignment);
         }
-
+        return null;
     }
+
+    public List<Model> getAllMentors(){return null;}
 }

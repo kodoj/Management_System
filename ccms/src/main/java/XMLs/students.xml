@@ -17,6 +17,7 @@
 				<grade>4</grade>
 			</assignment>		
 		</assignments>
+		<accounttype>student</accounttype>
 	</student>
 	<student login="karoltrzaskawtibie">
 		<name>Karol</name>
@@ -30,6 +31,7 @@
 				<isFinished>true</isFinished>
 			</assignment>		
 		</assignments>
+		<accounttype>student</accounttype>
 	</student>
 	<student login="koduj">
 		<name>Krzysztof</name>
@@ -37,6 +39,7 @@
 		<password>admin123</password>
 		<assignments>
 		</assignments>
+		<accounttype>student</accounttype>
 	</student>
 	<student login="mateuszekdurzybrzuszek">
 		<name>Mateusz</name>
@@ -44,5 +47,6 @@
 		<password>admin123</password>
 		<assignments>
 		</assignments>
+		<accounttype>student</accounttype>
 	</student>
 </students>

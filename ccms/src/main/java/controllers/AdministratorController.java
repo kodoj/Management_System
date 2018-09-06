@@ -5,6 +5,7 @@ import containers.Model;
 import views.View;
 import dao.DAOLists;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdministratorController extends Controller {
@@ -29,7 +30,13 @@ public class AdministratorController extends Controller {
         String input;
         int inputInt = 0;
         boolean goodInput = false;
-        List<String> menuOptions = {"List all students","List all mentors","Add mentor", "Remove mentor", "Edit mentor", "Logout"};
+        List<String> menuOptions = new ArrayList<String>();
+                menuOptions.add("List all students");
+                menuOptions.add("List all mentors");
+                menuOptions.add("Add mentor");
+                menuOptions.add("Remove mentor");
+                menuOptions.add("Edit mentor");
+                menuOptions.add("Logout");
 
 
         while(getLoggedIn()) {
