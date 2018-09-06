@@ -70,6 +70,7 @@ public class StudentController extends Controller {
         String url = view.takeStringInput("please, paste your url to this assignment ");
         getMyModel().getAssignments().get(assignmentID).setUrl(url);
         getMyModel().getAssignments().get(assignmentID).setIsFinished(true);
+        daoStudent.delete(getMyModel().getLogin());
         daoStudent.add(getMyModel());
     }
 

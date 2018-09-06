@@ -102,17 +102,26 @@ public class Connector {
         if (accountType.equals("student")) {
             Map<String, Assignment> assignments = model.getAssignments();
             Iterator<String> itr = assignments.keySet().iterator();
+            Element userAssignments = doc.createElement("assignments");
             while (itr.hasNext()) {
                 String key = (String) itr.next();
                 Element userAssignment = doc.createElement("assignment");
                 Node assignmentName = doc.createElement("name");
-                assignmentName.appendChild(doc.createTextNode(key));
-                userAssignment.appendChild(assignmentName);
                 Node grade = doc.createElement("grade");
+                Node url = doc.createElement("url");
+                Node isFinished = doc.createElement("isFinished");
                 grade.appendChild(doc.createTextNode(Integer.toString(assignments.get(key).getGrade())));
+                assignmentName.appendChild(doc.createTextNode(key));
+                url.appendChild(doc.createTextNode(assignments.get(key).getUrl()));
+                isFinished.appendChild(doc.createTextNode(Boolean.toString(assignments.get(key).getIsFinished())));
+                userAssignment.appendChild(assignmentName);
                 userAssignment.appendChild(grade);
-                newPerson.appendChild(userAssignment);
+                userAssignment.appendChild(url);
+                userAssignment.appendChild(isFinished);
+
+                userAssignments.appendChild(userAssignment);
             }
+            newPerson.appendChild(userAssignments);
 
         }
 
