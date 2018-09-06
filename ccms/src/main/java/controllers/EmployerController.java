@@ -1,6 +1,6 @@
 package controllers;
 
-import DAO.DAOLists;
+import dao.DAOLists;
 import containers.Model;
 import views.View;
 
@@ -20,7 +20,7 @@ public class EmployerController extends Controller {
     }
 
 
-    public void run(boolean getLoggedIn()) {
+    public void run() {
 
         int inputInt = 0;
         boolean goodInput = false;

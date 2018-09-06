@@ -1,6 +1,6 @@
 package controllers;
 
-import DAO.DAO;
+import dao.DAO;
 import views.View;
 import containers.Model;
 

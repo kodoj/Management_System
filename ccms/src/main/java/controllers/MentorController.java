@@ -1,7 +1,7 @@
 package controllers;
 
-import DAO.DAOLists;
-import DAO.DAOStudent;
+import dao.DAOLists;
+import dao.DAOStudent;
 import views.View;
 import containers.Assignment;
 import containers.Model;
@@ -26,7 +26,7 @@ public class MentorController extends Controller {
     }
 
 
-    public void run(boolean getLoggedIn()) {
+    public void run() {
 
         int inputInt = 0;
         boolean goodInput = false;

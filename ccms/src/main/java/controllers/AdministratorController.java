@@ -1,9 +1,9 @@
 package controllers;
 
-import DAO.DAOEmployer;
+import dao.DAOEmployer;
 import containers.Model;
 import views.View;
-import DAO.DAOLists;
+import dao.DAOLists;
 
 import java.util.List;
 
@@ -24,7 +24,7 @@ public class AdministratorController extends Controller {
     }
 
 
-    public void run(boolean getLoggedIn()) {
+    public void run() {
 
         String input;
         int inputInt = 0;
