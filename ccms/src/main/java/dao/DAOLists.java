@@ -1,4 +1,4 @@
-package DAO;
+package dao;
 
 import connectors.Connector;
 import containers.Assignment;
@@ -19,8 +19,8 @@ public class DAOLists implements DAOMultipleObjects {
 
     public DAOLists() {
         this.connector = new Connector();
-        this.models =  new List<Model>;
-        this.assignments = new List<Assignment>;
+        this.models =  new List<Model>();
+        this.assignments = new List<Assignment>();
     }
 
     public List<Model> getAllStudents() {

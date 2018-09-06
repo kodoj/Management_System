@@ -65,7 +65,7 @@ public class CcMS {
 
     private void runNewUser(){
         if(this.newController != null)
-            newController.run(true);
+            newController.run();
     }
 
     private void resetUser(){

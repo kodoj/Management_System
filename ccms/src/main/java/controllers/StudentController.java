@@ -1,7 +1,7 @@
 package controllers;
 
-import DAO.DAOLists;
-import DAO.DAOStudent;
+import dao.DAOLists;
+import dao.DAOStudent;
 import containers.Assignment;
 import views.View;
 import containers.Model;
@@ -22,7 +22,7 @@ public class StudentController extends Controller {
         this.daoStudent = new DAOStudent();
     }
 
-    public void run(boolean getLoggedIn()) {
+    public void run() {
 
         int inputInt = 0;
         boolean goodInput = false;
