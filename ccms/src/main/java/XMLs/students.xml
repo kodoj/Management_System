@@ -7,7 +7,7 @@
 		<assignments>
 			<assignment>
 				<name>hangman</name>
-				<ulr>www.hangman.pl</ulr>
+				<url>www.hangman.pl</url>
 				<grade>5</grade>
 				<isFinished>true</isFinished>
 			</assignment>
