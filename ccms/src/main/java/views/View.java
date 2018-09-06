@@ -29,9 +29,16 @@ public class View {
 
     public static <T> void printList(List<T> listElems){
         for(int i=0; i<listElems.size(); i++){
-            System.out.println((i + ". " + listElems.get(i).toString()));
+            T element = listElems.get(i);
+            if(element instanceof  String)
+                System.out.println((i + ". " + element));
+            else
+                System.out.println((i + ". " + element.toString()));
         }
     }
+
+
+
     public void printArray(String[] list){
         for(int i=0; i<list.length; i++)
             System.out.println(list[i]);

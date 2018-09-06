@@ -22,11 +22,11 @@ import javax.xml.transform.Transformer;
 
 public class Connector {
 
-    Model model = new Model();
+    Model model;
 
     public void addAssignmentToXML(String assignmentName){
 
-		Document doc;
+		Document doc = null;
 
         try {
             File xmlFile = new File("/java/XMLs/assignments.xml");
