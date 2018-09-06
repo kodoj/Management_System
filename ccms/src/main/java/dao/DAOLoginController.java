@@ -1,10 +1,12 @@
 package dao;
 
 import connectors.Connector;
+import containers.Assignment;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import containers.Model;
 
+import java.util.HashMap;
 
 
 public class DAOLoginController {
@@ -12,7 +14,7 @@ public class DAOLoginController {
     private String password;
     private Connector connector;
     private Element elementPerson;
-    private NodeList nodePersonList;
+
 
     public DAOLoginController(){
         this.connector = new Connector();
@@ -31,13 +33,13 @@ public class DAOLoginController {
     public Model createModel(){
         if(checkIfExist()){
             elementPerson = connector.loadPerson(login);
-            String accountType = elementPerson.getLocalName();
+            String accountType = elementPerson.getElementsByTagName("accounttype").item(0).getTextContent();
             if(accountType.equals("student")){
-
-            }else if(accountType.equals("mentor")){
-
-            }else if(accountType.equals("employee")){
-
+                DAOStudent daoStudent = new DAOStudent();
+                return daoStudent.get(login);
+            }else if(accountType.equals("mentor") || accountType.equals("employee")){
+                DAOEmployer daoEmployer = new DAOEmployer();
+                return daoEmployer.get(login);
             }
         }
         return null;
@@ -45,8 +47,42 @@ public class DAOLoginController {
 
 
     public Boolean checkIfExist(){
-        return connector.loadPerson(login)!= null;
+        Element element = connector.loadPerson(login);
+        return element != null && (element.getElementsByTagName("password").equals(password));
     }
 
 
 }
+
+
+/*
+            String name;
+            String surname;
+            Model model;
+            elementPerson = connector.loadPerson(login);
+            String accountType = elementPerson.getLocalName();
+
+            if(accountType.equals("student")){
+                name = elementPerson.getElementsByTagName("name").item(0).getTextContent();
+                System.out.println("ElementPerson :" + name); //testowe printy
+                surname = elementPerson.getElementsByTagName("surname").item(0).getTextContent();
+                System.out.println("ElementPerson :" + surname);
+                HashMap<String, Assignment> personHashMap = new HashMap<String, Assignment>();
+                NodeList personList = elementPerson.getElementsByTagName("assignment");
+
+                for(int i = 0; i < personList.getLength(); i ++) {
+                    Node evalNode = personList.item(0);
+                    Element evalElement = (Element) evalNode;
+                    name = evalElement.getElementsByTagName("name").item(0).getTextContent();
+                }
+
+            }else if(accountType.equals("mentor") || accountType.equals("employee")){
+                name = elementPerson.getElementsByTagName("name").item(0).getTextContent();
+                System.out.println("ElementPerson name: " + name); //testowe printy
+                surname = elementPerson.getElementsByTagName("surname").item(0).getTextContent();
+                System.out.println("ElementPerson surname " + surname);
+
+                model = new Model(name, surname,accountType,password, login);
+                return model;
+            }
+ */
