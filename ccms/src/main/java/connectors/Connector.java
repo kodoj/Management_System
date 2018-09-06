@@ -222,7 +222,7 @@ public class Connector {
         return null;
     }
 
-    public Element loadListOfPersons(String accountType) {
+    public NodeList loadListOfPersons(String accountType) {
         Document doc = null;
         try {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -233,7 +233,7 @@ public class Connector {
         } catch (Exception e) {
             System.out.println("Can't find the file");
         }
-        Element listOfUsers = doc.getDocumentElement();
+        NodeList listOfUsers = doc.getElementsByTagName(accountType+"s");
 
         return listOfUsers;
     }
