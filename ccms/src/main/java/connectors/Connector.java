@@ -5,7 +5,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
 import java.io.File;
 import java.lang.Exception;
-
 import containers.Model;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -22,7 +21,7 @@ import javax.xml.transform.Transformer;
 
 public class Connector {
 
-    Model model;
+    Model model = new Model();
 
     public void addAssignmentToXML(String assignmentName){
 
@@ -68,7 +67,6 @@ public class Connector {
         String capitalizedSurname = surname.substring(0, 1).toUpperCase() + surname.substring(1);
         String login = model.get(login);
         String password = model.get(password);
-
 
         File xmlFile = new File("/java/XMLs/" + accountType +".xml");
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -137,18 +135,18 @@ public class Connector {
     public Element loadPerson(String login){
 
         String[] filesSources = {"students.xml", "employees.xml", "mentors.xml"};
-            String[] tags = {"student", "employee", "mentor"};
+        String[] tags = {"student", "employee", "mentor"};
 
-            String fileSource;
-            String tag;
-			Element person;
+        String fileSource;
+        String tag;
+        Element person = null;
 
-            for(int i=0; i<filesSources.length; i++){
-                fileSource = filesSources[i];
-                tag = tags[i];
-                person = checkFileForUser(fileSource, tag, login);
-            }
-            return person;
+        for(int i=0; i<filesSources.length; i++){
+            fileSource = filesSources[i];
+            tag = tags[i];
+            person = checkFileForUser(fileSource, tag, login);
+        }
+        return person;
     }
 
     public Element loadAssigments(){
@@ -165,7 +163,7 @@ public class Connector {
             return assignments;
     }
 
-    public Element checkFileForUser(String fileSource, String tag, String login){
+    private Element checkFileForPerson(String fileSource, String tag, String login){
 
 		Document doc;
 
@@ -195,5 +193,55 @@ public class Connector {
             }
         }
 
+    }
+
+    public Element loadListOfPersons(String accountType){
+        Document doc;
+        try {
+			File xmlFile = new File("/java/XMLs/"+ accountType +".xml");
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();  
+			doc = dBuilder.parse(xmlFile);
+        } catch(Exception e) {
+            e.printStackTrace();
+        } 
+            Element listOfUsers = doc.getDocumentElement();
+            
+            return listOfUsers;    
+    }
+    
+    public void deletePerson(String login){
+
+        String[] filesSources = {"students.xml", "employees.xml", "mentors.xml"};
+        String[] tags = {"student", "employee", "mentor"};
+
+        String fileSource;
+        String tag;
+        Element person = null;
+
+        for(int i=0; i<filesSources.length; i++){
+            fileSource = filesSources[i];
+            tag = tags[i];
+            person = checkFileForUser(fileSource, tag, login);
+        }
+
+        if(person != null) {
+            Node parent = person.getParentNode();
+            parent.removeChild(element);
+            parent.normalize();
+        }
+
+        String outputURL = "/java/XMLs/"+ person.getLocalName() + "s" +".xml";            
+        File xmlFile = new File(outputURL);
+        Document doc = dBuilder.parse(xmlFile);
+
+        DOMSource source = new DOMSource(doc);
+
+	
+		StreamResult result = new StreamResult(new FileOutputStream(outputURL));
+		TransformerFactory transFactory = TransformerFactory.newInstance();
+		Transformer transformer = transFactory.newTransformer();
+		
+		transformer.transform(source, result);            
     }
 }

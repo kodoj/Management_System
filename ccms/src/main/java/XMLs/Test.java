@@ -1,7 +1,9 @@
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Transformer;
 import java.io.File;
 import java.lang.Exception;
+import containers.Model;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -17,56 +19,52 @@ import javax.xml.transform.Transformer;
 
 public class Test {
 
+    // Model model = new Model();
+
     public void addAssignmentToXML(String assignmentName){
-		
+
 		Document doc;
 
-		try {
+        try {
             File xmlFile = new File("assignments.xml");
-			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			doc = dBuilder.parse(xmlFile);
-			doc.getDocumentElement().normalize();      
-		} catch (IOException e) {
+			doc.getDocumentElement().normalize();
+        } catch (IOException e) {
             System.out.println("Can't find the file");
         } catch (Exception e) {
 			e.printStackTrace();
-		}
-        
+		}  
 
         Element root = doc.getDocumentElement(); // employees
         Element assignmentTag = (Element) root.getElementsByTagName("assignments").item(0); //employee
 		Element newAssignment = doc.createElement("assignment");
-		newAssignment.setAttribute("name", assignmentName);
-
+        newAssignment.setAttribute("name", assignmentName);
+        
         assignmentTag.appendChild(newAssignment);
 
-		String outputURL = "assignments.xml";            
-		DOMSource source = new DOMSource(doc);
+        String outputURL = "assignments.xml";            
+        DOMSource source = new DOMSource(doc);
 
 	
 		StreamResult result = new StreamResult(new FileOutputStream(outputURL));
 		TransformerFactory transFactory = TransformerFactory.newInstance();
 		Transformer transformer = transFactory.newTransformer();
 		
-		transformer.transform(source, result);
+		transformer.transform(source, result);            
    
     }
 
-    public void addPersonToXML(){
+    public void addPersonToXML(Model model){
         
-        String accountType = "students";
-        String name = "Karol";
+        String accountType = model.get(accountType).toLowerCase();
+        String name = model.get(name).toLowerCase();
         String capitalizedName = name.substring(0, 1).toUpperCase() + name.substring(1);
-        String surname = "Trzaska";
+        String surname = model.get(surname).toLowerCase();
         String capitalizedSurname = surname.substring(0, 1).toUpperCase() + surname.substring(1);
-        String login = "karoltrzaskawtibie";
-        String password = "admin123";
-
-        if(accountType.equals("students")){
-            HashMap<String, Assignment> assignments = model.get(assignments);
-        }
-
+        String login = model.get(login);
+        String password = model.get(password);
 
         File xmlFile = new File("" + accountType +".xml");
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -92,10 +90,28 @@ public class Test {
         Element userPassword = doc.createElement("password");
         userPassword.setTextContent(password);
 
+
+
         newPerson.appendChild(userName);
         newPerson.appendChild(userSurname);
         newPerson.appendChild(userPassword);
         
+        if(accountType.equals("students")){
+            HashMap<String, Assignment> assignments = model.get(assignments);
+            Iterator<E> itr = assignments.keySet().iterator();
+            while(itr.hasNext()){
+                Element userAssignment = doc.createElement("assignment");
+                Node assignmentName = doc.createElement("name");
+                assignmentName.appendChild(doc.createTextNode(key));
+                userAssignment.appendChild(assignmentName);
+                Node grade = userAssignment.createElement("grade");
+                grade.appendChild(doc.createTextNode(assignments.get(key)));
+                userAssignment.appendChild(grade);
+                newPerson.appendChild(userAssignment);
+            }
+            
+        }
+
         personTag.appendChild(newPerson);
         
         try{
@@ -116,24 +132,23 @@ public class Test {
     
     public Element loadPerson(String login){
 
-            String[] filesSources = {"students.xml", "employees.xml", "mentors.xml"};
-            String[] tags = {"student", "employee", "mentor"};
+        String[] filesSources = {"students.xml", "employees.xml", "mentors.xml"};
+        String[] tags = {"student", "employee", "mentor"};
 
-            String fileSource;
-            String tag;
-			Element person;
+        String fileSource;
+        String tag;
+        Element person = null;
 
-            for(int i=0; i<filesSources.length; i++){
-                fileSource = filesSources[i];
-                tag = tags[i];
-                person = checkFileForUser(fileSource, tag, login);
-            }
-            return person;
-
+        for(int i=0; i<filesSources.length; i++){
+            fileSource = filesSources[i];
+            tag = tags[i];
+            person = checkFileForUser(fileSource, tag, login);
+        }
+        return person;
     }
 
     public Element loadAssigments(){
-		Document doc;
+        Document doc;
         try {
 			File xmlFile = new File("assignments.xml");
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -146,7 +161,7 @@ public class Test {
             return assignments;
     }
 
-    public Element checkFileForUser(String fileSource, String tag, String login){
+    private Element checkFileForUser(String fileSource, String tag, String login){
 
 		Document doc;
 
@@ -177,5 +192,54 @@ public class Test {
         }
 
     }
-}
 
+    public Element loadListOfUsers(String accountType){
+        Document doc;
+        try {
+			File xmlFile = new File(""+ accountType +".xml");
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();  
+			doc = dBuilder.parse(xmlFile);
+        } catch(Exception e) {
+            e.printStackTrace();
+        } 
+            Element listOfUsers = doc.getDocumentElement();
+            
+            return listOfUsers;    
+    }
+    
+    public void deleteUser(String login){
+
+        String[] filesSources = {"students.xml", "employees.xml", "mentors.xml"};
+        String[] tags = {"student", "employee", "mentor"};
+
+        String fileSource;
+        String tag;
+        Element person = null;
+
+        for(int i=0; i<filesSources.length; i++){
+            fileSource = filesSources[i];
+            tag = tags[i];
+            person = checkFileForUser(fileSource, tag, login);
+        }
+
+        if(person != null) {
+            Node parent = person.getParentNode();
+            parent.removeChild(element);
+            parent.normalize();
+        }
+
+        String outputURL = ""+ person.getLocalName() + "s" +".xml";            
+        File xmlFile = new File(outputURL);
+        Document doc = dBuilder.parse(xmlFile);
+
+        DOMSource source = new DOMSource(doc);
+
+	
+		StreamResult result = new StreamResult(new FileOutputStream(outputURL));
+		TransformerFactory transFactory = TransformerFactory.newInstance();
+		Transformer transformer = transFactory.newTransformer();
+		
+		transformer.transform(source, result);            
+    }
+}
