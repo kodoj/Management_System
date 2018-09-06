@@ -231,6 +231,8 @@ public class Test {
 
         String outputURL = ""+ person.getLocalName() + "s" +".xml";            
         File xmlFile = new File(outputURL);
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document doc = dBuilder.parse(xmlFile);
 
         DOMSource source = new DOMSource(doc);

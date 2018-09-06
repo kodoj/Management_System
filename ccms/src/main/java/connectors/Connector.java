@@ -19,6 +19,7 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.FileOutputStream;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.Transformer;
+import java.io.FileNotFoundException;
 
 public class Connector {
 
@@ -36,8 +37,8 @@ public class Connector {
 			doc.getDocumentElement().normalize();
         } catch (IOException e) {
             System.out.println("Can't find the file");
-        } catch (Exception e) {
-			e.printStackTrace();
+        } catch (FileNotFoundException e) {
+			System.out.println("File was not found!");
 		}  
 
         Element root = doc.getDocumentElement(); // employees
@@ -61,13 +62,13 @@ public class Connector {
 
     public void addPersonToXML(Model model){
         
-        String accountType = model.get(accountType).toLowerCase();
-        String name = model.get(name).toLowerCase();
+        String accountType = model.getAccountType().toLowerCase();
+        String name = model.getName().toLowerCase();
         String capitalizedName = name.substring(0, 1).toUpperCase() + name.substring(1);
-        String surname = model.get(surname).toLowerCase();
+        String surname = model.getSurname()).toLowerCase();
         String capitalizedSurname = surname.substring(0, 1).toUpperCase() + surname.substring(1);
-        String login = model.get(login);
-        String password = model.get(password);
+        String login = model.getLogin());
+        String password = model.getPassword();
 
         File xmlFile = new File("/java/XMLs/" + accountType +".xml");
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -100,7 +101,7 @@ public class Connector {
         newPerson.appendChild(userPassword);
         
         if(accountType.equals("students")){
-            HashMap<String, Assignment> assignments = model.get(assignments);
+            HashMap<String, Assignment> assignments = model.getAssignments();
             Iterator<E> itr = assignments.keySet().iterator();
             while(itr.hasNext()){
                 Element userAssignment = doc.createElement("assignment");
@@ -128,9 +129,11 @@ public class Connector {
             
             transformer.transform(source, result);
             
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        } catch (IOException e) {
+            System.out.println("Can't find the file");
+        } catch (FileNotFoundException e) {
+			System.out.println("File was not found!");
+		}  
     }
     
     public Element loadPerson(String login){
@@ -174,9 +177,11 @@ public class Connector {
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			doc = dBuilder.parse(xmlFile);
             doc.getDocumentElement().normalize();
-		} catch (Exception e){
-			e.printStackTrace();
-        }
+		} catch (IOException e) {
+            System.out.println("Can't find the file");
+        } catch (FileNotFoundException e) {
+			System.out.println("File was not found!");
+		}  
         
         NodeList nList = doc.getElementsByTagName(tag);
 
@@ -197,18 +202,20 @@ public class Connector {
     }
 
     public Element loadListOfPersons(String accountType){
-        Document doc;
+        Document doc = null;
         try {
 			File xmlFile = new File("/java/XMLs/"+ accountType +".xml");
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();  
 			doc = dBuilder.parse(xmlFile);
-        } catch(Exception e) {
-            e.printStackTrace();
-        } 
-            Element listOfUsers = doc.getDocumentElement();
+        } catch (IOException e) {
+            System.out.println("Can't find the file");
+        } catch (FileNotFoundException e) {
+			System.out.println("File was not found!");
+		}  
+        Element listOfUsers = doc.getDocumentElement();
             
-            return listOfUsers;    
+        return listOfUsers;
     }
     
     public void deletePerson(String login){
