@@ -5,11 +5,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
 import java.io.File;
 import java.lang.Exception;
-<<<<<<< HEAD
-=======
-
 import containers.Assignment;
->>>>>>> d3859e8696b55a6210acf50153aa6e88a0f32959
 import containers.Model;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
