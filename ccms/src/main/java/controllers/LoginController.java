@@ -9,7 +9,7 @@ public class LoginController {
     private String surname;
     private String password;
     private View view;
-    private DAO daoLoginController;
+    private DAOLoginController daoLoginController;
 
     public LoginController(View view){
         this.view = view;
