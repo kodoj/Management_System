@@ -51,9 +51,9 @@ public class View {
         for(int i=0; i<listElems.size(); i++){
             T element = listElems.get(i);
             if(element instanceof  String)
-                System.out.println((i + ". " + element));
+                System.out.println(((i+1) + ". " + element));
             else
-                System.out.println((i + ". " + element.toString()));
+                System.out.println(((i+1) + ". " + element.toString()));
         }
     }
 

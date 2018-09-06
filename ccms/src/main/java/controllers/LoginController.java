@@ -17,7 +17,9 @@ public class LoginController {
 
     public Model getUserModel(){
         if(validatePassword()){
-            return daoLoginController.createModel();
+            Model newUser = daoLoginController.createModel();
+            System.out.println(newUser.getAccountType());
+            return newUser;
         }else{
             return null;
         }
