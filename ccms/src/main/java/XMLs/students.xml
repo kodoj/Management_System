@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<students>
+	<student login="xxxpenetratorxxx">
+		<name>Rafał</name>
+		<surname>Becla</surname>
+		<password>admin123</password>
+		<assignments>
+			<assignment>
+				<name>hangman</name>
+				<ulr>www.hangman.pl</ulr>
+				<grade>5</grade>
+				<isFinished>true</isFinished>
+			</assignment>
+			<assignment>
+				<name>enigma</name>
+				<url>www.enigma.pl</url>
+				<grade>4</grade>
+			</assignment>		
+		</assignments>
+	</student>
+	<student login="karoltrzaskawtibie">
+		<name>Karol</name>
+		<surname>Trzaska</surname>
+		<password>lubiewdupe</password>
+		<assignments>
+			<assignment>
+				<name>hangman</name>
+				<ulr>www.hangman.pl</ulr>
+				<grade>0</grade>
+				<isFinished>true</isFinished>
+			</assignment>		
+		</assignments>
+	</student>
+	<student login="koduj">
+		<name>Krzysztof</name>
+		<surname>Odoj</surname>
+		<password>admin123</password>
+		<assignments>
+		</assignments>
+	</student>
+	<student login="mateuszekdurzybrzuszek">
+		<name>Mateusz</name>
+		<surname>Mazurczak</surname>
+		<password>admin123</password>
+		<assignments>
+		</assignments>
+	</student>
+</students>

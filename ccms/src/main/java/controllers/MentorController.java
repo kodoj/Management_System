@@ -33,7 +33,7 @@ public class MentorController extends Controller {
         List<String> menuOptions = {"List all students","Add student","Remove student","Edit student", "Get Assignments", "Add new Assignment", "Evaluate Assignments","Logout"};
 
         while(getLoggedIn()) {
-            view.printList(menuOptions);
+            View.printList(menuOptions);
 
             while(goodInput == false) {
                 inputInt = view.takeIntInput("What would you like to do? ");
@@ -46,7 +46,7 @@ public class MentorController extends Controller {
             goodInput = false;
 
             if(inputInt == 1) {
-                view.printDAOList("students");
+                View.printList(daoLists.getAllStudents());
                 continue;
             }
             else if(inputInt == 2) {
@@ -62,7 +62,7 @@ public class MentorController extends Controller {
                 continue;
             }
             else if(inputInt == 5) {
-                view.printDAOList("assignments");
+                View.printList(daoLists.getAllAssignments());
                 continue;
             }
             else if(inputInt == 6) {
@@ -84,9 +84,9 @@ public class MentorController extends Controller {
     private void addStudent() {
         String tempName = view.takeStringInput("Name ");
         String tempSurname = view.takeStringInput("Surname ");
-        String accountType = "student";
-        String tempPassword = view.takeStringInput("Password");
-        String tempLogin = view.takeStringInput("Login");
+        String accountType = "students";
+        String tempPassword = view.takeStringInput("Password ");
+        String tempLogin = view.takeStringInput("Login ");
         Map<String, Assignment> assignments = new HashMap<String, Assignment>();
 
         newModel = new Model(tempName, tempSurname, accountType, tempPassword, tempLogin, assignments);
@@ -94,17 +94,15 @@ public class MentorController extends Controller {
     }
 
     private void removeStudent() {
-        view.printDAOList("students");
-        String tempName = view.takeStringInput("Name ");
-        String tempSurname = view.takeStringInput("Surname ");
-        daoStudent.delete(tempName, tempSurname);
+        View.printList(daoLists.getAllStudents());
+        String tempLogin = view.takeStringInput("Login ");
+        daoStudent.delete(tempLogin);
     }
 
     private void editStudent() {
-        view.printDAOList("students");
-        String tempName = view.takeStringInput("Name ");
-        String tempSurname = view.takeStringInput("Surname ");
-        daoStudent.delete(tempName, tempSurname);                             // USUWANIE PO IMIENIU I NAZWISKU?
+        View.printList(daoLists.getAllStudents());
+        String tempLogin = view.takeStringInput("Login ");
+        daoStudent.delete(tempLogin);
         addStudent();
     }
 
@@ -115,17 +113,17 @@ public class MentorController extends Controller {
 
     private void evaluateAssignment() {
         view.printList("students");
-        String tempName = view.takeInput("Name ");
-        String tempSurname = view.takeInput("Surname ");
-        newModel = daoStudent.get(tempName, tempSurname);                // METODA GET? NIE WYOBRAŻAM SOBIE INNEGO EDYTOWANIA POJEDYNCZEGO POLA
-        daoStudent.delete(tempName, tempSurname);
-        view.printHashMap("assignments");
+        String tempLogin = view.takeStringInput("Login ");
+        newModel = daoStudent.get(tempLogin);
+        view.showAssignments(newModel.getAssignments());
         String tempAssignmentName = view.takeStringInput("Which assignment would you like to grade? ");
 
         if(newModel.getAssignments().containsKey(tempAssignmentName)) {
             int grade = view.takeIntInput("What grade for this assignment? ");
             newModel.getAssignments().get(tempAssignmentName).setGrade(grade);
         }
+        daoStudent.delete(tempLogin);
+        daoStudent.add(newModel);
     }
 
 }

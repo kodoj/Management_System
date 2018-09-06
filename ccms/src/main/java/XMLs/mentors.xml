@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<mentors>
+	<mentor login="aga">
+		<name>Agnieszka</name>
+		<surname>Koszany</surname>
+		<password>admin123</password>
+	</mentor>
+	<mentor login="domi">
+		<name>Dominik</name>
+		<surname>Starzyński</surname>
+		<password>admin123</password>
+	</mentor>
+	<mentor login="mati">
+		<name>Mateusz</name>
+		<surname>Ostafil</surname>
+		<password>admin123</password>
+	</mentor>
+	
+</mentors>
