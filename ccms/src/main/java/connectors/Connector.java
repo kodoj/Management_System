@@ -2,10 +2,7 @@ package connectors;
 
 import containers.Assignment;
 import containers.Model;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -232,37 +229,36 @@ public class Connector {
     }
 
     public void deletePerson(String login) {
-        // dziadostwo nie dziala jeszcze
-        // String[] filesSources = {"students.xml", "employees.xml", "mentors.xml"};
-        // String[] tags = {"student", "employee", "mentor"};
+        Element element = loadPerson(login);
 
-        // String fileSource;
-        // String tag;
-        // Element person = null;
+        Element elementAcces = (Element) element.getElementsByTagName("accounttype").item(0);
+        String accessLevel = elementAcces.getTextContent();
 
-        // for(int i=0; i<filesSources.length; i++){
-        //     fileSource = filesSources[i];
-        //     tag = tags[i];
-        //     person = checkFileForUser(fileSource, tag, login);
-        // }
+        String outputURL = "/java/XMLs/"+ accessLevel + "s.xml";
 
-        // if(person != null) {
-        //     Node parent = person.getParentNode();
-        //     parent.removeChild(element);
-        //     parent.normalize();
-        // }
+        Document doc = null;
 
-        // String outputURL = "/java/XMLs/"+ person.getLocalName() + "s" +".xml";            
-        // File xmlFile = new File(outputURL);
-        // Document doc = dBuilder.parse(xmlFile);
-
-        // DOMSource source = new DOMSource(doc);
+        try {
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            doc = dBuilder.parse(outputURL);
+            doc.getDocumentElement().normalize();
+        } catch (FileNotFoundException e) {
+            System.out.println("Can't find the file");
+        } catch (Exception e) {
+            System.out.println("There was a trouble with loading ur file");
+        }
 
 
-        // StreamResult result = new StreamResult(new FileOutputStream(outputURL));
-        // TransformerFactory transFactory = TransformerFactory.newInstance();
-        // Transformer transformer = transFactory.newTransformer();
+        NamedNodeMap nodes = doc.getAttributes();
 
-        // transformer.transform(source, result);
+        for (int i = 0; i < nodes.getLength(); i++) {
+
+            if (nodes.item(i).getNodeValue().equals(login)) {
+                while (nodes.item(i).hasChildNodes()) {
+                    nodes.item(i).removeChild(nodes.item(i).getFirstChild());
+                }
+            }
+        }
     }
 }
