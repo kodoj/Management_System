@@ -1,11 +1,12 @@
 package controllers;
 
-import DAO.DAOLists;
-import DAO.DAOStudent;
+import dao.DAOLists;
+import dao.DAOStudent;
 import containers.Assignment;
 import views.View;
 import containers.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentController extends Controller {
@@ -22,11 +23,15 @@ public class StudentController extends Controller {
         this.daoStudent = new DAOStudent();
     }
 
-    public void run(boolean getLoggedIn()) {
+    public void run() {
 
         int inputInt = 0;
         boolean goodInput = false;
-        List<String> menuOptions = {"Submit assignment", "View grades", "Take new assignment", "Logout"};
+        List<String> menuOptions = new ArrayList<String>();
+        menuOptions.add("Submit assignment");
+        menuOptions.add("View grades");
+        menuOptions.add("Take new assignment");
+        menuOptions.add("Logout");
 
         while(getLoggedIn()) {
             View.printList();

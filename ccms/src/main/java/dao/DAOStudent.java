@@ -1,4 +1,4 @@
-package DAO;
+package dao;
 
 import connectors.Connector;
 import containers.Assignment;

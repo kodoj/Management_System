@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
-import DAO.DAOLists;
+import dao.DAOLists;
 import containers.Assignment;
 import controllers.Controller;
 

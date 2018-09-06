@@ -24,5 +24,5 @@ public abstract class Controller {
         this.loggedIn = loggedIn;
     }
 
-    public abstract void run(boolean getLoggedIn);
+    public abstract void run();
 }
