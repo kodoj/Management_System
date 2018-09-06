@@ -10,7 +10,7 @@ public class Model {
     private String accountType;
     private String password;
     private String login;
-    private HashMap<String, Assignment> assignments;
+    private Map<String, Assignment> assignments;
 
     public Model(String name, String surname, String accountType, String password, String login, Map<String, Assignment> assignments){
         this.name = name;

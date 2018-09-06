@@ -29,11 +29,16 @@ public class DAOLoginController {
 
 
     public Model createModel(){
-        if(connector.loadPerson(login)!= null){
+        if(checkIfExist()){
             elementPerson = connector.loadPerson(login);
-            String documentElement = elementPerson.getLocalName();
-            System.out.println(documentElement);
-          //  nodePersonList = elementPerson.getElementsByTagName()
+            String accountType = elementPerson.getLocalName();
+            if(accountType.equals("student")){
+
+            }else if(accountType.equals("mentor")){
+
+            }else if(accountType.equals("employee")){
+
+            }
         }
         return null;
     }
