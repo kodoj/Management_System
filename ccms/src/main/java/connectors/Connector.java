@@ -35,10 +35,10 @@ public class Connector {
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			doc = dBuilder.parse(xmlFile);
 			doc.getDocumentElement().normalize();
-        } catch (IOException e) {
-            System.out.println("Can't find the file");
         } catch (FileNotFoundException e) {
-			System.out.println("File was not found!");
+            System.out.println("Can't find the file");
+        } catch (IOException e) {
+			System.out.println("There was a trouble with loading ur file");
 		}  
 
         Element root = doc.getDocumentElement(); // employees
@@ -46,17 +46,22 @@ public class Connector {
 		Element newAssignment = doc.createElement("assignment");
         newAssignment.setAttribute("name", assignmentName);
         
-        assignmentTag.appendChild(newAssignment);
+        root.appendChild(newAssignment);
 
         String outputURL = "/java/XMLs/assignments.xml";            
         DOMSource source = new DOMSource(doc);
 
-	
-		StreamResult result = new StreamResult(new FileOutputStream(outputURL));
-		TransformerFactory transFactory = TransformerFactory.newInstance();
-		Transformer transformer = transFactory.newTransformer();
-		
-		transformer.transform(source, result);            
+        
+		try {
+            StreamResult result = new StreamResult(new FileOutputStream(outputURL));
+            TransformerFactory transFactory = TransformerFactory.newInstance();
+            Transformer transformer = transFactory.newTransformer();
+            transformer.transform(source, result);
+        } catch(FileNotFoundException e) {
+            System.out.println("File not found");
+        } catch(IOException e){
+            System.out.println("problems with loading file");
+        }
    
     }
 
@@ -65,9 +70,9 @@ public class Connector {
         String accountType = model.getAccountType().toLowerCase();
         String name = model.getName().toLowerCase();
         String capitalizedName = name.substring(0, 1).toUpperCase() + name.substring(1);
-        String surname = model.getSurname()).toLowerCase();
+        String surname = model.getSurname().toLowerCase();
         String capitalizedSurname = surname.substring(0, 1).toUpperCase() + surname.substring(1);
-        String login = model.getLogin());
+        String login = model.getLogin();
         String password = model.getPassword();
 
         File xmlFile = new File("/java/XMLs/" + accountType +".xml");
@@ -228,37 +233,37 @@ public class Connector {
     }
     
     public void deletePerson(String login){
+        // dziadostwo nie dziala jeszcze
+        // String[] filesSources = {"students.xml", "employees.xml", "mentors.xml"};
+        // String[] tags = {"student", "employee", "mentor"};
 
-        String[] filesSources = {"students.xml", "employees.xml", "mentors.xml"};
-        String[] tags = {"student", "employee", "mentor"};
+        // String fileSource;
+        // String tag;
+        // Element person = null;
 
-        String fileSource;
-        String tag;
-        Element person = null;
+        // for(int i=0; i<filesSources.length; i++){
+        //     fileSource = filesSources[i];
+        //     tag = tags[i];
+        //     person = checkFileForUser(fileSource, tag, login);
+        // }
 
-        for(int i=0; i<filesSources.length; i++){
-            fileSource = filesSources[i];
-            tag = tags[i];
-            person = checkFileForUser(fileSource, tag, login);
-        }
+        // if(person != null) {
+        //     Node parent = person.getParentNode();
+        //     parent.removeChild(element);
+        //     parent.normalize();
+        // }
 
-        if(person != null) {
-            Node parent = person.getParentNode();
-            parent.removeChild(element);
-            parent.normalize();
-        }
+        // String outputURL = "/java/XMLs/"+ person.getLocalName() + "s" +".xml";            
+        // File xmlFile = new File(outputURL);
+        // Document doc = dBuilder.parse(xmlFile);
 
-        String outputURL = "/java/XMLs/"+ person.getLocalName() + "s" +".xml";            
-        File xmlFile = new File(outputURL);
-        Document doc = dBuilder.parse(xmlFile);
-
-        DOMSource source = new DOMSource(doc);
+        // DOMSource source = new DOMSource(doc);
 
 	
-		StreamResult result = new StreamResult(new FileOutputStream(outputURL));
-		TransformerFactory transFactory = TransformerFactory.newInstance();
-		Transformer transformer = transFactory.newTransformer();
+		// StreamResult result = new StreamResult(new FileOutputStream(outputURL));
+		// TransformerFactory transFactory = TransformerFactory.newInstance();
+		// Transformer transformer = transFactory.newTransformer();
 		
-		transformer.transform(source, result);            
+		// transformer.transform(source, result);            
     }
 }
