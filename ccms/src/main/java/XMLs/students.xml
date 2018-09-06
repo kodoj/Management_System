@@ -15,6 +15,7 @@
 				<name>enigma</name>
 				<url>www.enigma.pl</url>
 				<grade>4</grade>
+				<isFinished>true</isFinished>
 			</assignment>		
 		</assignments>
 	</student>
