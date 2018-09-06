@@ -17,51 +17,90 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.Transformer;
 import java.io.StringWriter;
 import javax.xml.transform.OutputKeys;
-
+import java.io.FileNotFoundException;
 
 class Main {
     public static void main(String[] args) {
         System.out.println("Dziala");
         
-        Element newElement = deleteUser("xxxpenetratorxxx");    
-        Element ele  = (Element) newElement.getElementsByTagName("mentor").item(0);
-        System.out.println(ele.getAttribute("login"));
+        addAssignmentToXML("nowess");    
+        System.out.println("Ididit");
     }
 
-    public void deleteUser(String login){
+    public static void addAssignmentToXML(String assignmentName){
 
-        String[] filesSources = {"students.xml", "employees.xml", "mentors.xml"};
-        String[] tags = {"student", "employee", "mentor"};
+		Document doc = null;
 
-        String fileSource;
-        String tag;
-        Element person = null;
-
-        for(int i=0; i<filesSources.length; i++){
-            fileSource = filesSources[i];
-            tag = tags[i];
-            person = checkFileForUser(fileSource, tag, login);
+        try {
+            File xmlFile = new File("assignments.xml");
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			doc = dBuilder.parse(xmlFile);
+			doc.getDocumentElement().normalize();
+        } catch (Exception e) {
+            System.out.println("Can't find the file");
         }
 
-        if(person != null) {
-            Node parent = person.getParentNode();
-            parent.removeChild(element);
-            parent.normalize();
-        }
+        Element root = doc.getDocumentElement(); // employees
+        Element assignmentTag = (Element) root.getElementsByTagName("assignments").item(0); //employee
+		Element newAssignment = doc.createElement("assignment");
+        newAssignment.setAttribute("name", assignmentName);
+        
+        root.appendChild(newAssignment);
 
-        String outputURL = ""+ person.getLocalName() + "s" +".xml";            
-        File xmlFile = new File(outputURL);
-        Document doc = dBuilder.parse(xmlFile);
-
+        String outputURL = "assignments.xml";            
         DOMSource source = new DOMSource(doc);
-
-	
-		StreamResult result = new StreamResult(new FileOutputStream(outputURL));
-		TransformerFactory transFactory = TransformerFactory.newInstance();
-		Transformer transformer = transFactory.newTransformer();
-		
-		transformer.transform(source, result);            
+        
+        try {
+            StreamResult result = new StreamResult(new FileOutputStream(outputURL));
+            TransformerFactory transFactory = TransformerFactory.newInstance();
+            Transformer transformer = transFactory.newTransformer();
+            transformer.transform(source, result);
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+		            
+   
     }
+
+    // public static void deleteUser(String login){
+    //     Document doc = null;
+
+    //     Element person = loadPerson(login);
+    //     Element personType = (Element) person.getElementsByTagName("accounttype").item(0);
+    //     String accountType = personType.getTextContent();
+    //     String category = accountType+"s";
+        
+    //     File fXmlFile = new File(category + ".xml");
+    //     try{
+    //         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+    //         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+    //         doc = dBuilder.parse(fXmlFile);
+    //     } catch (Exception e){
+    //         System.out.println(e);
+    //     }
+    //     Node parent = doc.getDocumentElement();
+    //     parent.removeChild(person);
+        
+
+    //     String outputURL = accountType + "s" +".xml";
+    //     System.out.println(outputURL);
+    //     try {            
+    //         File xmlFile = new File(outputURL);
+    //         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+    //         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+    //         doc = dBuilder.parse(xmlFile);
+    //         DOMSource source = new DOMSource(doc);
+
+    //         StreamResult result = new StreamResult(new FileOutputStream(outputURL));
+    //         TransformerFactory transFactory = TransformerFactory.newInstance();
+    //         Transformer transformer = transFactory.newTransformer();
+            
+    //         transformer.transform(source, result);            
+    //     } catch(Exception e) {
+    //         e.printStackTrace();
+    //     }
+    // }
 
     public static Element loadListOfUsers(String accountType){
         Document doc = null;
