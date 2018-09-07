@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<administrator>
+    <employee login="jurekCC">
+        <name>Jurek</name>
+        <surname>Mardaus</surname>
+        <password>jestemadminembardzo</password>
+        <accounttype>administrator</accounttype>
+    </employee>
+</administrator>
