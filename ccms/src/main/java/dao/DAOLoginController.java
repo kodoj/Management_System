@@ -32,15 +32,20 @@ public class DAOLoginController {
 
     public Model createModel(){
         elementPerson = connector.loadPerson(login);
+        System.out.println("przeszedlem za load person");
         Element accountTypeElement = (Element) elementPerson.getElementsByTagName("accounttype").item(0);
         String accountType = accountTypeElement.getTextContent();
+        System.out.println(accountType);
         if(accountType.equals("student")){
+            System.out.println("jestem student");
             DAOStudent daoStudent = new DAOStudent();
             return daoStudent.get(login);
-        }else if(accountType.equals("mentor") || accountType.equals("employee")){
+        }else if(accountType.equals("mentor") || accountType.equals("employee") || accountType.equals("administrator")){
+            System.out.println("jestem admino mento employe");
             DAOEmployer daoEmployer = new DAOEmployer();
             return daoEmployer.get(login);
         }
+        System.out.println("jestem gównem, nikim, ponownie");
         return null;
     }
 

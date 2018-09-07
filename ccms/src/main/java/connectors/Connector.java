@@ -168,7 +168,6 @@ public class Connector {
                 return person;
             }
         }
-
         return person;
     }
 

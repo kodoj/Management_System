@@ -1,5 +1,4 @@
-<?xml version="1.0"?>
-<mentors>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><mentors>
 	<mentor login="aga">
 		<name>Agnieszka</name>
 		<surname>Koszany</surname>
@@ -19,4 +18,4 @@
 		<accounttype>mentor</accounttype>
 	</mentor>
 	
-</mentors>
+<mentor login="mentorex"><name>Krzykarraf</name><surname>Lol</surname><password>hej</password><accounttype>mentor</accounttype></mentor></mentors>
