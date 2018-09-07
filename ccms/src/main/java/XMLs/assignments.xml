@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><assignments>
-	<assignment id="hangman"/>
-	<assignment id="enigma"/>
-	<assignment id="battleships"/>
-	<assignment id="klondike solitaire"/>	
-	<assignment id="battle of cards"/>
-	<assignment id="online shop"/>
-	<assignment id="ccms"/>
-	<assignment id="nowess"/>
-</assignments>
+	<assignment>"hangman"</assignment>
+	<assignment>"enigma"</assignment>
+	<assignment>"battleships"</assignment>
+	<assignment>"klondike solitaire"</assignment>
+	<assignment>"battle of cards"</assignment>
+	<assignment>"online shop"</assignment>
+	<assignment>"ccms"</assignment>
+	<assignment>"nowess"</assignment>
+	<assignment>"Eisenhower"</assignment>
+<assignment>test assignment</assignment></assignments>

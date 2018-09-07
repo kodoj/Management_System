@@ -81,10 +81,16 @@ public class StudentController extends Controller {
     private void takeNewAssignment() {
         view.printList(daoLists.getAllAssignments());
         String assignmentID = view.takeStringInput("Which assignment would you like to take? ");
-        if(daoLists.getAllAssignments().contains(assignmentID) && !getMyModel().getAssignments().containsKey(assignmentID)) {
+        if(!containsAssignmentID(daoLists.getAllAssignments(), assignmentID)) {
+            System.out.println(getMyModel().getAssignments());
             getMyModel().getAssignments().put(assignmentID, new Assignment(assignmentID));
+            System.out.println(getMyModel().getAssignments().get(assignmentID));
         }
         daoStudent.delete(getMyModel().getLogin());
         daoStudent.add(getMyModel());
+    }
+
+    private boolean containsAssignmentID(List<Assignment> list, String assignmentID){
+        return list.stream().anyMatch(o -> o.getId().equals(assignmentID));
     }
 }

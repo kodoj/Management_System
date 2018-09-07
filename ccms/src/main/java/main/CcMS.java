@@ -45,7 +45,7 @@ public class CcMS {
     }
 
     private void initializeNewUser(){
-        if(isAccountType("employer"))
+        if(isAccountType("employee"))
             this.newController = new EmployerController(this.user, new View());
         else if (isAccountType("student"))
             this.newController = new StudentController(this.user, new View());

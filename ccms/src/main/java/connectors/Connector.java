@@ -19,7 +19,6 @@ import java.util.Map;
 
 public class Connector {
 
-    Model model;
 
     public void addAssignmentToXML(String assignmentName) {
 
@@ -36,10 +35,9 @@ public class Connector {
             System.out.println("There was a trouble with loading ur file");
         }
 
-        Element root = doc.getDocumentElement(); // employees
-        Element assignmentTag = (Element) root.getElementsByTagName("assignments").item(0); //employee
+        Element root = doc.getDocumentElement();
         Element newAssignment = doc.createElement("assignment");
-        newAssignment.setAttribute("name", assignmentName);
+        newAssignment.setTextContent(assignmentName);
 
         root.appendChild(newAssignment);
 
@@ -162,29 +160,14 @@ public class Connector {
             tag = tags[i];
             person = checkFileForPerson(fileSource, tag, login);
             if (person == null) {
-                System.out.println("person loaded with null");
+                continue;
             } else {
-                System.out.println("person loaded good!");
                 return person;
             }
         }
         return person;
     }
 
-    public Element loadAssigments() {
-        Document doc = null;
-        try {
-            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            doc = dBuilder.parse("src/main/java/XMLs/assignments.xml");
-        } catch (FileNotFoundException e) {
-            System.out.println("File was not found!");
-        } catch (Exception e) {
-            System.out.println("Can't find the file");
-        }
-        Element assignments = doc.getDocumentElement();
-        return assignments;
-    }
 
     private Element checkFileForPerson(String fileSource, String tag, String login) {
 
@@ -221,6 +204,23 @@ public class Connector {
         return null;
     }
 
+
+    public NodeList loadAssigments() {
+        Document doc = null;
+        try {
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            doc = dBuilder.parse("src/main/java/XMLs/assignments.xml");
+        } catch (FileNotFoundException e) {
+            System.out.println("File was not found!");
+        } catch (Exception e) {
+            System.out.println("Can't find the file");
+        }
+        NodeList listOfAssignments = doc.getElementsByTagName("assignment");
+        return listOfAssignments;
+    }
+
+
     public NodeList loadListOfPersons(String accountType) {
         Document doc = null;
         try {
@@ -243,8 +243,6 @@ public class Connector {
         Element elementAcces = (Element) element.getElementsByTagName("accounttype").item(0);
         String accountType = elementAcces.getTextContent();
 
-        String outputURL = "src/main/java/XMLs/"+ accountType + "s.xml";
-
         Document doc = null;
 
         try {
@@ -258,15 +256,15 @@ public class Connector {
             System.out.println("There was a trouble with loading ur file");
         }
 
-        NodeList nodes = doc.getElementsByTagName(accountType+"s");
+        NodeList nodes = doc.getElementsByTagName(accountType);
 
         for (int i = 0; i < nodes.getLength(); i++) {
             Element newElement = (Element) nodes.item(i);
-            Element loginElement = (Element) newElement.getElementsByTagName(accountType).item(0);
-            if (loginElement.getAttribute("login").equals(login)) {
+            if (newElement.getAttribute("login").equals(login)) {
                 while (nodes.item(i).hasChildNodes()) {
                     nodes.item(i).removeChild(nodes.item(i).getFirstChild());
                 }
+                nodes.item(i).getParentNode().removeChild(nodes.item(i));
             }
         }
 

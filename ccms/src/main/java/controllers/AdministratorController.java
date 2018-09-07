@@ -56,7 +56,7 @@ public class AdministratorController extends Controller {
                 continue;
             }
             else if(inputInt == 2) {
-                View.printList(daoLists.getAllEmployers());
+                View.printList(daoLists.getAllMentors());
                 continue;
             }
             else if(inputInt == 3) {
@@ -90,13 +90,13 @@ public class AdministratorController extends Controller {
     }
 
     private void removeMentor() {
-        View.printList(daoLists.getAllEmployers());
+        View.printList(daoLists.getAllMentors());
         String tempLogin = view.takeStringInput("Login ");
         daoEmployer.delete(tempLogin);
     }
 
     private void editMentor() {
-        View.printList(daoLists.getAllEmployers());
+        View.printList(daoLists.getAllMentors());
         String tempLogin = view.takeStringInput("Login ");
         daoEmployer.delete(tempLogin);
         addMentor();

@@ -17,5 +17,5 @@
 		<password>admin123</password>
 		<accounttype>mentor</accounttype>
 	</mentor>
-	
-<mentor login="mentorex"><name>Krzykarraf</name><surname>Lol</surname><password>hej</password><accounttype>mentor</accounttype></mentor></mentors>
+
+	<mentor login="kod"><name>Krzys</name><surname>Odoj</surname><password>mama</password><accounttype>mentor</accounttype></mentor></mentors>

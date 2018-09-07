@@ -48,6 +48,6 @@ public class DAOEmployer implements DAOSingleObject {
     }
 
     public void delete(String login) {
-
+        connector.deletePerson(login);
     }
 }

@@ -7,50 +7,57 @@ public class Assignment {
     private Boolean isFinished;
 
 
-        public Assignment(String id){
-            this.id = id;
-        }
+    public Assignment(String id){
+        this.id = id;
+        this.url = "";
+        this.grade = 0;
+        this.isFinished = false;
+    }
 
-        public Assignment(String id, String url, Integer grade, boolean isFinished) {
-            this.id = id;
-            this.url = url;
-            this.grade = grade;
-            this.isFinished = isFinished;
-        }
-
-
-        public void setUrl(String url){
-            this.url = url;
-        }
+    public Assignment(String id, String url, Integer grade, boolean isFinished) {
+        this.id = id;
+        this.url = url;
+        this.grade = grade;
+        this.isFinished = isFinished;
+    }
 
 
-        public void setGrade(Integer grade){
-            this.grade = grade;
-        }
+    public void setUrl(String url){
+        this.url = url;
+    }
 
 
-        public void setIsFinished(Boolean isFinished){
-            this.isFinished = isFinished;
-        }
+    public void setGrade(Integer grade){
+        this.grade = grade;
+    }
 
 
-        public String getId(){
-            return this.id;
-        }
+    public void setIsFinished(Boolean isFinished){
+        this.isFinished = isFinished;
+    }
 
 
-        public String getUrl(){
-            return this.url;
-        }
+    public String getId(){
+        return this.id;
+    }
 
 
-        public Integer getGrade(){
-            return this.grade;
-        }
+    public String getUrl(){
+        return this.url;
+    }
 
 
-        public Boolean getIsFinished(){
-            return this.isFinished;
-        }
+    public Integer getGrade(){
+        return this.grade;
+    }
 
+
+    public Boolean getIsFinished(){
+        return this.isFinished;
+    }
+
+    @Override
+    public String toString() {
+        return getId();
+    }
 }

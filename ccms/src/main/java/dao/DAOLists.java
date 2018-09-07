@@ -66,12 +66,14 @@ public class DAOLists implements DAOMultipleObjects {
     }
 
     public List<Assignment> getAllAssignments() {
-        element = connector.loadAssigments();
-        nodeList = element.getElementsByTagName("assignment");
+        nodeList = connector.loadAssigments();
+        assignments.clear();
         for(int i = 0; i < nodeList.getLength(); i++) {
-            assignment = new Assignment(nodeList.item(i).getAttributes().getNamedItem("assignment").getNodeValue());
+            String nextElement = nodeList.item(i).getTextContent();
+
+            Assignment assignment = new Assignment(nextElement);
             assignments.add(assignment);
         }
-        return null;
+        return assignments;
     }
 }
