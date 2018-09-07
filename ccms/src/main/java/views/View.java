@@ -48,6 +48,7 @@ public class View {
     }
 
     public static <T> void printList(List<T> listElems){
+        System.out.println(2);
         for(int i=0; i<listElems.size(); i++){
             T element = listElems.get(i);
             if(element instanceof  String)
@@ -55,6 +56,7 @@ public class View {
             else
                 System.out.println(((i+1) + ". " + element.toString()));
         }
+        System.out.println();
     }
 
 

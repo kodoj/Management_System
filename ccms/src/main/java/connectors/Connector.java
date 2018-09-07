@@ -232,7 +232,7 @@ public class Connector {
         } catch (Exception e) {
             System.out.println("Can't find the file");
         }
-        NodeList listOfUsers = doc.getElementsByTagName(accountType+"s");
+        NodeList listOfUsers = doc.getElementsByTagName(accountType);
 
         return listOfUsers;
     }

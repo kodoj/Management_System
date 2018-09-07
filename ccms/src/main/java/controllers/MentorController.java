@@ -96,7 +96,7 @@ public class MentorController extends Controller {
     private void addStudent() {
         String tempName = view.takeStringInput("Name ");
         String tempSurname = view.takeStringInput("Surname ");
-        String accountType = "students";
+        String accountType = "student";
         String tempPassword = view.takeStringInput("Password ");
         String tempLogin = view.takeStringInput("Login ");
         Map<String, Assignment> assignments = new HashMap<String, Assignment>();
