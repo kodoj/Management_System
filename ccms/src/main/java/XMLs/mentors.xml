@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<mentors>
-    <mentor login="aga">
-        <name>Agnieszka</name>
-        <surname>Koszany</surname>
-        <password>admin123$ddd</password>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><mentors>
+    <mentor login="cyklon">
+        <name>Karol</name>
+        <surname>Trzaska</surname>
+        <password>zGRg45EPKkw=$xBB414Q6rQFe7ujvpbIdAfD1bmTTFG+9vERQDSj2Zfg=</password>
         <accounttype>mentor</accounttype>
     </mentor>
-</mentors>
+<mentor login="aga"><name>Aga</name><surname>Koszany</surname><password>4Mkdjsslsd4=$TRy5roIyljyEnoaEeBFmPQzANCS+YzOkR9NdxKkTNzo=</password><accounttype>mentor</accounttype></mentor></mentors>

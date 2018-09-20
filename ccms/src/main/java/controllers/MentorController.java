@@ -91,6 +91,7 @@ public class MentorController extends Controller {
                         evaluateAssignment();
                         break;
                     case 8:
+                        setloggedIn(false);
                         break;
                 }
             } catch (IllegalArgumentException | NoSuchAlgorithmException |  InvalidKeySpecException e){
