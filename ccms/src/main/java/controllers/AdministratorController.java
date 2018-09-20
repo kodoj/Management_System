@@ -42,38 +42,40 @@ public class AdministratorController extends Controller {
             View.printList(menuOptions);
 
             while(goodInput == false) {
-                inputInt = view.takeIntInput("What would you like to do? ");
-                if(inputInt > 0 && inputInt < 7) {
+                int FIRST_INPUT = 0;
+                int LAST_INPUT = 7;
+                try{
+                    inputInt = view.takeIntInput("What would you like to do? ");
+                }catch(NumberFormatException e){
+                    System.out.println("Wrong input!");
+                }
+
+                if(inputInt > FIRST_INPUT && inputInt < LAST_INPUT) {
                     goodInput = true;
                 } else {
                     view.showMessage("Only numbers from 1 to 6!");
                 }
             }
             goodInput = false;
-
-            if(inputInt == 1) {
-                View.printList(daoLists.getAllStudents());
-                continue;
-            }
-            else if(inputInt == 2) {
-                View.printList(daoLists.getAllMentors());
-                continue;
-            }
-            else if(inputInt == 3) {
-                addMentor();
-                continue;
-            }
-            else if(inputInt == 4) {
-                removeMentor();
-                continue;
-            }
-            else if(inputInt == 5) {
-                editMentor();
-                continue;
-            }
-            else if(inputInt == 6) {
-                setloggedIn(false);
-                break;
+            switch(inputInt){
+                case 1:
+                    View.printList(daoLists.getAllStudents());
+                    break;
+                case 2:
+                    View.printList(daoLists.getAllMentors());
+                    break;
+                case 3:
+                    addMentor();
+                    break;
+                case 4:
+                    removeMentor();
+                    break;
+                case 5:
+                    editMentor();
+                    break;
+                case 6:
+                    setloggedIn(false);
+                    break;
             }
 
         }

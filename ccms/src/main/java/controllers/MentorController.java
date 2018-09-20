@@ -47,48 +47,49 @@ public class MentorController extends Controller {
         while(getLoggedIn()) {
             View.printList(menuOptions);
 
-            while(goodInput == false) {
-                inputInt = view.takeIntInput("What would you like to do? ");
-                if(inputInt > 0 && inputInt < 9) {                               // magic number, to improve!
+            while(!goodInput) {
+                int FIRST_INPUT = 0;
+                int LAST_INPUT = 9;
+                try{
+                    inputInt = view.takeIntInput("What would you like to do? ");
+                }catch(NumberFormatException e){
+                    System.out.println("Wrong input!");
+                }
+
+                if(inputInt > FIRST_INPUT && inputInt < LAST_INPUT) {
                     goodInput = true;
-                } else {
+                }else {
                     view.showMessage("Only numbers from 1 to 8!");
                 }
             }
             goodInput = false;
 
-            if(inputInt == 1) {
-                View.printList(daoLists.getAllStudents());
-                continue;
+            switch(inputInt){
+                case 1:
+                    View.printList(daoLists.getAllStudents());
+                    break;
+                case 2:
+                    addStudent();
+                    break;
+                case 3:
+                    removeStudent();
+                    break;
+                case 4:
+                    editStudent();
+                    break;
+                case 5:
+                    View.printList(daoLists.getAllAssignments());
+                    break;
+                case 6:
+                    setNewAssignment();
+                    break;
+                case 7:
+                    evaluateAssignment();
+                    break;
+                case 8:
+                    break;
             }
-            else if(inputInt == 2) {
-                addStudent();
-                continue;
-            }
-            else if(inputInt == 3) {
-                removeStudent();
-                continue;
-            }
-            else if(inputInt == 4) {
-                editStudent();
-                continue;
-            }
-            else if(inputInt == 5) {
-                View.printList(daoLists.getAllAssignments());
-                continue;
-            }
-            else if(inputInt == 6) {
-                setNewAssignment();
-                continue;
-            }
-            else if(inputInt == 7) {
-                evaluateAssignment();
-                continue;
-            }
-            else if(inputInt == 8) {
-                setloggedIn(false);
-                break;
-            }
+
 
         }
     }
@@ -105,17 +106,33 @@ public class MentorController extends Controller {
         daoStudent.add(newModel);
     }
 
-    private void removeStudent() {
+    private void removeStudent(){
         View.printList(daoLists.getAllStudents());
-        String tempLogin = view.takeStringInput("Login ");
-        daoStudent.delete(tempLogin);
+        String tempLogin = view.takeStringInput("Choose student: ");
+        try{
+            daoStudent.delete(tempLogin);
+        }catch(NullPointerException e){
+            System.out.println("Couldn't find student with given name");
+        }
+
     }
 
     private void editStudent() {
         View.printList(daoLists.getAllStudents());
-        String tempLogin = view.takeStringInput("Login ");
-        daoStudent.delete(tempLogin);
-        addStudent();
+        String tempLogin = view.takeStringInput("Choose Student: ");
+        boolean isFound = true;
+        try{
+            daoStudent.delete(tempLogin);
+        }catch(NullPointerException e){
+            System.out.println("Couldn't find student with given name");
+            isFound = false;
+        }
+        if(isFound){
+            addStudent();
+        }else{
+            System.out.println("Choose another student!");
+        }
+
     }
 
     private void setNewAssignment() {
@@ -137,5 +154,6 @@ public class MentorController extends Controller {
         daoStudent.delete(tempLogin);
         daoStudent.add(newModel);
     }
+
 
 }

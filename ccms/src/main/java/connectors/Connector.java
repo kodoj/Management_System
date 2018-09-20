@@ -169,7 +169,7 @@ public class Connector {
     }
 
 
-    private Element checkFileForPerson(String fileSource, String tag, String login) {
+    private Element checkFileForPerson(String fileSource, String tag, String login){
 
         Document doc = null;
         fileSource = "src/main/java/XMLs/" + fileSource;
@@ -237,7 +237,7 @@ public class Connector {
         return listOfUsers;
     }
 
-    public void deletePerson(String login) {
+    public void deletePerson(String login){
         Element element = loadPerson(login);
 
         Element elementAcces = (Element) element.getElementsByTagName("accounttype").item(0);

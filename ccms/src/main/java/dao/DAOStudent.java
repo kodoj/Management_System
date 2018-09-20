@@ -84,7 +84,9 @@ public class DAOStudent implements DAOSingleObject {
     }
 
 
-    public void delete(String login) {
-        connector.deletePerson(login);
+    public void delete(String login) throws NullPointerException{
+            connector.deletePerson(login);
+
+
     }
 }

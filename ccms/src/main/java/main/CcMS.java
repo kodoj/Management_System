@@ -24,6 +24,7 @@ public class CcMS {
     public void run() {
         setIsRun();
         while(isRun) {
+
             getModel();
             initializeNewUser();
             runNewUser();

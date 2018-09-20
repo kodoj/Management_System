@@ -37,28 +37,36 @@ public class StudentController extends Controller {
             View.printList(menuOptions);
 
             while(!goodInput) {
-                inputInt = view.takeIntInput("What would you like to do? ");
-                if(inputInt > 0 && inputInt < 5) {                               // magic number, to improve!
+                int FIRST_INPUT = 0;
+                int LAST_INPUT = 5;
+                try{
+                    inputInt = view.takeIntInput("What would you like to do? ");
+                }catch(NumberFormatException e){
+                    System.out.println("Wrong input!");
+                }
+
+                if(inputInt > FIRST_INPUT && inputInt < LAST_INPUT) {                               // magic number, to improve!
                     goodInput = true;
                 } else {
                     view.showMessage("Only numbers from 1 to 4!");
                 }
             }
             goodInput = false;
+            switch(inputInt){
+                case 1:
+                    submitAssignment();
+                    break;
+                case 2:
+                    viewGrades();
+                    break;
+                case 3:
+                    takeNewAssignment();
+                    break;
+                case 4:
+                    setloggedIn(false);
+                    break;
+            }
 
-            if(inputInt == 1) {
-                submitAssignment();
-            }
-            else if(inputInt == 2) {
-                viewGrades();
-            }
-            else if(inputInt == 3) {
-                takeNewAssignment();
-            }
-            else if(inputInt == 4) {
-                setloggedIn(false);
-                break;
-            }
             inputInt = 0;
 
         }

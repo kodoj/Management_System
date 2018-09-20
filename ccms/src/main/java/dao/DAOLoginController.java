@@ -59,35 +59,3 @@ public class DAOLoginController {
 
 }
 
-
-/*
-            String name;
-            String surname;
-            Model model;
-            elementPerson = connector.loadPerson(login);
-            String accountType = elementPerson.getLocalName();
-
-            if(accountType.equals("student")){
-                name = elementPerson.getElementsByTagName("name").item(0).getTextContent();
-                System.out.println("ElementPerson :" + name); //testowe printy
-                surname = elementPerson.getElementsByTagName("surname").item(0).getTextContent();
-                System.out.println("ElementPerson :" + surname);
-                HashMap<String, Assignment> personHashMap = new HashMap<String, Assignment>();
-                NodeList personList = elementPerson.getElementsByTagName("assignment");
-
-                for(int i = 0; i < personList.getLength(); i ++) {
-                    Node evalNode = personList.item(0);
-                    Element evalElement = (Element) evalNode;
-                    name = evalElement.getElementsByTagName("name").item(0).getTextContent();
-                }
-
-            }else if(accountType.equals("mentor") || accountType.equals("employee")){
-                name = elementPerson.getElementsByTagName("name").item(0).getTextContent();
-                System.out.println("ElementPerson name: " + name); //testowe printy
-                surname = elementPerson.getElementsByTagName("surname").item(0).getTextContent();
-                System.out.println("ElementPerson surname " + surname);
-
-                model = new Model(name, surname,accountType,password, login);
-                return model;
-            }
- */
