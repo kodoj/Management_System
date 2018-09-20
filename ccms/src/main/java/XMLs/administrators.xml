@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <administrators>
-    <administrator login="jurekcc">
+    <administrator login="admin">
         <name>Jurek</name>
         <surname>Mardaus</surname>
-        <password>jestemadminembardzo</password>
+        <password>admin</password>
         <accounttype>administrator</accounttype>
     </administrator>
 </administrators>

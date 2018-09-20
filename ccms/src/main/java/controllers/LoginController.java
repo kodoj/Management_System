@@ -1,6 +1,7 @@
 package controllers;
 
 import dao.DAOLoginController;
+import maskingThread.CatchPassword;
 import views.View;
 import containers.Model;
 
@@ -9,6 +10,7 @@ public class LoginController {
     private String password;
     private View view;
     private DAOLoginController daoLoginController;
+    private CatchPassword catchPassword;
 
     public LoginController(View view){
         this.view = view;
@@ -27,8 +29,9 @@ public class LoginController {
 
 
     private Boolean validatePassword(){
+        catchPassword = new CatchPassword();
         login = view.takeStringInput("Login:");
-        password = view.takeStringInput("Password: ");
+        password = catchPassword.catchPasswordToHide();
         daoLoginController = new DAOLoginController();
         daoLoginController.setLogin(login);
         daoLoginController.setPassword(password);
