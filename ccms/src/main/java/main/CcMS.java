@@ -4,6 +4,8 @@ import controllers.*;
 import views.View;
 import containers.Model;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,12 +26,15 @@ public class CcMS {
     public void run() {
         setIsRun();
         while(isRun) {
-
-            getModel();
-            initializeNewUser();
-            runNewUser();
-            resetUser();
-            setIsRun();
+            try {
+                getModel();
+                initializeNewUser();
+                runNewUser();
+                resetUser();
+                setIsRun();
+            } catch (IllegalArgumentException | NoSuchAlgorithmException | InvalidKeySpecException e){
+                System.out.println("wrong password (hash)");
+            }
         }
     }
     private void setIsRun(){
@@ -41,7 +46,7 @@ public class CcMS {
             this.isRun = false;
     }
 
-    public void getModel(){
+    public void getModel() throws IllegalArgumentException, NoSuchAlgorithmException, InvalidKeySpecException {
             this.user = this.loginController.getUserModel();
     }
 

@@ -4,20 +4,27 @@ import dao.DAOLoginController;
 import views.View;
 import containers.Model;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+
+
 public class LoginController {
     private String login;
-    private String password;
+    private String inputPassword;
     private View view;
     private DAOLoginController daoLoginController;
+    private PasswordController passwordController;
 
     public LoginController(View view){
         this.view = view;
+        this.passwordController = new PasswordController();
+        daoLoginController = new DAOLoginController();
     }
 
 
-    public Model getUserModel(){
+    public Model getUserModel() throws IllegalArgumentException, NoSuchAlgorithmException, InvalidKeySpecException{
         if(validatePassword()){
-            Model newUser = daoLoginController.createModel();
+            Model newUser = daoLoginController.createModel(this.login);
             System.out.println(newUser.getAccountType());
             return newUser;
         }else{
@@ -26,12 +33,12 @@ public class LoginController {
     }
 
 
-    private Boolean validatePassword(){
+    private Boolean validatePassword() throws IllegalArgumentException, NoSuchAlgorithmException, InvalidKeySpecException {
         login = view.takeStringInput("Login:");
-        password = view.takeStringInput("Password: ");
-        daoLoginController = new DAOLoginController();
-        daoLoginController.setLogin(login);
-        daoLoginController.setPassword(password);
-        return daoLoginController.checkIfExist();
+        inputPassword = view.takeStringInput("Password: ");
+        String hashedPassword = daoLoginController.getHashedPassword(this.login);
+        return passwordController.check(inputPassword, hashedPassword);
     }
+
+
 }

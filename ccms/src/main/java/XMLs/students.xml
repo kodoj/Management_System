@@ -1,3 +1,37 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><students>
-    
-<student login="admin"><name>Karol</name><surname>Trzaska</surname><password>admin</password><accounttype>student</accounttype><assignments><assignment><name>hangman</name><grade>0</grade><url>www.hangman.pl</url><isFinished>true</isFinished></assignment><assignment><name>nowess</name><grade>3</grade><url>hej test blagam dzialaj</url><isFinished>true</isFinished></assignment><assignment><name>ccms</name><grade>0</grade><url/><isFinished>false</isFinished></assignment></assignments></student><student login="surd"><name>Adam</name><surname>Surdo</surname><password>mama</password><accounttype>student</accounttype><assignments/></student></students>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<students>
+
+    <student login="karol">
+        <name>Karol</name>
+        <surname>Trzaska</surname>
+        <password>trzaska$dddd</password>
+        <accounttype>student</accounttype>
+        <assignments>
+            <assignment>
+                <name>hangman</name>
+                <grade>0</grade>
+                <url>www.hangman.pl</url>
+                <isFinished>true</isFinished>
+            </assignment>
+            <assignment>
+                <name>nowess</name>
+                <grade>3</grade>
+                <url>hej test blagam dzialaj</url>
+                <isFinished>true</isFinished>
+            </assignment>
+            <assignment>
+                <name>ccms</name>
+                <grade>0</grade>
+                <url/>
+                <isFinished>false</isFinished>
+            </assignment>
+        </assignments>
+    </student>
+    <student login="surd">
+        <name>Adam</name>
+        <surname>Surdo</surname>
+        <password>mama</password>
+        <accounttype>student</accounttype>
+        <assignments/>
+    </student>
+</students>

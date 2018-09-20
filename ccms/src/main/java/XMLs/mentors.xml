@@ -1,21 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><mentors>
-	<mentor login="aga">
-		<name>Agnieszka</name>
-		<surname>Koszany</surname>
-		<password>admin123</password>
-		<accounttype>mentor</accounttype>
-	</mentor>
-	<mentor login="domi">
-		<name>Dominik</name>
-		<surname>Starzyński</surname>
-		<password>admin123</password>
-		<accounttype>mentor</accounttype>
-	</mentor>
-	<mentor login="mati">
-		<name>Mateusz</name>
-		<surname>Ostafil</surname>
-		<password>admin123</password>
-		<accounttype>mentor</accounttype>
-	</mentor>
-
-	<mentor login="kod"><name>Krzys</name><surname>Odoj</surname><password>mama</password><accounttype>mentor</accounttype></mentor></mentors>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mentors>
+    <mentor login="aga">
+        <name>Agnieszka</name>
+        <surname>Koszany</surname>
+        <password>admin123$ddd</password>
+        <accounttype>mentor</accounttype>
+    </mentor>
+</mentors>

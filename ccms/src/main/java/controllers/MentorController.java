@@ -7,6 +7,8 @@ import views.View;
 import containers.Assignment;
 import containers.Model;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,9 +21,11 @@ public class MentorController extends Controller {
     DAOStudent daoStudent;
     DAOLists daoLists;
     DAOAssignment daoAssignment;
+    PasswordController passwordController;
 
     public MentorController(Model model, View view) {
         this.view = view;
+        this.passwordController = new PasswordController();
         setMyModel(model);
         this.setloggedIn(true);
         this.daoStudent = new DAOStudent();
@@ -63,46 +67,50 @@ public class MentorController extends Controller {
                 }
             }
             goodInput = false;
-
-            switch(inputInt){
-                case 1:
-                    View.printList(daoLists.getAllStudents());
-                    break;
-                case 2:
-                    addStudent();
-                    break;
-                case 3:
-                    removeStudent();
-                    break;
-                case 4:
-                    editStudent();
-                    break;
-                case 5:
-                    View.printList(daoLists.getAllAssignments());
-                    break;
-                case 6:
-                    setNewAssignment();
-                    break;
-                case 7:
-                    evaluateAssignment();
-                    break;
-                case 8:
-                    break;
+            try {
+                switch (inputInt) {
+                    case 1:
+                        View.printList(daoLists.getAllStudents());
+                        break;
+                    case 2:
+                        addStudent();
+                        break;
+                    case 3:
+                        removeStudent();
+                        break;
+                    case 4:
+                        editStudent();
+                        break;
+                    case 5:
+                        View.printList(daoLists.getAllAssignments());
+                        break;
+                    case 6:
+                        setNewAssignment();
+                        break;
+                    case 7:
+                        evaluateAssignment();
+                        break;
+                    case 8:
+                        break;
+                }
+            } catch (IllegalArgumentException | NoSuchAlgorithmException |  InvalidKeySpecException e){
+                System.out.println("couldn't add user, too shord password");
             }
 
 
         }
     }
 
-    private void addStudent() {
+    private void addStudent() throws IllegalArgumentException, NoSuchAlgorithmException, InvalidKeySpecException {
         String tempName = view.takeStringInput("Name ");
         String tempSurname = view.takeStringInput("Surname ");
         String accountType = "student";
         String tempPassword = view.takeStringInput("Password ");
+        String hashedPassword = passwordController.getSaltedHash(tempPassword);
         String tempLogin = view.takeStringInput("Login ");
         Map<String, Assignment> assignments = new HashMap<String, Assignment>();
 
-        newModel = new Model(tempName, tempSurname, accountType, tempPassword, tempLogin, assignments);
+        newModel = new Model(tempName, tempSurname, accountType, hashedPassword, tempLogin, assignments);
         daoStudent.add(newModel);
     }
 
@@ -120,19 +128,14 @@ public class MentorController extends Controller {
     private void editStudent() {
         View.printList(daoLists.getAllStudents());
         String tempLogin = view.takeStringInput("Choose Student: ");
-        boolean isFound = true;
         try{
             daoStudent.delete(tempLogin);
+            addStudent();
         }catch(NullPointerException e){
             System.out.println("Couldn't find student with given name");
-            isFound = false;
+        } catch (IllegalArgumentException | NoSuchAlgorithmException | InvalidKeySpecException e){
+            System.out.println("Couldn't add that password - too short");
         }
-        if(isFound){
-            addStudent();
-        }else{
-            System.out.println("Choose another student!");
-        }
-
     }
 
     private void setNewAssignment() {

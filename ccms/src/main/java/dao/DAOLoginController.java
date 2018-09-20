@@ -30,7 +30,7 @@ public class DAOLoginController {
     }
 
 
-    public Model createModel(){
+    public Model createModel(String login){
         elementPerson = connector.loadPerson(login);
         Element accountTypeElement = (Element) elementPerson.getElementsByTagName("accounttype").item(0);
         String accountType = accountTypeElement.getTextContent();
@@ -52,8 +52,13 @@ public class DAOLoginController {
         }
         Element expected = (Element) element.getElementsByTagName("password").item(0);
         String xmlpassword = expected.getTextContent();
-        boolean result = xmlpassword.equals(password);
-        return result;
+        return xmlpassword.equals(password);
+    }
+
+    public String getHashedPassword(String login){
+        Element element = connector.loadPerson(login);
+        Element hashedPassword = (Element) element.getElementsByTagName("password").item(0);
+        return hashedPassword.getTextContent();
     }
 
 
